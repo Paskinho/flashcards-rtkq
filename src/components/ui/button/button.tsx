@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from "react";
 
-import s from "button.module.css";
+import s from "./button.module.css";
 
 export type ButtonProps = {
   variant?: "primary" | "secondary" | "tertiary" | "link";
