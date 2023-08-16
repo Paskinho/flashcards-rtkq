@@ -1,21 +1,25 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
 import s from "./button.module.css";
 
-export type ButtonProps = {
-  as: any;
+export type ButtonProps<T extends ElementType = "button"> = {
+  as?: T;
+  children: ReactNode;
   variant?: "primary" | "secondary" | "tertiary" | "link";
   fullWidth?: boolean;
-} & ComponentPropsWithoutRef<"button">;
+  className?: string;
+} & ComponentPropsWithoutRef<T>;
 
-export const Button = ({
-  as,
-  variant = "primary",
-  fullWidth,
-  className,
-  ...rest
-}: ButtonProps) => {
-  const Component = as || "button";
+export const Button = <T extends ElementType = "button">(
+  props: ButtonProps<T>,
+) => {
+  const {
+    variant = "primary",
+    fullWidth,
+    className,
+    as: Component = "button",
+    ...rest
+  } = props;
 
   return (
     <Component
