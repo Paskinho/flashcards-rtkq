@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
 import s from "./typography.module.css";
 
@@ -20,8 +20,24 @@ export type TypographyProps = {
     | "link2"
     | "error";
   className?: string;
-};
+} & ComponentPropsWithoutRef<T>;
 
-export const Typography = () => {
-  return <text>123</text>;
+export const Typography = <T extends ElementType = "p">(
+  props: TypographyProps<T> &
+    Omit<ComponentPropsWithoutRef<T>, keyof TypographyProps<T>>,
+) => {
+  const {
+    variant = "body1",
+    color = "inherit",
+    className,
+    as: Component = "p",
+    ...rest
+  } = props;
+
+  return (
+    <Component
+      className={`${s[variant]} ${s[color]} ${className ?? ""}`}
+      {...rest}
+    />
+  );
 };
