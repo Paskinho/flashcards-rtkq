@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import * as CheckboxRadix from "@radix-ui/react-checkbox";
+import * as LabelRadix from "@radix-ui/react-label";
 import { clsx } from "clsx";
 
 export type CheckboxProps = {
