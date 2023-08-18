@@ -7,7 +7,7 @@ export function App() {
     <div>
       <Button>Hello</Button>
       <Typography>Typography</Typography>
-      <Card></Card>
+      {/*<Card>Card</Card>*/}
     </div>
   );
 }
