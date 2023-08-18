@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type Checkbox = {};
+import { clsx } from "clsx";
 
 export type CheckboxProps = {
   className?: string;
@@ -23,18 +23,44 @@ export const Checkbox = ({
   id,
   position,
 }) => {
+  const classNames = {
+    container: clsx(s.container, className),
+    buttonWrapper: clsx(
+      s.buttonWrapper,
+      disabled && s.disabled,
+      position === "left" && s.left,
+    ),
+    root: s.root,
+    indicator: s.indicator,
+    label: clsx(s.label, disabled && s.disabled),
+  };
+
   return (
-
-      const classNames = {
-
-      }
-
-      <Flex>
-      <Text size="2">
-        <label>
-          <Checkbox mr="1" defaultChecked /> Agree to Terms and Conditions
-        </label>
-      </Text>
-    </Flex>
+    <div className={classNames.container}>
+      <LabelRadix.Root asChild>
+        <Typography variant="body2" className={classNames.label} as={"label"}>
+          <div className={classNames.buttonWrapper}>
+            <CheckboxRadix.Root
+              className={classNames.root}
+              checked={checked}
+              onCheckedChange={onChange}
+              disabled={disabled}
+              required={required}
+              id={id}
+            >
+              {checked && (
+                <CheckboxRadix.Indicator
+                  className={classNames.indicator}
+                  forceMount
+                >
+                  <Check />
+                </CheckboxRadix.Indicator>
+              )}
+            </CheckboxRadix.Root>
+          </div>
+          {label}
+        </Typography>
+      </LabelRadix.Root>
+    </div>
   );
 };
