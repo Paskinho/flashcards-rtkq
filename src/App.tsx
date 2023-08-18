@@ -10,6 +10,7 @@ export function App() {
       <Typography>Typography</Typography>
       {/*<Card>Card</Card>*/}
       {/*<Checkbox></Checkbox>*/}
+      <Checkbox />
     </div>
   );
 }

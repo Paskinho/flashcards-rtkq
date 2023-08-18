@@ -2,6 +2,11 @@ import * as CheckboxRadix from "@radix-ui/react-checkbox";
 import * as LabelRadix from "@radix-ui/react-label";
 import { clsx } from "clsx";
 
+import s from "./checkbox.module.scss";
+
+import { Check } from "@/assets/icons";
+import { Typography } from "@/components";
+
 export type CheckboxProps = {
   className?: string;
   checked?: boolean;
