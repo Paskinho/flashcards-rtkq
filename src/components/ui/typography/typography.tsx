@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
-import s from "./typography.module.css";
+import s from "./typography.module.scss";
 
 export type TypographyProps = {
   children: ReactNode;
