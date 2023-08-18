@@ -5,7 +5,7 @@ export function App() {
   return (
     <div>
       <Button>Hello</Button>
-      <Typography>Hello</Typography>
+      <Typography>Typography</Typography>
     </div>
   );
 }
