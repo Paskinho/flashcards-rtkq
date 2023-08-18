@@ -9,7 +9,7 @@ export function App() {
       <Button>Hello</Button>
       <Typography>Typography</Typography>
       {/*<Card>Card</Card>*/}
-      <Checkbox></Checkbox>
+      {/*<Checkbox></Checkbox>*/}
     </div>
   );
 }
