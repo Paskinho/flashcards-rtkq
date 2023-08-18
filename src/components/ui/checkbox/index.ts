@@ -1,1 +1,1 @@
-import * from './checkbox'
+import * from './checkbox';
