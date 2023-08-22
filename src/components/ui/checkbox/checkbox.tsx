@@ -4,8 +4,8 @@ import { clsx } from "clsx";
 
 import s from "./checkbox.module.scss";
 
-import { Check } from "@/assets/icons";
-import { Typography } from "@/components";
+// import { Check } from "@/assets/icons";
+// import { Typography } from "@/components";
 
 export type CheckboxProps = {
   className?: string;
@@ -43,28 +43,28 @@ export const Checkbox = ({
   return (
     <div className={classNames.container}>
       <LabelRadix.Root asChild>
-        <Typography variant="body2" className={classNames.label} as={"label"}>
-          <div className={classNames.buttonWrapper}>
-            <CheckboxRadix.Root
-              className={classNames.root}
-              checked={checked}
-              onCheckedChange={onChange}
-              disabled={disabled}
-              required={required}
-              id={id}
-            >
-              {checked && (
-                <CheckboxRadix.Indicator
-                  className={classNames.indicator}
-                  forceMount
-                >
-                  <Check />
-                </CheckboxRadix.Indicator>
-              )}
-            </CheckboxRadix.Root>
-          </div>
-          {label}
-        </Typography>
+        {/*<Typography variant="body2" className={classNames.label} as={"label"}>*/}
+        <div className={classNames.buttonWrapper}>
+          <CheckboxRadix.Root
+            className={classNames.root}
+            checked={checked}
+            onCheckedChange={onChange}
+            disabled={disabled}
+            required={required}
+            id={id}
+          >
+            {checked && (
+              <CheckboxRadix.Indicator
+                className={classNames.indicator}
+                forceMount
+              >
+                {/*<Check />*/}
+              </CheckboxRadix.Indicator>
+            )}
+          </CheckboxRadix.Root>
+        </div>
+        {label}
+        {/*</Typography>*/}
       </LabelRadix.Root>
     </div>
   );
