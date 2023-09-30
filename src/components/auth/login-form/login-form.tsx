@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { Checkbox } from "src/components/ui/checkbox/checkbox";
 
 import { Button } from "../../ui/button";
 import { TextField } from "../../ui/text-field";
@@ -19,6 +20,7 @@ export const LoginForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextField {...register("email")} label={"email"} />
       <TextField {...register("password")} label={"password"} />
+      <Checkbox {...register("rememberMe")} label={"remember me"} />
       <Button type="submit">Submit</Button>
     </form>
   );
