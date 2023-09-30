@@ -7,12 +7,12 @@ import { Typography } from "./components/ui/typography";
 export function App() {
   return (
     <div>
-      <Button>Hello</Button>
+      <Button variant={"tertiary"}>Hello</Button>
       <Typography>Typography</Typography>
       {/*<Card>Card</Card>*/}
       {/*<Checkbox></Checkbox>*/}
       {/*<Checkbox />*/}
-      <TextField />
+      <TextField label={"input"} />
     </div>
   );
 }
