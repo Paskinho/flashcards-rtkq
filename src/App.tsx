@@ -1,3 +1,4 @@
+import { LoginForm } from "./components/auth/login-form/login-form";
 import { Button } from "./components/ui/button";
 import { Card } from "./components/ui/card";
 import { Checkbox } from "./components/ui/checkbox/checkbox";
@@ -13,6 +14,7 @@ export function App() {
       {/*<Checkbox></Checkbox>*/}
       {/*<Checkbox />*/}
       <TextField label={"input"} />
+      <LoginForm />
     </div>
   );
 }
