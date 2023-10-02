@@ -11,7 +11,12 @@ type FormValues = {
 };
 
 export const LoginForm = () => {
-  const { control, handleSubmit, register } = useForm<FormValues>();
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<FormValues>();
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -27,14 +32,19 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <TextField {...register("email")} label={"email"} />
+      <TextField
+        {...register("email", {
+          minLength: { value: 3, message: "Too short" },
+        })}
+        label={"email"}
+      />
       <TextField {...register("password")} label={"password"} />
-      <Checkbox
-        onCheckedChange={onChange}
-        checked={value}
-        label={"remember me"}
-      />{" "}
-      ОТРИСОВАТЬ!!!
+      {/*<Checkbox*/}
+      {/*  onCheckedChange={onChange}*/}
+      {/*  checked={value}*/}
+      {/*  label={"remember me"}*/}
+      {/*/>{" "}*/}
+      {/*ОТРИСОВАТЬ!!!*/}
       <Button type="submit">Submit</Button>
     </form>
   );
