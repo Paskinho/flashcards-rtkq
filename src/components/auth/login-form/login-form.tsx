@@ -1,4 +1,5 @@
 import { useController, useForm } from "react-hook-form";
+import { z } from "zod";
 
 import { Button } from "../../ui/button";
 import { Checkbox } from "../../ui/checkbox/checkbox";
@@ -9,6 +10,11 @@ type FormValues = {
   password: string;
   rememberMe: boolean;
 };
+
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(3),
+});
 
 export const LoginForm = () => {
   const {
