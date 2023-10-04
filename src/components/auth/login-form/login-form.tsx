@@ -1,3 +1,4 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useController, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -22,7 +23,7 @@ export const LoginForm = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({ resolver: zodResolver(loginSchema) });
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
@@ -38,12 +39,7 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <TextField
-        {...register("email", {
-          minLength: { value: 3, message: "Too short" },
-        })}
-        label={"email"}
-      />
+      <TextField {...register("email")} label={"email"} />
       <TextField {...register("password")} label={"password"} />
       {/*<Checkbox*/}
       {/*  onCheckedChange={onChange}*/}
