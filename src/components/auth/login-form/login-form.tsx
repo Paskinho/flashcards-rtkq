@@ -6,16 +6,13 @@ import { Button } from "../../ui/button";
 import { Checkbox } from "../../ui/checkbox/checkbox";
 import { TextField } from "../../ui/text-field";
 
-type FormValues = {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-};
-
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(3),
+  rememberMe: z.boolean().optional().default(false),
 });
+
+type FormValues = z.infer<typeof loginSchema>;
 
 export const LoginForm = () => {
   const {
@@ -39,8 +36,16 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <TextField {...register("email")} label={"email"} />
-      <TextField {...register("password")} label={"password"} />
+      <TextField
+        {...register("email")}
+        label={"email"}
+        errorMessage={errors.email?.message}
+      />
+      <TextField
+        {...register("password")}
+        label={"password"}
+        errorMessage={errors.password?.message}
+      />
       {/*<Checkbox*/}
       {/*  onCheckedChange={onChange}*/}
       {/*  checked={value}*/}
