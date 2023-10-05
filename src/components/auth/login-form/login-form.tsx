@@ -42,7 +42,7 @@ export const LoginForm = () => {
         label={"password"}
         errorMessage={errors.password?.message}
       />
-      <ControlledCheckbox control={control} name={"remember me"} />
+      {/*<ControlledCheckbox control={control} name={"remember me"} label={"Remember me"} />*/}
       <Button type="submit">Submit</Button>
     </form>
   );
