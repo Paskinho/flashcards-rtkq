@@ -1,10 +1,15 @@
 import { useController } from "react-hook-form";
-import { Checkbox, CheckboxProps } from "src/components/ui/checkbox/checkbox";
 
-export type ControlledCheckboxProps = { control: any } & CheckboxProps;
+import { Checkbox, CheckboxProps } from "../../ui/checkbox/checkbox";
+
+export type ControlledCheckboxProps = {
+  control: any;
+  name: any;
+} & Omit<CheckboxProps, "checked" | "onValueChange">;
 
 export const ControlledCheckbox = ({
   control,
+  name,
   ...rest
 }: ControlledCheckboxProps) => {
   const {
@@ -15,5 +20,7 @@ export const ControlledCheckbox = ({
     defaultValue: false,
   });
 
-  return <Checkbox {...rest} />;
+  return (
+    <Checkbox {...rest} checked={value} onValueChange={onChange} id={name} />
+  );
 };
