@@ -10,7 +10,7 @@ import * as DropdownMenuRadix from "@radix-ui/react-dropdown-menu";
 import { clsx } from "clsx";
 import { AnimatePresence, motion, MotionProps, Variants } from "framer-motion";
 
-import { Typography } from "..";
+import { Typography } from "../typography/typography";
 
 import s from "./dropdown.module.scss";
 
