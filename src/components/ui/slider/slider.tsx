@@ -5,7 +5,7 @@ import { clsx } from "clsx";
 
 import s from "./slider.module.scss";
 
-const Slider = forwardRef<
+export const Slider = forwardRef<
   ElementRef<typeof SliderPrimitive.Root>,
   ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, ...props }, ref) => (

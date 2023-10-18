@@ -1,3 +1,5 @@
+import { Slider } from "../src/components/ui/slider/slider";
+
 import { LoginForm } from "./components/auth/login-form/login-form";
 import { Button } from "./components/ui/button";
 import { Card } from "./components/ui/card";
@@ -15,6 +17,7 @@ export function App() {
       {/*<Checkbox />*/}
       <TextField label={"input"} />
       <LoginForm />
+      <Slider />
     </div>
   );
 }
