@@ -1,6 +1,13 @@
 import { ComponentProps, FC } from "react";
 
-import { Dialog, DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+} from "@radix-ui/react-dialog";
 import { AnimatePresence } from "framer-motion";
 import s from "modal.module.scss";
 
@@ -83,6 +90,26 @@ export const Modal: FC<ModalProps> = ({
                 exit={{ opacity: 0 }}
               />
             </DialogOverlay>
+            <DialogContent className={classNames.content} asChild forceMount>
+              <motion.div
+                variants={dropIn}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <header className={classNames.header}>
+                  <DialogTitle asChild>
+                    <h2 className={classNames.title}>{title}</h2>
+                  </DialogTitle>
+                  {showCloseButton && (
+                    <DialogClose className={classNames.closeButton}>
+                      <Close />
+                    </DialogClose>
+                  )}
+                </header>
+                <div className={classNames.contentBox}>{children}</div>
+              </motion.div>
+            </DialogContent>
           </DialogPortal>
         )}
       </AnimatePresence>
