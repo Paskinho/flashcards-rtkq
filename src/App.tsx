@@ -1,3 +1,4 @@
+import { Avatar } from "../src/components/ui/avatar";
 import { Modal } from "../src/components/ui/modal";
 import { Slider } from "../src/components/ui/slider/slider";
 
@@ -18,6 +19,7 @@ export function App() {
       <LoginForm />
       <Slider />
       <Modal open={false} />
+      <Avatar />
     </div>
   );
 }
