@@ -17,7 +17,7 @@ export function App() {
       <TextField label={"input"} />
       <LoginForm />
       <Slider />
-      <Modal />
+      <Modal open={false} />
     </div>
   );
 }
