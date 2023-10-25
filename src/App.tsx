@@ -1,5 +1,6 @@
 import { Avatar } from "../src/components/ui/avatar";
 import { Modal } from "../src/components/ui/modal";
+import { Page } from "../src/components/ui/page";
 import { Slider } from "../src/components/ui/slider/slider";
 
 import { LoginForm } from "./components/auth/login-form/login-form";
@@ -20,6 +21,7 @@ export function App() {
       <Slider />
       <Modal open={false} />
       <Avatar />
+      <Page />
     </div>
   );
 }
