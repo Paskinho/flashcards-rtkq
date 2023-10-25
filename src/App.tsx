@@ -1,9 +1,8 @@
+import { Modal } from "../src/components/ui/modal";
 import { Slider } from "../src/components/ui/slider/slider";
 
 import { LoginForm } from "./components/auth/login-form/login-form";
 import { Button } from "./components/ui/button";
-import { Card } from "./components/ui/card";
-import { Checkbox } from "./components/ui/checkbox/checkbox";
 import { TextField } from "./components/ui/text-field";
 import { Typography } from "./components/ui/typography";
 
@@ -18,6 +17,7 @@ export function App() {
       <TextField label={"input"} />
       <LoginForm />
       <Slider />
+      <Modal />
     </div>
   );
 }
