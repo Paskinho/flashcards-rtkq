@@ -1,4 +1,6 @@
-import { ComponentProps } from "react";
+import { ComponentProps, FC } from "react";
+
+import s from "modal.module.scss";
 
 export type ModalSize = "sm" | "md" | "lg";
 
@@ -45,4 +47,19 @@ const getSizeClassName = (size: ModalSize) => {
   if (size === "lg") return s.lg;
 };
 
-export const Modal = () => {};
+export const Modal: FC<ModalProps> = ({
+  open = false,
+  size = "md",
+  title,
+  className,
+  onClose,
+  children,
+  showCloseButton = true,
+}) => {
+  const handleModalClosed = () => {
+    onClose?.();
+  };
+  const classNames = {
+    overlay: s.overlay,
+  };
+};
