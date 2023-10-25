@@ -1,5 +1,7 @@
 import { ComponentProps, FC } from "react";
 
+import { Dialog, DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
+import { AnimatePresence } from "framer-motion";
 import s from "modal.module.scss";
 
 export type ModalSize = "sm" | "md" | "lg";
@@ -61,5 +63,29 @@ export const Modal: FC<ModalProps> = ({
   };
   const classNames = {
     overlay: s.overlay,
+    content: getContentClassName(size, className),
+    header: s.header,
+    title: s.title,
+    closeButton: s.closeButton,
+    contentBox: s.contentBox,
   };
+
+  return (
+    <Dialog open={open} onOpenChange={handleModalClosed}>
+      <AnimatePresence>
+        {open && (
+          <DialogPortal forceMount>
+            <DialogOverlay asChild>
+              <motion.div
+                className={classNames.overlay}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              />
+            </DialogOverlay>
+          </DialogPortal>
+        )}
+      </AnimatePresence>
+    </Dialog>
+  );
 };
