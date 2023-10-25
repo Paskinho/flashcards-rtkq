@@ -8,8 +8,11 @@ import {
   DialogPortal,
   DialogTitle,
 } from "@radix-ui/react-dialog";
+import { clsx } from "clsx";
 import { AnimatePresence } from "framer-motion";
-import s from "modal.module.scss";
+
+import Close from "../../../assets/icons/close";
+import s from "../modal/modal.module.scss";
 
 export type ModalSize = "sm" | "md" | "lg";
 
