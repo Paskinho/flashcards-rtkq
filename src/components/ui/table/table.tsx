@@ -136,9 +136,18 @@ export const Empty: FC<
       className={classNames.empty}
       style={{ marginTop: mt, marginBottom: mb }}
     >
-      Пока тут еще нет данных! :(
+      No data
     </Typography>
   );
 };
 
-export const Table = {};
+export const Table = {
+  Root,
+  Head,
+  Header,
+  Body,
+  Row,
+  HeadCell,
+  Cell,
+  Empty,
+};
