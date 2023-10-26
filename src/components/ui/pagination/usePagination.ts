@@ -1,8 +1,16 @@
-import { useMemo } from "react";
-
+import { useCallback, useMemo } from "react";
 
 const range = (start: number, end: number) => {
-  let length = end - start + 1
+  let length = end - start + 1;
+
+  /*
+     Create an array of certain length and set the elements within it from
+   start value to end value.
+ */
+  return Array.from({ length }, (_, idx) => idx + start);
+};
+
+const DOTS = "...";
 
 type usePaginationProps = {
   count: number;
@@ -57,5 +65,48 @@ export const usePagination = ({
 
       return [...leftRange, DOTS, count];
     }
-  }, []);
+    /*
+       Case 3: No right dots to show, but left dots to be shown
+   */
+    if (shouldShowLeftDots && !shouldShowRightDots) {
+      let rightItemCount = 3 + 2 * siblings;
+      let rightRange = range(count - rightItemCount + 1, count);
+
+      return [firstPageIndex, DOTS, ...rightRange];
+    }
+    /*
+    	Case 4: Both left and right dots to be shown
+    */
+    if (shouldShowLeftDots && shouldShowRightDots) {
+      let middleRange = range(leftSiblingIndex, rightSiblingIndex);
+
+      return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
+    }
+  }, [siblings, page, count]) as PaginationRange;
+
+  const lastPage = paginationRange.at();
+
+  const isFirstPage = page === 1;
+  const isLastPage = page === lastPage;
+
+  const handleNextPageClicked = useCallback(() => {
+    onChange(page + 1);
+  }, [page, onChange]);
+
+  const handlePreviousPageClicked = useCallback(() => {
+    onChange(page - 1);
+  }, [page, onChange]);
+
+  function handleMainPageClicked(pageNumber: number) {
+    return () => onChange(pageNumber);
+  }
+
+  return {
+    paginationRange,
+    isFirstPage,
+    isLastPage,
+    handleMainPageClicked,
+    handleNextPageClicked,
+    handlePreviousPageClicked,
+  };
 };
