@@ -22,4 +22,12 @@ export type PaginationProps = {
   onPerPageChange?: (itemPerPage: number) => void;
 } & PaginationConditionals;
 
-export const Pagination: FC<PaginationProps> = () => {};
+export const Pagination: FC<PaginationProps> = ({
+  count,
+  page,
+  onChange,
+  siblings,
+  perPage = null,
+  perPageOptions,
+  onPerPageChange,
+}) => {};
