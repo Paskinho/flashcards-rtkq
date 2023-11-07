@@ -2,6 +2,8 @@ import { FC } from "react";
 
 import { usePagination } from "src/components/ui/pagination/usePagination";
 
+import s from "./pagination.module.scss";
+
 type PaginationConditionals =
   | {
       perPage?: null;
@@ -23,6 +25,19 @@ export type PaginationProps = {
   perPageOptions?: number[];
   onPerPageChange?: (itemPerPage: number) => void;
 } & PaginationConditionals;
+
+const classNames = {
+  root: s.root,
+  container: s.container,
+  selectBox: s.selectBox,
+  select: s.select,
+  item: s.item,
+  dots: s.dots,
+  icon: s.icon,
+  pageButton(selected?: boolean) {
+    return clsx(this.item, selected && s.selected);
+  },
+};
 
 export const Pagination: FC<PaginationProps> = ({
   count,
@@ -46,4 +61,8 @@ export const Pagination: FC<PaginationProps> = ({
     onChange,
     siblings,
   });
+
+  const ShowPerPageSelect = !!perPage && !!perPageOptions && !!onPerPageChange;
+
+  return <div className={classNames.root}></div>;
 };
