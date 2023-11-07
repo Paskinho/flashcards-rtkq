@@ -82,10 +82,69 @@ type NavigationButtonProps = {
   disabled?: boolean;
 };
 
+type PageButtonProps = NavigationButtonProps & {
+  page: number;
+  selected: boolean;
+};
+
+const Dots: FC = () => {
+  return <span className={classNames.dots}>&#8230;</span>;
+};
+
 const PrevButton: FC<NavigationButtonProps> = ({ onClick, disabled }) => {
   return (
     <button className={classNames.item} onClick={onClick} disabled={disabled}>
       <BiChevronLeft className={classNames.icon} size={16} />
     </button>
+  );
+};
+
+const PageButton: FC<PageButtonProps> = ({
+  onClick,
+  disabled,
+  selected,
+  page,
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      disabled={selected || disabled}
+      className={classNames.pageButton(selected)}
+    >
+      {page}
+    </button>
+  );
+};
+
+type MainPaginationButtonsProps = {
+  paginationRange: (number | string)[];
+  currentPage: number;
+  onClick: (pageNumber: number) => () => void;
+};
+
+const MainPaginationButtons: FC<MainPaginationButtonsProps> = ({
+  paginationRange,
+  currentPage,
+  onClick,
+}) => {
+  return (
+    <>
+      {paginationRange.map((page: number | string, index) => {
+        const isSelected = page === currentPage;
+
+        if (typeof page !== "number") {
+          return <Dots key={index} />;
+        }
+
+        return (
+          <PageButton
+            key={index}
+            page={page}
+            selected={isSelected}
+            onClick={onClick(page)}
+          />
+        );
+      })}
+    </>
   );
 };
