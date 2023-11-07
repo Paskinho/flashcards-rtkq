@@ -1,5 +1,7 @@
 import { FC } from "react";
 
+import { usePagination } from "src/components/ui/pagination/usePagination";
+
 type PaginationConditionals =
   | {
       perPage?: null;
@@ -30,4 +32,18 @@ export const Pagination: FC<PaginationProps> = ({
   perPage = null,
   perPageOptions,
   onPerPageChange,
-}) => {};
+}) => {
+  const {
+    paginationRange,
+    isLastPage,
+    isFirstPage,
+    handlePreviousPageClicked,
+    handleNextPageClicked,
+    handleMainPageClicked,
+  } = usePagination({
+    page,
+    count,
+    onChange,
+    siblings,
+  });
+};
