@@ -1,5 +1,6 @@
 import { FC } from "react";
 
+import { BiChevronLeft } from "react-icons/bi";
 import { usePagination } from "src/components/ui/pagination/usePagination";
 
 import s from "./pagination.module.scss";
@@ -64,5 +65,27 @@ export const Pagination: FC<PaginationProps> = ({
 
   const ShowPerPageSelect = !!perPage && !!perPageOptions && !!onPerPageChange;
 
-  return <div className={classNames.root}></div>;
+  return (
+    <div className={classNames.root}>
+      <div className={classNames.container}>
+        <PrevButton
+          onClick={handlePreviousPageClicked}
+          disabled={isFirstPage}
+        />
+      </div>
+    </div>
+  );
+};
+
+type NavigationButtonProps = {
+  onClick: () => void;
+  disabled?: boolean;
+};
+
+const PrevButton: FC<NavigationButtonProps> = ({ onClick, disabled }) => {
+  return (
+    <button className={classNames.item} onClick={onClick} disabled={disabled}>
+      <BiChevronLeft className={classNames.icon} size={16} />
+    </button>
+  );
 };
