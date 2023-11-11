@@ -72,6 +72,11 @@ export const Pagination: FC<PaginationProps> = ({
           onClick={handlePreviousPageClicked}
           disabled={isFirstPage}
         />
+        <MainPaginationButtons
+          currentPage={page}
+          onClick={handleMainPageClicked}
+          paginationRange={paginationRange}
+        />
       </div>
     </div>
   );
