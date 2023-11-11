@@ -79,6 +79,7 @@ export const Pagination: FC<PaginationProps> = ({
         />
         <NextButton onClick={handleNextPageClicked} disabled={isLastPage} />
       </div>
+      {ShowPerPageSelect && <PerPageSelect />}
     </div>
   );
 };
@@ -161,4 +162,23 @@ const MainPaginationButtons: FC<MainPaginationButtonsProps> = ({
       })}
     </>
   );
+};
+
+type PerPageSelectProps = {
+  perPage: number;
+  perPageOptions: number[];
+  onPerPageChange: (itemPerPage: number) => void;
+};
+
+const PerPageSelect: FC<PerPageSelectProps> = ({
+  perPage,
+  perPageOptions,
+  onPerPageChange,
+}) => {
+  const selectOptions = perPageOptions.map((value) => ({
+    label: value,
+    value,
+  }));
+
+  return null;
 };
