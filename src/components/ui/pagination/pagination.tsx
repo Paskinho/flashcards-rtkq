@@ -79,7 +79,15 @@ export const Pagination: FC<PaginationProps> = ({
         />
         <NextButton onClick={handleNextPageClicked} disabled={isLastPage} />
       </div>
-      {ShowPerPageSelect && <PerPageSelect />}
+      {ShowPerPageSelect && (
+        <PerPageSelect
+          {...{
+            perPage,
+            perPageOptions,
+            onPerPageChange,
+          }}
+        />
+      )}
     </div>
   );
 };
