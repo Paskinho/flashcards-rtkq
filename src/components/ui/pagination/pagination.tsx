@@ -1,9 +1,9 @@
 import { FC } from "react";
 
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import { usePagination } from "src/components/ui/pagination/usePagination";
 
-import s from "./pagination.module.scss";
+import s from "./pagination,module.scss";
+import { usePagination } from "./usePagination";
 
 type PaginationConditionals =
   | {
