@@ -1,3 +1,5 @@
+import { createBrowserRouter } from "react-router-dom";
+
 import { Avatar } from "../src/components/ui/avatar";
 import { Modal } from "../src/components/ui/modal";
 import { Page } from "../src/components/ui/page";
@@ -9,6 +11,16 @@ import { LoginForm } from "./components/auth/login-form/login-form";
 import { Button } from "./components/ui/button";
 import { TextField } from "./components/ui/text-field";
 import { Typography } from "./components/ui/typography";
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: ,
+        children: [
+
+        ]
+
+    }]);
 
 export function App() {
   return (
