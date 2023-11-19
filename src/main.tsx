@@ -5,10 +5,11 @@ import "./styles/index.scss";
 import { StrictMode } from "react";
 
 import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import { createBrowserRouter } from "react-router-dom";
-import { LoginForm } from "src/components/auth/login-form/login-form";
+import { App } from "src/app/App.tsx";
 
-import { App } from "./App.tsx";
+import { LoginForm } from "../src/components/auth/login-form/login-form";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,10 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root") as HTMLElement).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <Provider store={store}>
+    <StrictMode>
+      <App />
+    </StrictMode>
+    ,
+  </Provider>,
 );
