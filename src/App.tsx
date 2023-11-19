@@ -3,6 +3,7 @@ import { Modal } from "../src/components/ui/modal";
 import { Page } from "../src/components/ui/page";
 import { Pagination } from "../src/components/ui/pagination";
 import { Slider } from "../src/components/ui/slider/slider";
+import { Toggle } from "../src/components/ui/toggle";
 
 import { LoginForm } from "./components/auth/login-form/login-form";
 import { Button } from "./components/ui/button";
@@ -24,6 +25,7 @@ export function App() {
       <Avatar />
       <Page />
       {/*<Pagination />*/}
+      {/*<Toggle />*/}
     </div>
   );
 }
