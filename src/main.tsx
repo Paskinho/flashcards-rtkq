@@ -13,28 +13,8 @@ import { LoginForm } from "../src/components/auth/login-form/login-form";
 
 import { App } from "./app/App";
 
-const router = createBrowserRouter([
-  {
-    // path: '/',
-    // element: ,
-    // children: [
-    //
-    // ]
-
-    path: "/",
-    element: <div>Hello my friend!</div>,
-  },
-  {
-    path: "login",
-    element: <LoginForm />,
-  },
-]);
-
 createRoot(document.getElementById("root") as HTMLElement).render(
-  <Provider store={store}>
-    <StrictMode>
-      <App />
-    </StrictMode>
-    ,
-  </Provider>,
+  <StrictMode>
+    <App />
+  </StrictMode>,
 );
