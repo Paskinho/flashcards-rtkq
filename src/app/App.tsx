@@ -29,7 +29,12 @@ export function App() {
 
   return (
     <div>
-      <Button onClick={}>Change Theme</Button>
+      <Button
+        onClick={handleThemeChanged}
+        style={{ position: "fixed", top: "50%" }}
+      >
+        Change Theme
+      </Button>
       {/*<RouterProvider routerProvider={router} />*/}
       <Provider store={store}></Provider>
     </div>
