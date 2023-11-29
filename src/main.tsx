@@ -8,6 +8,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { createBrowserRouter } from "react-router-dom";
 
+import { store } from "../src/app/store";
 import { LoginForm } from "../src/components/auth/login-form/login-form";
 
 import { App } from "./app/App";

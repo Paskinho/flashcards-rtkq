@@ -1,14 +1,11 @@
+import { LoginForm } from "src/components/auth/login-form/login-form";
 import { Avatar } from "src/components/ui/avatar";
 import { Button } from "src/components/ui/button";
 import { Modal } from "src/components/ui/modal";
 import { Page } from "src/components/ui/page";
-import { Pagination } from "src/components/ui/pagination";
-import { Slider } from "src/components/ui/slider/slider";
+import { Slider } from "src/components/ui/slider";
 import { TextField } from "src/components/ui/text-field";
-import { Toggle } from "src/components/ui/toggle";
 import { Typography } from "src/components/ui/typography";
-
-import { LoginForm } from "../components/auth/login-form/login-form";
 
 export function App() {
   return (
