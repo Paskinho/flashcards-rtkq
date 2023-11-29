@@ -1,7 +1,11 @@
+import { useState } from "react";
+
 import { Provider } from "react-redux";
-import { RouterProvider } from "react-router-dom";
-import { store } from "src/app/store";
-import { LoginForm } from "src/components/auth/login-form/login-form";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+import { store } from "../../src/app/store";
+import { LoginForm } from "../../src/components/auth/login-form/login-form";
+import { Button } from "../../src/components/ui/button";
 
 const router = createBrowserRouter([
   {
@@ -15,16 +19,28 @@ const router = createBrowserRouter([
     element: <div>Hello my friend!</div>,
   },
   {
-    // path: "login",
-    // element: <LoginForm />,
+    path: "login",
+    element: <LoginForm />,
   },
 ]);
 
 export function App() {
+  const handleThemeChanged = useHandleThemeChanged();
+
   return (
     <div>
-      <RouterProvider routerProvider={router} />
-      {/*<Provider store={store}></Provider>*/}
+      <Button onClick={}>Change Theme</Button>
+      {/*<RouterProvider routerProvider={router} />*/}
+      <Provider store={store}></Provider>
     </div>
   );
+}
+
+function useHandleThemeChanged() {
+  const [state, setState] = useState(false);
+
+  return () => {
+    document.body.classList.toggle("dark-mode", state);
+    setState(!state);
+  };
 }
