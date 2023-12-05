@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { store } from "../../src/app/store";
 import { LoginForm } from "../../src/components/auth/login-form/login-form";
 import { Button } from "../../src/components/ui/button";
+import { Cards } from "../../src/pages/cards";
 
 const router = createBrowserRouter([
   {
@@ -14,13 +15,16 @@ const router = createBrowserRouter([
     // children: [
     //
     // ]
-
     path: "/",
     element: <div>Hello my friend!</div>,
   },
   {
     path: "login",
     element: <LoginForm />,
+  },
+  {
+    path: "cards",
+    element: <Cards />,
   },
 ]);
 
