@@ -8,7 +8,7 @@ export const cardsApi = createApi({
   }),
   tagtypes: ["Cards"],
   endpoints: (builder) => ({
-    getCards: builder.query<>({
+    getCards: builder.query<Paginated>({
       query: ({ deckId, ...params }) => {},
     }),
   }),
