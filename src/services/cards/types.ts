@@ -25,3 +25,6 @@ export type Card = {
   created: string;
   updated: string;
 };
+
+export type CreateCardInput = Pick<Card, "question" | "answer" | "deckId">;
+export type DeleteCardInput = { cardId: Card["id"] };
