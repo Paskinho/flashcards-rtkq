@@ -8,6 +8,7 @@ const newDeckSchema = z.object({
 
 export const Cards = () => {
   const { deckId } = useParams<{ deckId: string }>();
+  const [deleteCard] = useDeLeteCardMutation();
 
   return <div>Cards</div>;
 };
