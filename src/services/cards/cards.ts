@@ -43,3 +43,9 @@ export const cardsApi = createApi({
     }),
   }),
 });
+
+export const {
+  useGetCardsQuery,
+  useDeleteCardMutation,
+  useCreateCardMutation,
+} = cardsApi;
