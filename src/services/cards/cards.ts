@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { isEmpty } from "remeda";
-import { Card, GetCardsParams } from "src/services/cards/types";
+import {
+  Card,
+  CreateCardInput,
+  GetCardsParams,
+} from "src/services/cards/types";
 
 import { Paginated } from "../../../src/services/common/types";
 
@@ -19,6 +23,8 @@ export const cardsApi = createApi({
           params: isEmpty(params),
         };
       },
+      providesTags: ["Cards"],
     }),
+    createCard: builder.mutation<any, CreateCardInput>(),
   }),
 });
