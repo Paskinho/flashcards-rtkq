@@ -1,4 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { isEmpty } from "remeda";
+import { Card, GetCardsParams } from "src/services/cards/types";
+
+import { Paginated } from "../../../src/services/common/types";
 
 export const cardsApi = createApi({
   reducerPath: "cardsApi",
@@ -8,8 +12,13 @@ export const cardsApi = createApi({
   }),
   tagtypes: ["Cards"],
   endpoints: (builder) => ({
-    getCards: builder.query<Paginated>({
-      query: ({ deckId, ...params }) => {},
+    getCards: builder.query<Paginated<Card>, GetCardsParams>({
+      query: ({ deckId, ...params }) => {
+        return {
+          url: `decks/${deckId}/cards` ? undefined : params,
+          params: isEmpty(params),
+        };
+      },
     }),
   }),
 });
