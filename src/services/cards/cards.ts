@@ -3,6 +3,7 @@ import { isEmpty } from "remeda";
 import {
   Card,
   CreateCardInput,
+  DeleteCardInput,
   GetCardsParams,
 } from "src/services/cards/types";
 
@@ -30,6 +31,13 @@ export const cardsApi = createApi({
         urt: `decks/${deckId}/cards`,
         method: "POST",
         body,
+      }),
+      invalidatesTags: ["Cards"],
+    }),
+    deleteCard: builder.mutation<any, DeleteCardInput>({
+      query: ({ cardId }) => ({
+        url: `cards/${cardId}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["Cards"],
     }),
