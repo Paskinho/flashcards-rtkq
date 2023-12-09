@@ -25,6 +25,13 @@ export const cardsApi = createApi({
       },
       providesTags: ["Cards"],
     }),
-    createCard: builder.mutation<any, CreateCardInput>(),
+    createCard: builder.mutation<any, CreateCardInput>({
+      query: ({ deckId, ...body }) => ({
+        urt: `decks/${deckId}/cards`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Cards"],
+    }),
   }),
 });
