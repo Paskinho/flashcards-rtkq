@@ -17,7 +17,9 @@ import {useGetDeckByIdQuery} from "../../../src/services/decks/decks";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {ControlledTextField} from "../../../src/components/controlled/controlled-text-field";
-import {TextField} from "src/components/ui/text-field";
+import {TextField} from "../../../src/components/ui/text-field";
+import {Table } from '../../components/ui/table'
+import {Column} from "src/components/ui/table";
 
 const newDeckSchema = z.object({
     question: z.string().min(3).max(500),
@@ -53,6 +55,14 @@ export const Cards = () => {
 
     if (isLoading) return <div>LOADING...</div>;
 
+  const columns: Column[] = [
+    { key: 'question', sortable: true, title: 'Question' },
+    { key: 'answer', sortable: true, title: 'Answer' },
+    { key: 'updated', sortable: true, title: 'Updated' },
+    { key: 'grade', sortable: true, title: 'Grade' },
+    { key: 'actions', sortable: false, title: '' },
+  ]
+
     return (
         <Page>
             <img
@@ -66,6 +76,12 @@ export const Cards = () => {
             </div>
           <div>
             <TextField placeholder={'Search'} value={search} onValueChange={setSearch}/>
+          </div>
+          <div>
+            <Table.Root className={'w-full'}>
+              <Table.Header columns={columns}/>
+
+            </Table.Root>
           </div>
 
         </Page>
