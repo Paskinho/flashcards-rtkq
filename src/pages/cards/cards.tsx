@@ -1,15 +1,16 @@
 import { useState } from "react";
 
 import { useParams } from "react-router-dom";
-import { Page } from "src/components/ui/page";
-import { useGetDeckByIdQuery } from "src/services/decks/decks";
 import { z } from "zod";
 
+import { Page } from "../../../src/components/ui/page";
 import { Sort } from "../../../src/components/ui/table";
+import { Typography } from "../../../src/components/ui/typography";
 import {
   useDeleteCardMutation,
   useGetCardsQuery,
 } from "../../../src/services/cards/cards";
+import { useGetDeckByIdQuery } from "../../../src/services/decks/decks";
 
 const newDeckSchema = z.object({
   question: z.string().min(3).max(500),
@@ -36,9 +37,20 @@ export const Cards = () => {
     itemsPerPage: perPage,
   });
 
+  if (!deckId) return <div>DECK NOT FOUND</div>;
+
+  if (isLoading) return <div>LOADING...</div>;
+
   return (
     <Page>
-      <img src={} />
+      <img
+        src={deck?.cover}
+        alt={deck.name}
+        className={"w-full h-64 object-cover"}
+      />
+      <div className={"flex items-center mb-6 justify-between"}>
+        <Typography variant={"large"}>{deck?.name}</Typography>
+      </div>
     </Page>
   );
 };
