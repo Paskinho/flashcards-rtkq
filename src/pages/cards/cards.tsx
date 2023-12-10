@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { useParams } from "react-router-dom";
+import { Page } from "src/components/ui/page";
 import { z } from "zod";
 
 import { Sort } from "../../../src/components/ui/table";
@@ -19,5 +20,11 @@ export const Cards = () => {
     direction: "asc",
   });
 
-  return <div>Cards</div>;
+  const { data: deck } = useGetDeckByIdQuery(deckId || "");
+
+  return (
+    <Page>
+      <img src={} />
+    </Page>
+  );
 };
