@@ -30,4 +30,4 @@ export const decksApi = createApi({
   }),
 });
 
-export const { useGetDecksQuery, useGetDecksByIdQuery } = decksApi;
+export const { useGetDecksQuery, useGetDeckByIdQuery } = decksApi;
