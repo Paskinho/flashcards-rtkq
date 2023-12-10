@@ -20,6 +20,7 @@ import {ControlledTextField} from "../../../src/components/controlled/controlled
 import {TextField} from "../../../src/components/ui/text-field";
 import {Table } from '../../components/ui/table'
 import {Column} from "src/components/ui/table";
+import {FaEdit, FaTrash} from "react-icons/fa";
 
 const newDeckSchema = z.object({
     question: z.string().min(3).max(500),
@@ -86,6 +87,20 @@ export const Cards = () => {
                     <Table.Cell>{card.question}</Table.Cell>
                     <Table.Cell>{card.answer}</Table.Cell>
                     <Table.Cell>{dayjs(card.updated).format("L, LT")}</Table.Cell>
+                    <Table.Cell>{card.grade}</Table.Cell>
+                    <Table.Cell className={'flex gap-4 items-center'}>
+                        <button className={'unset'}>
+                            <FaEdit/>
+                        </button>
+                        <button
+                        className={'unset'}
+                        onClick={()=> {
+                            deleteCard({cardId: card.id})
+                        }}
+                        >
+                            <FaTrash/>
+                        </button>
+                    </Table.Cell>
 
                   </Table.Row>
                 ))}
