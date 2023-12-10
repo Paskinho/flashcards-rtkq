@@ -17,6 +17,7 @@ import {useGetDeckByIdQuery} from "../../../src/services/decks/decks";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {ControlledTextField} from "../../../src/components/controlled/controlled-text-field";
+import {TextField} from "src/components/ui/text-field";
 
 const newDeckSchema = z.object({
     question: z.string().min(3).max(500),
@@ -36,6 +37,9 @@ export const Cards = () => {
 
     const [perPage, setPerPage] = useState(10);
     const [page, setPage] = useState(1);
+
+    const [search, setSearch] = useState('')
+
 
     const {data: deck} = useGetDeckByIdQuery(deckId || "");
     const {data: cards, isLoading} = useGetCardsQuery({
@@ -60,6 +64,10 @@ export const Cards = () => {
                 <Typography variant={"large"}>{deck?.name}</Typography>
                 <CreateCardModal deckId={deckId}/>
             </div>
+          <div>
+            <TextField placeholder={'Search'} value={search} onValueChange={setSearch}/>
+          </div>
+
         </Page>
     );
 };
