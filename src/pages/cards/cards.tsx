@@ -2,22 +2,28 @@ import { useState } from "react";
 
 import { useParams } from "react-router-dom";
 import { Button } from "src/components/ui/button";
+import { Modal } from "src/components/ui/modal";
 import { z } from "zod";
 
 import { Page } from "../../../src/components/ui/page";
 import { Sort } from "../../../src/components/ui/table";
 import { Typography } from "../../../src/components/ui/typography";
 import {
+  useCreateCardMutation,
   useDeleteCardMutation,
   useGetCardsQuery,
 } from "../../../src/services/cards/cards";
 import { useGetDeckByIdQuery } from "../../../src/services/decks/decks";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
 
 const newDeckSchema = z.object({
   question: z.string().min(3).max(500),
   answer: z.string().min(3).max(500),
 });
 
+
+type NewCard = z.infer<typeof newDeckSchema>
 export const Cards = () => {
   const { deckId } = useParams<{ deckId: string }>();
   const [deleteCard] = useDeleteCardMutation();
@@ -57,14 +63,44 @@ export const Cards = () => {
   );
 };
 
+
+
 const CreateCardModal = ({ deckId }: { deckId: string }) => {
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
   const openModal = () => setShowModal(true);
 
+  const [createCard] = useCreateCardMutation()
+
+  const [control, handleSubmit] = useForm<NewCard>({
+    resolver: zodResolver(newDeckSchema),
+    defaultValues: {
+      question: '',
+      answer: ''
+    }
+  })
+
+
+  const handleCardCreated = handleSubmit((args: NewCard)) => {
+createCard({...args, deckId}).unwrap().then(()=> {
+  toast.success("Card created succesfully")
+  closeModal()
+})
+  }
+
   return (
     <>
       <Button onClick={openModal}>Add New Card</Button>
+      <Modal
+        open={showModal}
+        onClose={closeModal}
+        title={"Create Card"}
+      >
+        <form onSubmit={}>
+
+        </form>
+
+      </Modal>
     </>
   );
 };
