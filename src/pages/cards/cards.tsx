@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { useParams } from "react-router-dom";
+import { Button } from "src/components/ui/button";
 import { z } from "zod";
 
 import { Page } from "../../../src/components/ui/page";
@@ -50,7 +51,20 @@ export const Cards = () => {
       />
       <div className={"flex items-center mb-6 justify-between"}>
         <Typography variant={"large"}>{deck?.name}</Typography>
+        <CreateCardModal deckId={deckId} />
       </div>
     </Page>
+  );
+};
+
+const CreateCardModal = ({ deckId }: { deckId: string }) => {
+  const [showModal, setShowModal] = useState(false);
+  const closeModal = () => setShowModal(false);
+  const openModal = () => setShowModal(true);
+
+  return (
+    <>
+      <Button onClick={openModal}>Add New Card</Button>
+    </>
   );
 };
