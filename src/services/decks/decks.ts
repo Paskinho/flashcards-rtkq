@@ -1,3 +1,4 @@
+import { buildCacheLifecycleHandler } from "@reduxjs/toolkit/dist/query/core/buildMiddleware/cacheLifecycle";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { Deck, GetDecksParams } from "src/services/decks/types";
 
@@ -21,6 +22,12 @@ export const decksApi = createApi({
           params: params ?? undefined,
         };
       },
+      providesTags: ["Decks"],
+    }),
+    getDeckById: builder.query<Deck, string>({
+      query: (deckId) => `decks/${deckId}`,
     }),
   }),
 });
+
+export const { useGetDecksQuery, useGetDecksByIdQuery } = decksApi;
