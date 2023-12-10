@@ -1,106 +1,114 @@
-import { useState } from "react";
+import {useState} from "react";
 
-import { useParams } from "react-router-dom";
-import { Button } from "src/components/ui/button";
-import { Modal } from "src/components/ui/modal";
-import { z } from "zod";
+import {useParams} from "react-router-dom";
+import {Button} from "src/components/ui/button";
+import {Modal} from "src/components/ui/modal";
+import {z} from "zod";
 
-import { Page } from "../../../src/components/ui/page";
-import { Sort } from "../../../src/components/ui/table";
-import { Typography } from "../../../src/components/ui/typography";
+import {Page} from "../../../src/components/ui/page";
+import {Sort} from "../../../src/components/ui/table";
+import {Typography} from "../../../src/components/ui/typography";
 import {
-  useCreateCardMutation,
-  useDeleteCardMutation,
-  useGetCardsQuery,
+    useCreateCardMutation,
+    useDeleteCardMutation,
+    useGetCardsQuery,
 } from "../../../src/services/cards/cards";
-import { useGetDeckByIdQuery } from "../../../src/services/decks/decks";
+import {useGetDeckByIdQuery} from "../../../src/services/decks/decks";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
+import {ControlledTextField} from "../../../src/components/controlled/controlled-text-field";
 
 const newDeckSchema = z.object({
-  question: z.string().min(3).max(500),
-  answer: z.string().min(3).max(500),
+    question: z.string().min(3).max(500),
+    answer: z.string().min(3).max(500),
 });
 
 
 type NewCard = z.infer<typeof newDeckSchema>
 export const Cards = () => {
-  const { deckId } = useParams<{ deckId: string }>();
-  const [deleteCard] = useDeleteCardMutation();
-  const [sort, setSort] = useState<Sort>({
-    key: "updated",
-    direction: "asc",
-  });
-  const sortString = sort ? `${sort.key}-${sort.direction}` : null;
+    const {deckId} = useParams<{ deckId: string }>();
+    const [deleteCard] = useDeleteCardMutation();
+    const [sort, setSort] = useState<Sort>({
+        key: "updated",
+        direction: "asc",
+    });
+    const sortString = sort ? `${sort.key}-${sort.direction}` : null;
 
-  const [perPage, setPerPage] = useState(10);
-  const [page, setPage] = useState(1);
+    const [perPage, setPerPage] = useState(10);
+    const [page, setPage] = useState(1);
 
-  const { data: deck } = useGetDeckByIdQuery(deckId || "");
-  const { data: cards, isLoading } = useGetCardsQuery({
-    deckId: deckId || "",
-    orderBy: sortString,
-    currentPage: page,
-    itemsPerPage: perPage,
-  });
+    const {data: deck} = useGetDeckByIdQuery(deckId || "");
+    const {data: cards, isLoading} = useGetCardsQuery({
+        deckId: deckId || "",
+        orderBy: sortString,
+        currentPage: page,
+        itemsPerPage: perPage,
+    });
 
-  if (!deckId) return <div>DECK NOT FOUND</div>;
+    if (!deckId) return <div>DECK NOT FOUND</div>;
 
-  if (isLoading) return <div>LOADING...</div>;
+    if (isLoading) return <div>LOADING...</div>;
 
-  return (
-    <Page>
-      <img
-        src={deck?.cover}
-        alt={deck.name}
-        className={"w-full h-64 object-cover"}
-      />
-      <div className={"flex items-center mb-6 justify-between"}>
-        <Typography variant={"large"}>{deck?.name}</Typography>
-        <CreateCardModal deckId={deckId} />
-      </div>
-    </Page>
-  );
+    return (
+        <Page>
+            <img
+                src={deck?.cover}
+                alt={deck.name}
+                className={"w-full h-64 object-cover"}
+            />
+            <div className={"flex items-center mb-6 justify-between"}>
+                <Typography variant={"large"}>{deck?.name}</Typography>
+                <CreateCardModal deckId={deckId}/>
+            </div>
+        </Page>
+    );
 };
 
 
+const CreateCardModal = ({deckId}: { deckId: string }) => {
+    const [showModal, setShowModal] = useState(false);
+    const closeModal = () => setShowModal(false);
+    const openModal = () => setShowModal(true);
 
-const CreateCardModal = ({ deckId }: { deckId: string }) => {
-  const [showModal, setShowModal] = useState(false);
-  const closeModal = () => setShowModal(false);
-  const openModal = () => setShowModal(true);
+    const [createCard] = useCreateCardMutation()
 
-  const [createCard] = useCreateCardMutation()
+    const [control, handleSubmit] = useForm<NewCard>({
+        resolver: zodResolver(newDeckSchema),
+        defaultValues: {
+            question: '',
+            answer: ''
+        }
+    })
 
-  const [control, handleSubmit] = useForm<NewCard>({
-    resolver: zodResolver(newDeckSchema),
-    defaultValues: {
-      question: '',
-      answer: ''
+    const handleCardCreated = handleSubmit((args: NewCard))
+=>
+    {
+        createCard({...args, deckId}).unwrap().then(() => {
+            toast.success("Card created succesfully")
+            closeModal()
+        })
+            .catch(err => {
+                toast.error(err.data.message)
+            })
     }
-  })
 
-
-  const handleCardCreated = handleSubmit((args: NewCard)) => {
-createCard({...args, deckId}).unwrap().then(()=> {
-  toast.success("Card created succesfully")
-  closeModal()
-})
-  }
-
-  return (
-    <>
-      <Button onClick={openModal}>Add New Card</Button>
-      <Modal
-        open={showModal}
-        onClose={closeModal}
-        title={"Create Card"}
-      >
-        <form onSubmit={}>
-
-        </form>
-
-      </Modal>
-    </>
-  );
+    return (
+        <>
+            <Button onClick={openModal}>Add New Card</Button>
+            <Modal
+                open={showModal}
+                onClose={closeModal}
+                title={"Create Card"}
+            >
+                <form onSubmit={handleCardCreated} className={'gap-4 flex flex-column'}>
+                  <ControlledTextField label={"Question"} control={control} name={'question'}/>
+                  <ControlledTextField label={"Answer"} control={control} name={'answer'}/>
+                  <div className={'flex items-center justify-between'}>
+                    <Button onClick={closeModal} variant={'secondary'}>Cancel</Button>
+                    <Button type={'submit'}>Create</Button>
+                  </div>
+                </form>
+            </Modal>
+        </>
+    );
 };
