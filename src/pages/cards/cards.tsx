@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 import {Button} from "src/components/ui/button";
 import {Modal} from "src/components/ui/modal";
 import {z} from "zod";
-
+import dayjs from 'dayjs'
 import {Page} from "../../../src/components/ui/page";
 import {Sort} from "../../../src/components/ui/table";
 import {Typography} from "../../../src/components/ui/typography";
@@ -79,7 +79,17 @@ export const Cards = () => {
           </div>
           <div>
             <Table.Root className={'w-full'}>
-              <Table.Header columns={columns}/>
+              <Table.Header columns={columns} sort={sort} onSort={setSort}/>
+              <Table.Body>
+                {cards?.items?.map(card => (
+                  <Table.Row key={card.id}>
+                    <Table.Cell>{card.question}</Table.Cell>
+                    <Table.Cell>{card.answer}</Table.Cell>
+                    <Table.Cell>{dayjs(card.updated).format("L, LT")}</Table.Cell>
+
+                  </Table.Row>
+                ))}
+              </Table.Body>
 
             </Table.Root>
           </div>
