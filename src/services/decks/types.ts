@@ -1,3 +1,5 @@
+import { User } from "src/services/auth/types";
+
 export type GetDecksParams = {
   authorId?: string;
   name?: string;
