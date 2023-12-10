@@ -1,3 +1,14 @@
+export type GetDecksParams = {
+  authorId?: string;
+  name?: string;
+  minCardsCount?: number;
+  maxCardsCount?: number;
+};
+
+export type Decks = Deck[];
+
+export type DeckAuthor = Pick<User, "id" | "name">; // { id: string, name: string }
+
 export type Deck = {
   id: string;
   userId: string;
