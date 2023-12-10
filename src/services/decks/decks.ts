@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query";
-import {Paginated} from "src/services/common/types";
+import {Paginated, PaginatedArgs} from "src/services/common/types";
 import {Deck} from "src/services/decks/types";
 
 export const decksApi = createApi({
@@ -8,7 +8,7 @@ export const decksApi = createApi({
     tagTypes: ['Decks'],
     endpoints: builder => ({
         getDecks: builder.query  Paginated<Deck> & {maxCardsCount: number},
-        PaginatedArgs
+    PaginatedArgs<GetDecksParams>
         >
 
     })
