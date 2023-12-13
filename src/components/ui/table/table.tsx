@@ -1,15 +1,16 @@
 import { ComponentProps, FC } from "react";
 
 import { clsx } from "clsx";
-import { Typography } from "../typography/typography";
-import s from "./table.module.scss";
-import { BiChevronUp } from 'react-icons/bi'
+import { BiChevronUp } from "react-icons/bi";
 
+import { Typography } from "../typography/typography";
+
+import s from "./table.module.scss";
 
 export type RootProps = ComponentProps<"table">;
 
 export const Root: FC<RootProps> = ({ className, ...rest }) => {
-  const classNames =
+  const classNames = {
     table: clsx(className, s.table),
   };
 
@@ -29,9 +30,9 @@ export type Column = {
 };
 
 export type Sort = {
-  key: string
-  direction: 'asc' | 'desc'
-} | null
+  key: string;
+  direction: "asc" | "desc";
+} | null;
 
 export const Header: FC<
   Omit<
