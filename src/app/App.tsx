@@ -26,6 +26,10 @@ const router = createBrowserRouter([
     path: "cards",
     element: <Cards />,
   },
+  {
+    path: "profile",
+    element: <Profile />,
+  },
 ]);
 
 export function App() {
