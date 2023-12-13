@@ -4,9 +4,11 @@ import {
   FieldValues,
   useController,
 } from "react-hook-form";
-import { TextField } from "src/components/ui/text-field";
 
-import { TextFieldProps } from "../../ui/text-field";
+import {
+  TextField,
+  TextFieldProps,
+} from "../../../../src/components/ui/text-field";
 
 export type ControlledTextFieldProps<TFieldValues extends FieldValues> = {
   name: FieldPath<TFieldValues>;
