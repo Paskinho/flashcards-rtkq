@@ -7,6 +7,7 @@ import { store } from "../../src/app/store";
 import { LoginForm } from "../../src/components/auth/login-form/login-form";
 import { Button } from "../../src/components/ui/button";
 import { Cards } from "../../src/pages/cards";
+import { Profile } from "../../src/pages/profile/profile";
 
 const router = createBrowserRouter([
   {
