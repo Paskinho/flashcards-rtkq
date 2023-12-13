@@ -1,3 +1,5 @@
+import { Card } from "../../../../src/components/ui/card";
+
 type PersonalInformationProps = {
   email: string;
   avatar: string;
@@ -8,10 +10,12 @@ type PersonalInformationProps = {
 };
 
 export const PersonalInformation = ({
-    email,
-    avatar,
-    name.
-    onLogout,
-    onAvatarChange,
-    onNameChange
-                                    }: PersonalInformationProps) => {};
+  email,
+  avatar,
+  name,
+  onLogout,
+  onAvatarChange,
+  onNameChange,
+}: PersonalInformationProps) => {
+  return <Card></Card>;
+};
