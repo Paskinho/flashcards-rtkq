@@ -31,5 +31,35 @@ export const authApi = createApi({
         body,
       }),
     }),
+    resetPassword: builder.mutation<
+      unknown,
+      { token: string; passowrd: string }
+    >({
+      query: (token, password) => ({
+        url: `auth/reset-password/${token}`,
+        method: "POST",
+        body: { password },
+      }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        const patchResult = dispatch(
+          authApi.util.updateQueryData("getMe", undefined, () => {
+            return null;
+          }),
+        );
+
+        try {
+          await queryFulfilled;
+        } catch {
+          patchResult.undo();
+        }
+      },
+    }),
   }),
 });
+
+export const {
+  useGetMeQuery,
+  useLogoutMutation,
+  useLoginMutation,
+  useSignUpMutation,
+} = authApi;
