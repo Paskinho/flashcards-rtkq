@@ -24,5 +24,12 @@ export const authApi = createApi({
       }),
       invalidatesTags: ["Me"],
     }),
+    singUp: builder.mutation({
+      query: (body) => ({
+        url: "auth/sign-up",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
