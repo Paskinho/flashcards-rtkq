@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
 
-import { User } from "./types";
+import { LoginArgs, User } from "./types";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -14,6 +14,15 @@ export const authApi = createApi({
       query: () => "auth/me",
       extraOptions: { maxRetries: false },
       providesTags: ["Me"],
+    }),
+    login: builder.mutation<LoginArgs, any>({
+      query: ({ email, password }) => ({
+        url: "auth/login",
+        method: "POST",
+        body: email,
+        password,
+      }),
+      invalidatesTags: ["Me"],
     }),
   }),
 });
