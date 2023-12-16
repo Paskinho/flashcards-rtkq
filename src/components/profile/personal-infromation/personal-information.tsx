@@ -1,5 +1,6 @@
 import { Card } from "../../../../src/components/ui/card";
 import { Typography } from "../../../../src/components/ui/typography";
+import Camera from "../../../assets/icons";
 
 import s from "./personal-information.module.scss";
 
@@ -31,6 +32,9 @@ export const PersonalInformation = ({
               "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png"
             }
           />
+          <button>
+            <Camera />
+          </button>
         </div>
       </div>
     </Card>
