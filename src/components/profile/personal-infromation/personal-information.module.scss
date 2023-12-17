@@ -1,5 +1,17 @@
 .card {
   max-width: 413px;
   padding: 33px 33px 41px;
+}
 
+.nameWithEditButton {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }

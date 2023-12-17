@@ -1,6 +1,6 @@
 import { Card } from "../../../../src/components/ui/card";
 import { Typography } from "../../../../src/components/ui/typography";
-import Camera from "../../../assets/icons";
+import Camera from "../../../assets/icons/camera";
 
 import s from "./personal-information.module.scss";
 
@@ -36,6 +36,11 @@ export const PersonalInformation = ({
             <Camera />
           </button>
         </div>
+      </div>
+      <div className={s.nameWithEditButton}>
+        <Typography variant="h1" className={s.name}>
+          {name}
+        </Typography>
       </div>
     </Card>
   );
