@@ -17,6 +17,13 @@ export const cardsApi = createApi({
   }),
   tagtypes: ["Cards"],
   endpoints: (builder) => ({
+    deleteCard: builder.mutation<any, DeleteCardInput>({
+      query: (cardId) => ({
+        url: `cards/${cardId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Cards"],
+    }),
     getCards: builder.query<Paginated<Card>, GetCardsParams>({
       query: ({ deckId, ...params }) => {
         return {
@@ -28,16 +35,9 @@ export const cardsApi = createApi({
     }),
     createCard: builder.mutation<any, CreateCardInput>({
       query: ({ deckId, ...body }) => ({
-        urt: `decks/${deckId}/cards`,
+        url: `decks/${deckId}/cards`,
         method: "POST",
         body,
-      }),
-      invalidatesTags: ["Cards"],
-    }),
-    deleteCard: builder.mutation<any, DeleteCardInput>({
-      query: ({ cardId }) => ({
-        url: `cards/${cardId}`,
-        method: "DELETE",
       }),
       invalidatesTags: ["Cards"],
     }),

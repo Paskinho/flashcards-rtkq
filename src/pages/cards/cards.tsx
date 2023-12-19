@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { useForm } from "react-hook-form";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { z } from "zod";
 
 import { ControlledTextField } from "../../../src/components/controlled/controlled-text-field";
@@ -98,7 +99,7 @@ export const Cards = () => {
                   <button
                     className={"unset"}
                     onClick={() => {
-                      deleteCard({ cardId: card.id });
+                      deleteCard(card.id);
                     }}
                   >
                     <FaTrash />
