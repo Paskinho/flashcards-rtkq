@@ -21,6 +21,8 @@ import {
 } from "../../../src/services/cards/cards";
 import { useGetDeckByIdQuery } from "../../../src/services/decks/decks";
 
+import s from "./cards.module.scss";
+
 const newDeckSchema = z.object({
   question: z.string().min(3).max(500),
   answer: z.string().min(3).max(500),
@@ -62,7 +64,7 @@ export const Cards = () => {
   ];
 
   return (
-    <Page>
+    <Page className={s.cards}>
       <img
         src={deck?.cover}
         alt={deck.name}
