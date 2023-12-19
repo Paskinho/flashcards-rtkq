@@ -1,5 +1,7 @@
 import { ComponentPropsWithoutRef, forwardRef } from "react";
 
+import { clsx } from "clsx";
+
 import s from "./card.module.scss";
 
 export type CardProps = {} & ComponentPropsWithoutRef<"div">;
