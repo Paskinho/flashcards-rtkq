@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import s from "./typography.module.scss";
 
 export type TypographyProps = {
-  children: ReactNode;
+  children?: ReactNode;
   color?: "primary" | "secondary" | "inherit" | "error";
   variant?:
     | "large"

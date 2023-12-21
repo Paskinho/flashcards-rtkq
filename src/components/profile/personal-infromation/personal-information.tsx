@@ -1,6 +1,8 @@
 import { Card } from "../../../../src/components/ui/card";
 import { Typography } from "../../../../src/components/ui/typography";
 import Camera from "../../../assets/icons/camera";
+import Edit from "../../../assets/icons/edit.tsx";
+import { Button } from "../../ui/button";
 
 import s from "./personal-information.module.scss";
 
@@ -21,6 +23,14 @@ export const PersonalInformation = ({
   onAvatarChange,
   onNameChange,
 }: PersonalInformationProps) => {
+  const handleNameChanged = () => {
+    onNameChange("New name");
+  };
+
+  const handleLogout = () => {
+    onLogout();
+  };
+
   return (
     <Card className={s.card}>
       <Typography variant={"large"}>Personal Information</Typography>
@@ -41,6 +51,17 @@ export const PersonalInformation = ({
         <Typography variant="h1" className={s.name}>
           {name}
         </Typography>
+        <button className={s.editNameButton} onClick={handleNameChanged}>
+          <Edit />
+        </button>
+      </div>
+      <Typography variant={"body2"} className={s.email}>
+        {email}
+      </Typography>
+      <div>
+        <Button variant={"secondary"} onClick={handleLogout}>
+          <Logout />
+        </Button>
       </div>
     </Card>
   );
