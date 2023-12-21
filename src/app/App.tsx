@@ -46,8 +46,8 @@ export function App() {
       {/*>*/}
       {/*  Change Theme*/}
       {/*</Button>*/}
-      {/*<RouterProvider routerProvider={router} />*/}
-      <Provider store={store}></Provider>
+      <RouterProvider routerProvider={router} />
+      {/*<Provider store={store}></Provider>*/}
     </div>
   );
 }
