@@ -2,6 +2,7 @@ import { Card } from "../../../../src/components/ui/card";
 import { Typography } from "../../../../src/components/ui/typography";
 import Camera from "../../../assets/icons/camera";
 import Edit from "../../../assets/icons/edit.tsx";
+import Logout from "../../../assets/icons/logout.tsx";
 import { Button } from "../../ui/button";
 
 import s from "./personal-information.module.scss";
@@ -23,6 +24,10 @@ export const PersonalInformation = ({
   onAvatarChange,
   onNameChange,
 }: PersonalInformationProps) => {
+  const handleAvatarChanged = () => {
+    onAvatarChange("new Avatar");
+  };
+
   const handleNameChanged = () => {
     onNameChange("New name");
   };
@@ -61,6 +66,7 @@ export const PersonalInformation = ({
       <div>
         <Button variant={"secondary"} onClick={handleLogout}>
           <Logout />
+          SignOut
         </Button>
       </div>
     </Card>
