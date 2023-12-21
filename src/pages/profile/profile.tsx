@@ -1,6 +1,6 @@
 import { PersonalInformation } from "../../../src/components/profile/personal-infromation";
 import { Page } from "../../../src/components/ui/page";
-import { useGetMeQuery } from "../../services/auth/auth.ts";
+import { useGetMeQuery } from "../../services/auth/auth";
 
 export const Profile = () => {
   const { data } = useGetMeQuery();
