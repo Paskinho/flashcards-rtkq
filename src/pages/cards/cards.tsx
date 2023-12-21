@@ -15,12 +15,12 @@ import { Page } from "../../../src/components/ui/page";
 import { Column, Sort, Table } from "../../../src/components/ui/table";
 import { TextField } from "../../../src/components/ui/text-field";
 import { Typography } from "../../../src/components/ui/typography";
+import { useGetDeckByIdQuery } from "../../../src/services/decks/decks";
 import {
   useCreateCardMutation,
   useDeleteCardMutation,
   useGetCardsQuery,
-} from "../../../src/services/cards/cards";
-import { useGetDeckByIdQuery } from "../../../src/services/decks/decks";
+} from "../../services/cards/cards";
 
 import s from "./cards.module.scss";
 
@@ -32,7 +32,8 @@ const newDeckSchema = z.object({
 type NewCard = z.infer<typeof newDeckSchema>;
 export const Cards = () => {
   const { deckId } = useParams<{ deckId: string }>();
-  const [deleteCard] = useDeleteCardMutation();
+  const deleteCard = useDeleteCardMutation;
+  //верно вот так  const [deleteCard] = useDeleteCardMutation()
   const [sort, setSort] = useState<Sort>({
     key: "updated",
     direction: "asc",
