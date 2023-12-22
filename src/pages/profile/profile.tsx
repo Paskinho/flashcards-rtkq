@@ -9,14 +9,17 @@ export const Profile = () => {
 
   return (
     <Page flex>
-      {/*<PersonalInformation*/}
-      {/*  email={data.email}*/}
-      {/*  avatar={data.avatar}*/}
-      {/*  name={data.name}*/}
-      {/*  onLogout={() => {}}*/}
-      {/*  onAvatarChange={() => {}}*/}
-      {/*  onNameChange={() => {}}*/}
-      {/*/>*/}
+      <PersonalInformation
+        // email={data.email}
+        // avatar={data.avatar}
+        // name={data.name}
+        email={"data.email"}
+        avatar={"data.avatar"}
+        name={"data.name"}
+        onLogout={() => {}}
+        onAvatarChange={() => {}}
+        onNameChange={() => {}}
+      />
     </Page>
   );
 };
