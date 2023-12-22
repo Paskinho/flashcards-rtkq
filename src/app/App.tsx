@@ -53,7 +53,8 @@ export function App() {
       {/*>*/}
       {/*  Change Theme*/}
       {/*</Button>*/}
-      <RouterProvider routerProvider={router} />
+
+      <RouterProvider router={router} />
       {/*<Provider store={store}></Provider>*/}
     </div>
   );
