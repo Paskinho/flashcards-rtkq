@@ -7,6 +7,12 @@ const schema = z.object({
   rememberMe: z.boolean().optional(),
 });
 
+type FormType = z.infer<typeof schema>;
+
+type SignInProps = {
+  onSubmit: (data: FormType) => void;
+};
+
 export const SignIn = () => {
   return <div>1</div>;
 };
