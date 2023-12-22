@@ -1,35 +1,42 @@
 import { useState } from "react";
 
 import { Provider } from "react-redux";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
 
 import { store } from "../../src/app/store";
 import { LoginForm } from "../../src/components/auth/login-form/login-form";
 import { Button } from "../../src/components/ui/button";
 import { Cards } from "../../src/pages/cards";
 import { Profile } from "../../src/pages/profile/profile";
+import { useGetMeQuery } from "../services/auth/auth.ts";
 
 const router = createBrowserRouter([
   {
-    // path: '/',
-    // element: ,
-    // children: [
-    //
-    // ]
     path: "/",
-    element: <div>Hello my friend!</div>,
-  },
-  {
-    path: "login",
-    element: <LoginForm />,
-  },
-  {
-    path: "cards",
-    element: <Cards />,
-  },
-  {
-    path: "profile",
-    element: <Profile />,
+    element: <ProtectedRoutes />,
+    children: [
+      {
+        path: "/",
+        element: <div>Hello my friend!</div>,
+      },
+      {
+        path: "login",
+        element: <LoginForm />,
+      },
+      {
+        path: "cards",
+        element: <Cards />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+    ],
   },
 ]);
 
@@ -50,6 +57,14 @@ export function App() {
       {/*<Provider store={store}></Provider>*/}
     </div>
   );
+}
+
+function ProtectedRoutes() {
+  const { data, isLoading } = useGetMeQuery();
+
+  if (isLoading) return <div>Loading...</div>;
+
+  return data ? <Outlet /> : <Navigate to="/login" />;
 }
 
 function useHandleThemeChanged() {
