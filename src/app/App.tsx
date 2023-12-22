@@ -13,6 +13,7 @@ import { LoginForm } from "../../src/components/auth/login-form/login-form";
 import { Button } from "../../src/components/ui/button";
 import { Cards } from "../../src/pages/cards";
 import { Profile } from "../../src/pages/profile/profile";
+import { Login } from "../pages/login";
 import { useGetMeQuery } from "../services/auth/auth.ts";
 
 const router = createBrowserRouter([
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <LoginForm />,
+        element: <Login />,
       },
       {
         path: "cards",
@@ -46,7 +47,8 @@ export function App() {
   return (
     <div>
       {/*<Cards />*/}
-      <Profile />
+      {/*<Profile />*/}
+      <Login />
       <Button
         onClick={handleThemeChanged}
         style={{ position: "fixed", top: "50%" }}
