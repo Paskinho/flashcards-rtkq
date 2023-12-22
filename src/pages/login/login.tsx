@@ -1,3 +1,5 @@
+import { Page } from "../../components/ui/page";
+
 export const Login = () => {
-  return <div>Login</div>;
+  return <Page>Login</Page>;
 };
