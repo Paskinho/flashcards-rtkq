@@ -13,6 +13,6 @@ type SignInProps = {
   onSubmit: (data: FormType) => void;
 };
 
-export const SignIn = () => {
-  return <div>1</div>;
+export const SignIn = ({ onSubmit }: SignInProps) => {
+  return <></>;
 };
