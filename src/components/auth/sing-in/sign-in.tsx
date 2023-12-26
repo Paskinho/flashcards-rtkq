@@ -1,8 +1,12 @@
+import { DevTool } from "@hookform/devtools";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Card } from "../../ui/card";
-import {zodResolver} from "@hookform/resolvers/zod";
+import { Typography } from "../../ui/typography";
+
+import s from "./sign-in.module.scss";
 
 export default {};
 const schema = z.object({
@@ -19,18 +23,23 @@ type SignInProps = {
 
 export const SignIn = ({ onSubmit }: SignInProps) => {
   const { control, handleSubmit } = useForm({
-    mode: 'onSubmit',
-    resolver: zodResolver(schema);
+    mode: "onSubmit",
+    resolver: zodResolver(schema),
     defaultValues: {
-      email: '',
+      email: "",
       password: "",
-      rememberMe: false
-    }
+      rememberMe: false,
+    },
   });
 
   return (
     <>
-      <Card></Card>
+      <DevTool control={control} />
+      <Card className={s.card}>
+        <Typography variant={"large"} className={s.title}>
+          Sign In
+        </Typography>
+      </Card>
     </>
   );
 };
