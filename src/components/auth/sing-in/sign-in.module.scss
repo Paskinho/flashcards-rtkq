@@ -21,3 +21,16 @@
 .checkbox {
   margin-bottom: 6px;
 }
+
+.recoverPasswordLink,
+.recoverPasswordLink:visited {
+  display: flex;
+  justify-content: flex-end;
+
+  width: 100%;
+  margin-bottom: 66px;
+
+  color: inherit;
+  text-align: right;
+  text-decoration: none;
+}
