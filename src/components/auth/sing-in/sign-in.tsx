@@ -69,7 +69,7 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
           </div>
           <Typography
             variant={"body2"}
-            as={Link}
+            // as={Link}
             to={"/recover-password"}
             className={s.recoverPasswordLink}
           >
