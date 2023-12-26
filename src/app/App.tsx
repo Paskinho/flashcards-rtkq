@@ -51,7 +51,7 @@ export function App() {
       <Login />
       <Button
         onClick={handleThemeChanged}
-        style={{ position: "fixed", top: "50%" }}
+        // style={{ position: "fixed", top: "50%" }}
       >
         Change Theme
       </Button>
