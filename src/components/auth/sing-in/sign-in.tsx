@@ -1,10 +1,12 @@
 import { DevTool } from "@hookform/devtools";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 
 import { ControlledCheckbox } from "../../controlled/controlled-checkbox";
 import { ControlledTextField } from "../../controlled/controlled-text-field";
+import { Button } from "../../ui/button";
 import { Card } from "../../ui/card";
 import { Typography } from "../../ui/typography";
 
@@ -64,16 +66,25 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
               label={"Remember Me"}
               position={"left"}
             />
-            <Typography
-              variant={"body2"}
-              as={link}
-              to={"/recover-password"}
-              className={s.recoverPasswordLink}
-            >
-              Forgot Password?
-            </Typography>
           </div>
+          <Typography
+            variant={"body2"}
+            as={Link}
+            to={"/recover-password"}
+            className={s.recoverPasswordLink}
+          >
+            Forgot Password?
+          </Typography>
+          <Button className={s.button} fullWidth type={"submit"}>
+            Sign In
+          </Button>
         </form>
+        <Typography className={s.caption} variant={"body2"}>
+          Don't have an account?
+        </Typography>
+        <Typography variant={"link1"} to="/sign-up" className={s.signUpLink}>
+          Sign In
+        </Typography>
       </Card>
     </>
   );
