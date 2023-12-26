@@ -3,6 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { ControlledCheckbox } from "../../controlled/controlled-checkbox";
+import { ControlledTextField } from "../../controlled/controlled-text-field";
 import { Card } from "../../ui/card";
 import { Typography } from "../../ui/typography";
 
@@ -32,6 +34,8 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
     },
   });
 
+  const handleFormSubmitted = handleSubmit(onSubmit);
+
   return (
     <>
       <DevTool control={control} />
@@ -39,6 +43,29 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
         <Typography variant={"large"} className={s.title}>
           Sign In
         </Typography>
+        <form onSubmit={handleFormSubmitted}>
+          <div className={s.form}>
+            <ControlledTextField
+              name={"email"}
+              control={control}
+              placeholder={"Email"}
+              label={"Email"}
+            />
+            <ControlledTextField
+              name={"password"}
+              control={control}
+              placeholder={"Password"}
+              label={"Password"}
+            />
+            <ControlledCheckbox
+              className={s.checkbox}
+              name={"rememberMe"}
+              control={control}
+              label={"Remember Me"}
+              position={"left"}
+            />
+          </div>
+        </form>
       </Card>
     </>
   );
