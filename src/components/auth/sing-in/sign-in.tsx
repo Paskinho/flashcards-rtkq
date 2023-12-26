@@ -1,4 +1,8 @@
+import { useForm } from "react-hook-form";
 import { z } from "zod";
+
+import { Card } from "../../ui/card";
+import {zodResolver} from "@hookform/resolvers/zod";
 
 export default {};
 const schema = z.object({
@@ -14,5 +18,19 @@ type SignInProps = {
 };
 
 export const SignIn = ({ onSubmit }: SignInProps) => {
-  return <></>;
+  const { control, handleSubmit } = useForm({
+    mode: 'onSubmit',
+    resolver: zodResolver(schema);
+    defaultValues: {
+      email: '',
+      password: "",
+      rememberMe: false
+    }
+  });
+
+  return (
+    <>
+      <Card></Card>
+    </>
+  );
 };
