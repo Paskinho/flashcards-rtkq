@@ -58,6 +58,7 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
               control={control}
               placeholder={"Password"}
               label={"Password"}
+              type={"password"}
             />
             <ControlledCheckbox
               className={s.checkbox}
