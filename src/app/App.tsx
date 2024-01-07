@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { Provider } from "react-redux";
 import {
@@ -15,12 +15,16 @@ import { Cards } from "../../src/pages/cards";
 import { Profile } from "../../src/pages/profile/profile";
 import { Login } from "../pages/login";
 import { useGetMeQuery } from "../services/auth/auth.ts";
+import {Layout} from "../components/layout/layout.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <ProtectedRoutes />,
+    path: '/',
+    element: <Layout />,
     children: [
+      {
+        element: <ProtectedRoutes />,
+        children: [
       {
         path: "/",
         element: <div>Hello my friend!</div>,
@@ -48,7 +52,7 @@ export function App() {
     <div>
       {/*<Cards />*/}
       {/*<Profile />*/}
-      <Login />
+      {/*<Login />*/}
       <Button
         onClick={handleThemeChanged}
         // style={{ position: "fixed", top: "50%" }}
