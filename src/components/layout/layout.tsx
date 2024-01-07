@@ -4,7 +4,7 @@ import { useGetMeQuery, useLogoutMutation } from "../../services/auth/auth.ts";
 
 export const Layout = () => {
   const { data } = useGetMeQuery();
-  const [logout] = useLogoutMutation();
+  // const [logout] = useLogoutMutation();
 
   return (
     <div>

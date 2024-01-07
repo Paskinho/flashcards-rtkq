@@ -20,7 +20,7 @@ export const Login = () => {
   };
 
   return (
-    <Page>
+    <Page flex>
       <SignIn onSubmit={handleLogin} />
     </Page>
   );
