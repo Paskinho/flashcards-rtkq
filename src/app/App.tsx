@@ -13,33 +13,36 @@ import { LoginForm } from "../../src/components/auth/login-form/login-form";
 import { Button } from "../../src/components/ui/button";
 import { Cards } from "../../src/pages/cards";
 import { Profile } from "../../src/pages/profile/profile";
+import { Layout } from "../components/layout/layout.tsx";
 import { Login } from "../pages/login";
 import { useGetMeQuery } from "../services/auth/auth.ts";
-import {Layout} from "../components/layout/layout.tsx";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
         element: <ProtectedRoutes />,
         children: [
-      {
-        path: "/",
-        element: <div>Hello my friend!</div>,
+          {
+            path: "/",
+            element: <div> Hello!</div>,
+          },
+          {
+            path: "cards/:deckId",
+            element: <Cards />,
+          },
+
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "login",
         element: <Login />,
-      },
-      {
-        path: "cards",
-        element: <Cards />,
-      },
-      {
-        path: "profile",
-        element: <Profile />,
       },
     ],
   },
