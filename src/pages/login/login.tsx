@@ -1,4 +1,4 @@
-import { SignIn } from "../../components/auth/sing-in/sign-in.tsx";
+import { SignIn } from "../../components/auth/sign-in/sign-in.tsx";
 import { Page } from "../../components/ui/page";
 
 export const Login = () => {
