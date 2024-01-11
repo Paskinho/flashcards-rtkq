@@ -1,8 +1,17 @@
+import {Link} from "react-router-dom";
 
 export type HeaderProps = {
 
 }
 
 export const Header = () => {
-  return <div>Header</div>;
+  return (
+      <header>
+        <div>
+          <Link to={'/'}>
+
+          </Link>
+        </div>
+      </header>
+  );
 };
