@@ -1,7 +1,7 @@
 import {Link, useNavigate} from "react-router-dom";
 import s from './header.module.scss'
 import Logo from "../../../assets/icons/logo";
-import {Dropdown, DropdownItem} from "../../ui/dropdown";
+import {Dropdown, DropdownItem, DropdownItemWithIcon} from "../../ui/dropdown";
 import {Typography} from "../../ui/typography";
 import {Avatar} from "../../ui/avatar";
 import {Button} from "../../ui/button";
@@ -40,10 +40,18 @@ export const Header = ({isAuth, userInfo, onSignOut}: HeaderProps) => {
                 >
                     <DropdownItem>
                         <div className={s.userInfoContainer}>
-
+                            <Avatar src={userInfo?.avatar}/>
+                            <div className={s.userDetails}>
+                                <Typography variant={'subtitle2'}>{userInfo?.name}</Typography>
+                                <Typography variant={'caption'} className={s.userEmail}>{userInfo?.email}</Typography>
+                            </div>
                         </div>
-
                     </DropdownItem>
+                    <DropdownItemWithIcon
+                    icon={<PersonalOutline/>}
+                    >
+
+                    </DropdownItemWithIcon>
                 </Dropdown>
             )}
             {!isAuth && <Button variant="primary">Sign In</Button>}
