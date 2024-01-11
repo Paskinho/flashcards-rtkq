@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { useGetMeQuery, useLogoutMutation } from "../../services/auth/auth.ts";
 
 import { Header } from "./header/heade.tsx";
+import {Spinner} from "../ui/spinner";
 
 export const Layout = () => {
   const { data, isError, isLoading } = useGetMeQuery();
@@ -13,13 +14,19 @@ export const Layout = () => {
 
   if (isLoading) {
     return <div>Is Loading</div>;
-    // return <Spinner fullScreen />; добавить в ui spinner
+    return <Spinner fullScreen />;
   }
 
   return (
-    <div>
-      <Outlet />
-    </div>
+    <LayoutPrimitive
+        avatar={data?.avatar ?? null}
+        email={data?.email ?? ""}
+        isLoggedIn={isAuthenticated}
+        onLogout={()=> {}}
+        userName={data?.name ?? ""}
+    >
+      <Outlet context={{isAuthenticated} satisfies AuthContext} />
+    </LayoutPrimitive>
   );
 };
 
