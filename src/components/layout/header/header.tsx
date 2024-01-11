@@ -1,8 +1,9 @@
 import {Link, useNavigate} from "react-router-dom";
 import s from './header.module.scss'
 import Logo from "../../../assets/icons/logo";
-import {Dropdown} from "../../ui/dropdown";
+import {Dropdown, DropdownItem} from "../../ui/dropdown";
 import {Typography} from "../../ui/typography";
+import {Avatar} from "../../ui/avatar";
 
 
 export type HeaderProps = {
@@ -31,11 +32,14 @@ export const Header = ({isAuth, userInfo, onSignOut}: HeaderProps) => {
                         <button className={s.userMenuTrigger}>
                             <Typography variant={'subtitle1'} className={s.userName}>
                                 {userInfo?.name}
+                               <Avatar src={userInfo?.avatar} name={userInfo?.name}/>
                             </Typography>
                         </button>
                     }
                 >
+                    <DropdownItem>
 
+                    </DropdownItem>
                 </Dropdown>
             )}
         </header>
