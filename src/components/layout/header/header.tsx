@@ -4,6 +4,7 @@ import Logo from "../../../assets/icons/logo";
 import {Dropdown, DropdownItem} from "../../ui/dropdown";
 import {Typography} from "../../ui/typography";
 import {Avatar} from "../../ui/avatar";
+import {Button} from "../../ui/button";
 
 
 export type HeaderProps = {
@@ -32,16 +33,20 @@ export const Header = ({isAuth, userInfo, onSignOut}: HeaderProps) => {
                         <button className={s.userMenuTrigger}>
                             <Typography variant={'subtitle1'} className={s.userName}>
                                 {userInfo?.name}
-                               <Avatar src={userInfo?.avatar} name={userInfo?.name}/>
+                                <Avatar src={userInfo?.avatar} name={userInfo?.name}/>
                             </Typography>
                         </button>
                     }
                 >
                     <DropdownItem>
+                        <div className={s.userInfoContainer}>
+
+                        </div>
 
                     </DropdownItem>
                 </Dropdown>
             )}
+            {!isAuth && <Button variant="primary">Sign In</Button>}
         </header>
     );
 };
