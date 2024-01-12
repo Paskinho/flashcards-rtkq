@@ -7,6 +7,7 @@ import {Avatar} from "../../ui/avatar";
 import {Button} from "../../ui/button";
 import PersonalOutline from "../../../assets/icons/personal-outline";
 import Logout from "../../../assets/icons/logout";
+import Avatar1 from '../../../assets/photo/Avatar.jpg'
 
 
 export type HeaderProps = {
@@ -35,14 +36,14 @@ export const Header = ({isAuth, userInfo, onSignOut}: HeaderProps) => {
                         <button className={s.userMenuTrigger}>
                             <Typography variant={'subtitle1'} className={s.userName}>
                                 {userInfo?.name}
-                                <Avatar src={userInfo?.avatar} name={userInfo?.name}/>
+                                <Avatar src={Avatar1} name={userInfo?.name}/>
                             </Typography>
                         </button>
                     }
                 >
                     <DropdownItem>
                         <div className={s.userInfoContainer}>
-                            <Avatar src={userInfo?.avatar}/>
+                            <Avatar src={Avatar1}/>
                             <div className={s.userDetails}>
                                 <Typography variant={'subtitle2'}>{userInfo?.name}</Typography>
                                 <Typography variant={'caption'} className={s.userEmail}>{userInfo?.email}</Typography>
@@ -65,3 +66,5 @@ export const Header = ({isAuth, userInfo, onSignOut}: HeaderProps) => {
         </header>
     );
 };
+
+//уточнить по src Avatar userInfo?.avatar = должно быть так
