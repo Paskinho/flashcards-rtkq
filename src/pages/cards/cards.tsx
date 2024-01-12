@@ -8,9 +8,6 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { z } from "zod";
 
-
-
-
 import { ControlledTextField } from "../../../src/components/controlled/controlled-text-field";
 import { Button } from "../../../src/components/ui/button";
 import { Modal } from "../../../src/components/ui/modal";
@@ -27,12 +24,18 @@ import {
 
 import s from "./cards.module.scss";
 
+
+
+
 const newDeckSchema = z.object({
   question: z.string().min(3).max(500),
   answer: z.string().min(3).max(500),
 });
 
 type NewCard = z.infer<typeof newDeckSchema>;
+
+
+
 export const Cards = () => {
   const { deckId } = useParams<{ deckId: string }>();
   const deleteCard = useDeleteCardMutation;
