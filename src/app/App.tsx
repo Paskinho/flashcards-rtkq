@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             element: <div> Hello!</div>,
           },
           {
-            path: "cards/:deckId",
+            path: "cards", //"cards/:deckId"
             element: <Cards />,
           },
 
@@ -58,7 +58,7 @@ export function App() {
       {/*<Login />*/}
 
       <RouterProvider router={router} />
-      <Profile />
+      {/*<Profile />*/}
       <Button
           onClick={handleThemeChanged}
           // style={{ position: "fixed", top: "50%" }}
