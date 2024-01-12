@@ -7,16 +7,13 @@ import { useLoginMutation } from "../../services/auth/auth.ts";
 import { LoginArgs } from "../../services/auth/types.ts";
 
 export const Login = () => {
-  const [signIn] = useLoginMutation();
+  const [login] = useLoginMutation();
   const navigate = useNavigate();
   const handleLogin = async (data: LoginArgs) => {
-    try {
-      await signIn(data).unwrap();
-      navigate("/");
-    } catch (error: any) {
-      console.log(error);
-      toast.error(error?.data.message ?? "Could not sign in");
-    }
+    return login(data)
+        .unwrap()
+        .then(() => navigate('/'))
+        .catch(err => toast.error(err.data.message))
   };
 
   return (
