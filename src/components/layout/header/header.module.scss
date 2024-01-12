@@ -1,6 +1,9 @@
 .header {
   display: flex;
   justify-content: space-between;
+  margin-right: 80px;
+  margin-left: 80px;
+
 }
 
 .logoLink {
@@ -18,7 +21,8 @@
 }
 
 .userName {
-
+  text-decoration: underline;
+  text-decoration-style: dashed;
 }
 
 .userInfoContainer {
