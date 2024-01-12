@@ -5,6 +5,8 @@ import {Dropdown, DropdownItem, DropdownItemWithIcon} from "../../ui/dropdown";
 import {Typography} from "../../ui/typography";
 import {Avatar} from "../../ui/avatar";
 import {Button} from "../../ui/button";
+import PersonalOutline from "../../../assets/icons/personal-outline";
+import Logout from "../../../assets/icons/logout";
 
 
 export type HeaderProps = {
@@ -27,7 +29,7 @@ export const Header = ({isAuth, userInfo, onSignOut}: HeaderProps) => {
                     <Logo/>
                 </Link>
             </div>
-            {isAuth && (
+            {!isAuth && (
                 <Dropdown
                     trigger={
                         <button className={s.userMenuTrigger}>
@@ -49,12 +51,17 @@ export const Header = ({isAuth, userInfo, onSignOut}: HeaderProps) => {
                     </DropdownItem>
                     <DropdownItemWithIcon
                     icon={<PersonalOutline/>}
-                    >
-
-                    </DropdownItemWithIcon>
+                    text={"Profile"}
+                    onSelect={()=> navigate('profile')}
+                    />
+                    <DropdownItemWithIcon
+                    icon={<Logout/>}
+                    text={'Sign Out'}
+                    onSelect={onSignOut}
+                    />
                 </Dropdown>
             )}
-            {!isAuth && <Button variant="primary">Sign In</Button>}
+            {isAuth && <Button variant="primary">Sign In</Button>}
         </header>
     );
 };
