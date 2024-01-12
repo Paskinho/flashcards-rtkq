@@ -35,7 +35,8 @@ export const Header = ({isAuth, userInfo, onSignOut}: HeaderProps) => {
                     trigger={
                         <button className={s.userMenuTrigger}>
                             <Typography variant={'subtitle1'} className={s.userName}>
-                                {userInfo?.name}
+                                Uladzislau
+                                {/*{userInfo?.name}*/}
                                 <Avatar src={Avatar1} name={userInfo?.name}/>
                             </Typography>
                         </button>
