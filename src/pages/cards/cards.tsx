@@ -67,7 +67,7 @@ export const Cards = () => {
   ];
 
   return (
-    <Page className={s.cards}>
+    <Page className={s.cards} flex>
       <img
         src={deck?.cover}
         alt={deck.name}
