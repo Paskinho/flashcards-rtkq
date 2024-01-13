@@ -1,0 +1,49 @@
+.header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 12px 36px;
+
+  background: var(--color-dark-700, #171717);
+  border-bottom: 1px solid var(--color-dark-500, #333);
+  height: var(--header-height);
+
+}
+
+.logoLink {
+  display: flex;
+}
+
+.userMenuTrigger {
+  all: unset;
+
+  cursor: pointer;
+
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.userName {
+  text-decoration: underline dashed var(--color-light-100) 1px;
+}
+
+.userInfoContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.userEmail {
+  color: var(--color-dark-100);
+}

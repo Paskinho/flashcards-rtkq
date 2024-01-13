@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             element: <div> Hello!</div>,
           },
           {
-            path: "cards/:deckId",
+            path: "cards", //"cards/:deckId"
             element: <Cards />,
           },
 
@@ -54,15 +54,17 @@ export function App() {
   return (
     <div>
       {/*<Cards />*/}
-      {/*<Profile />*/}
+
       {/*<Login />*/}
+
+      <RouterProvider router={router} />
+      {/*<Profile />*/}
       <Button
-        onClick={handleThemeChanged}
-        // style={{ position: "fixed", top: "50%" }}
+          onClick={handleThemeChanged}
+          // style={{ position: "fixed", top: "50%" }}
       >
         Change Theme
       </Button>
-      <RouterProvider router={router} />
       {/*<Provider store={store}></Provider>*/}
     </div>
   );
