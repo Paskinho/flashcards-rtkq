@@ -60,8 +60,8 @@ export function App() {
       <RouterProvider router={router} />
       {/*<Profile />*/}
       <Button
-          onClick={handleThemeChanged}
-          // style={{ position: "fixed", top: "50%" }}
+        onClick={handleThemeChanged}
+        // style={{ position: "fixed", top: "50%" }}
       >
         Change Theme
       </Button>
@@ -71,11 +71,11 @@ export function App() {
 }
 
 function ProtectedRoutes() {
-  // const { data, isLoading } = useGetMeQuery();
-  //
-  // if (isLoading) return <div>Loading...</div>;
-  //
-  // return data ? <Outlet /> : <Navigate to="/login" />;
+  const { data, isLoading } = useGetMeQuery();
+
+  if (isLoading) return <div>Loading...</div>;
+
+  return data ? <Outlet /> : <Navigate to="/login" />;
 }
 
 function useHandleThemeChanged() {
