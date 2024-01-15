@@ -13,6 +13,7 @@ import { LoginForm } from "../../src/components/auth/login-form/login-form";
 import { Button } from "../../src/components/ui/button";
 import { Cards } from "../../src/pages/cards";
 import { Profile } from "../../src/pages/profile/profile";
+import { RecoverPassword } from "../components/auth/recover-password/recover-password.tsx";
 import { Layout } from "../components/layout/layout.tsx";
 import { Login } from "../pages/login";
 import { useGetMeQuery } from "../services/auth/auth.ts";
@@ -33,10 +34,13 @@ const router = createBrowserRouter([
             path: "cards", //"cards/:deckId"
             element: <Cards />,
           },
-
           {
             path: "profile",
             element: <Profile />,
+          },
+          {
+            path: "recover-password",
+            element: <RecoverPassword />,
           },
         ],
       },
@@ -60,8 +64,8 @@ export function App() {
       <RouterProvider router={router} />
       {/*<Profile />*/}
       <Button
-          onClick={handleThemeChanged}
-          // style={{ position: "fixed", top: "50%" }}
+        onClick={handleThemeChanged}
+        // style={{ position: "fixed", top: "50%" }}
       >
         Change Theme
       </Button>
