@@ -7,6 +7,7 @@ import {Typography} from "../../ui/typography";
 import s from './sign-up.module.scss'
 import {ControlledTextField} from "../../controlled/controlled-text-field";
 import {Button} from "../../ui/button";
+import {Link} from "react-router-dom";
 
 
 const schema = z.object({
@@ -51,10 +52,10 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
             <DevTool control={control}/>
             <Card className={s.card}>
                 <Typography variant={'large'} className={s.title}>
-                    Registration
+                    Sign Up
                 </Typography>
                 <form onSubmit={handleFormSubmitted} className={s.form}>
-                    <div>
+
                         <ControlledTextField
                         name={'email'}
                         control={control}
@@ -76,10 +77,15 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
                             type={"password"}
                         />
                         <Button className={s.button} fullwidt type={'submit'}>
-                            Registration
+                            Sign Up
                         </Button>
-                    </div>
                 </form>
+                <Typography className={s.caption} variant={'body2'}>
+                    Already have account?
+                </Typography>
+                <Typography variant={'link1'} as={Link} to={"/login"} className={s.signInLink}>
+                    Sign In
+                </Typography>
             </Card>
         </>
     )
