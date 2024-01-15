@@ -4,8 +4,9 @@ import { toast } from "react-toastify";
 import { useSignUpMutation } from "../../services/auth/auth";
 import { LoginArgs } from "../../services/auth/types";
 import {Page} from "../../components/ui/page";
+import {SignUp} from "../../components/auth/sign-up";
 
-export const signUpPage = () => {
+export const SignUpPage = () => {
   const [registration] = useSignUpMutation();
   const navigate = useNavigate();
   const handleRegistration = async (data: LoginArgs) => {

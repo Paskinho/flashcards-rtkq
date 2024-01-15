@@ -1,31 +1,21 @@
-import React, { useState } from "react";
-
-import { Provider } from "react-redux";
-import {
-  RouterProvider,
-  createBrowserRouter,
-  Outlet,
-  Navigate,
-} from "react-router-dom";
-
-import { store } from "../../src/app/store";
-import { LoginForm } from "../../src/components/auth/login-form/login-form";
-import { Button } from "../../src/components/ui/button";
-import { Cards } from "../../src/pages/cards";
-import { Profile } from "../../src/pages/profile/profile";
-import { RecoverPassword } from "../components/auth/recover-password/recover-password.tsx";
-import { Layout } from "../components/layout/layout.tsx";
-import { Login } from "../pages/login";
-import { useGetMeQuery } from "../services/auth/auth.ts";
+import React, {useState} from "react";
+import {createBrowserRouter, RouterProvider,} from "react-router-dom";
+import {Button} from "../../src/components/ui/button";
+import {Cards} from "../../src/pages/cards";
+import {Profile} from "../../src/pages/profile/profile";
+import {RecoverPassword} from "../components/auth/recover-password/recover-password.tsx";
+import {Layout} from "../components/layout/layout.tsx";
+import {Login} from "../pages/login";
+import {SignUpPage} from "../pages/sign-up/sign-up";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
-      {
-        element: <ProtectedRoutes />,
-        children: [
+
+        // element: <ProtectedRoutes />,
+        // children: [
           {
             path: "/",
             element: <div> Hello!</div>,
@@ -38,15 +28,17 @@ const router = createBrowserRouter([
             path: "profile",
             element: <Profile />,
           },
-          {
-            path: "recover-password",
-            element: <RecoverPassword />,
-          },
-        ],
-      },
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "sign-up",
+        element: <SignUpPage />,
+      },
+      {
+        path: "recover-password",
+        element: <RecoverPassword onSubmit={()=> {}} />,
       },
     ],
   },
