@@ -7,7 +7,7 @@ import {Page} from "../../components/ui/page";
 import {SignUp} from "../../components/auth/sign-up";
 
 export const SignUpPage = () => {
-  const [registration] = useSignUpMutation();
+  // const [registration] = useSignUpMutation();
   const navigate = useNavigate();
   const handleRegistration = async (data: LoginArgs) => {
     return registration(data)
