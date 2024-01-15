@@ -75,7 +75,9 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
                             label={"Confirm Password"}
                             type={"password"}
                         />
-                        <Button className={s.button} fullwidt >Registration</Button>
+                        <Button className={s.button} fullwidt type={'submit'}>
+                            Registration
+                        </Button>
                     </div>
                 </form>
             </Card>
