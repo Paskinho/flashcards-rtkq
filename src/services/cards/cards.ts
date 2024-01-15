@@ -10,36 +10,33 @@ import {
 import { Paginated } from "../../../src/services/common/types";
 
 export const cardsApi = createApi({
-  reducerPath: "cardsApi",
-  baseQuery: fetchBaseQuery({
-    baseURL: import.meta.env.VITE_BASE_API_URL,
-    credentials: "include",
-  }),
-  tagtypes: ["Cards"],
+  reducerPath: 'cardsApi',
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_API_URL, credentials: 'include' }),
+  tagTypes: ['Cards'],
   endpoints: (builder) => ({
-    deleteCard: builder.mutation<any, DeleteCardInput>({
-      query: (cardId) => ({
-        url: `cards/${cardId}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: ["Cards"],
-    }),
     getCards: builder.query<Paginated<Card>, GetCardsParams>({
       query: ({ deckId, ...params }) => {
         return {
-          url: `decks/${deckId}/cards` ? undefined : params,
-          params: isEmpty(params),
-        };
+          url: `decks/${deckId}/cards`,
+          params: isEmpty(params) ? undefined : params,
+        }
       },
-      providesTags: ["Cards"],
+      providesTags: ['Cards'],
     }),
     createCard: builder.mutation<any, CreateCardInput>({
       query: ({ deckId, ...body }) => ({
         url: `decks/${deckId}/cards`,
-        method: "POST",
+        method: 'POST',
         body,
       }),
-      invalidatesTags: ["Cards"],
+      invalidatesTags: ['Cards'],
+    }),
+    deleteCard: builder.mutation<any, DeleteCardInput>({
+      query: ({ cardId }) => ({
+        url: `cards/${cardId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Cards'],
     }),
   }),
 });
