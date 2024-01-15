@@ -15,16 +15,16 @@ const schema = z.object({
     password: z.string().nonempty("Enter password"),
     passwordConfirmation: z.string().nonempty("Confirm your password")
 })
-    .superRefine((data, ctx) => {
-        if (data.password !== data.passwordConfirmation) {
-            ctx.addIssue({
-                message: 'Password don`t match',
-                code: z.zodIssueCode.custom,
-                path: ['passwordConfirmation']
-            })
-        }
-
-    })
+    // .superRefine((data, ctx) => {
+    //     if (data.password !== data.passwordConfirmation) {
+    //         ctx.addIssue({
+    //             message: 'Password don`t match',
+    //             code: z.zodIssueCode.custom,
+    //             path: ['passwordConfirmation']
+    //         })
+    //     }
+    //
+    // })
 
 type FormType = z.infer<typeof schema>
 

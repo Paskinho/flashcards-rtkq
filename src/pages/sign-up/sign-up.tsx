@@ -14,7 +14,7 @@ export const SignUpPage = () => {
       .unwrap()
       .then(() => {
         toast.success("Signed up successfully");
-        navigate("/");
+        navigate("/login");
       })
       .catch((err) => toast.error(err.data.message));
   };
