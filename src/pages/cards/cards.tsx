@@ -15,7 +15,7 @@ import { Page } from "../../../src/components/ui/page";
 import { Column, Sort, Table } from "../../../src/components/ui/table";
 import { TextField } from "../../../src/components/ui/text-field";
 import { Typography } from "../../../src/components/ui/typography";
-import { useGetDeckByIdQuery } from "../../../src/services/decks/decks";
+import { useGetDeckByIdQuery } from "../../services/decks/decks";
 import {
   useCreateCardMutation,
   useDeleteCardMutation,

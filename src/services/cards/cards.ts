@@ -10,9 +10,12 @@ import {
 import { Paginated } from "../../../src/services/common/types";
 
 export const cardsApi = createApi({
-  reducerPath: 'cardsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_API_URL, credentials: 'include' }),
-  tagTypes: ['Cards'],
+  reducerPath: "cardsApi",
+  baseQuery: fetchBaseQuery({
+    baseURL: import.meta.env.VITE_BASE_API_URL,
+    credentials: "include",
+  }),
+  tagtypes: ["Cards"],
   endpoints: (builder) => ({
     getCards: builder.query<Paginated<Card>, GetCardsParams>({
       query: ({ deckId, ...params }) => {
