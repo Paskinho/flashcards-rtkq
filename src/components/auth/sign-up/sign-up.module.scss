@@ -1,3 +1,24 @@
 .card {
   margin-top: 50px;
+  width: 100%;
+  max-width: 413px;
+  padding: 33px 36px 29px;
+}
+
+.title {
+  margin-bottom: 27px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.button {
+  margin-bottom: 20px;
 }

@@ -6,6 +6,7 @@ import {Card} from "../../ui/card";
 import {Typography} from "../../ui/typography";
 import s from './sign-up.module.scss'
 import {ControlledTextField} from "../../controlled/controlled-text-field";
+import {Button} from "../../ui/button";
 
 
 const schema = z.object({
@@ -49,10 +50,10 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
         <>
             <DevTool control={control}/>
             <Card className={s.card}>
-                <Typography variant={'large'}>
+                <Typography variant={'large'} className={s.title}>
                     Registration
                 </Typography>
-                <form onSubmit={handleFormSubmitted}>
+                <form onSubmit={handleFormSubmitted} className={s.form}>
                     <div>
                         <ControlledTextField
                         name={'email'}
@@ -74,6 +75,7 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
                             label={"Confirm Password"}
                             type={"password"}
                         />
+                        <Button className={s.button} fullwidt >Registration</Button>
                     </div>
                 </form>
             </Card>
