@@ -9,7 +9,7 @@ export const authApi = createApi({
     credentials: "include",
   }),
   tagTypes: ["Me"],
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     getMe: builder.query<User | null, void>({
       query: () => "auth/me",
       extraOptions: { maxRetries: false },
@@ -25,9 +25,9 @@ export const authApi = createApi({
       invalidatesTags: ["Me"],
     }),
     signUp: builder.mutation({
-      query: (body) => ({
-        url: "auth/sign-up",
-        method: "POST",
+      query: body => ({
+        url: `auth/sign-up`,
+        method: 'POST',
         body,
       }),
     }),
