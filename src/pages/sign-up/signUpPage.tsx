@@ -10,10 +10,10 @@ export const SignUpPage = () => {
   const [registration] = useSignUpMutation();
   const navigate = useNavigate();
   const handleRegistration = async (args: LoginArgs) => {
+      debugger
     return registration(args)
       .unwrap()
       .then(() => {
-          debugger
         toast.success("Signed up successfully");
         navigate("/login");
       })
