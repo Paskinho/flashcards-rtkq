@@ -8,6 +8,7 @@ import s from './sign-up.module.scss'
 import {ControlledTextField} from "../../controlled/controlled-text-field";
 import {Button} from "../../ui/button";
 import {Link} from "react-router-dom";
+import {omit} from "remeda";
 
 
 const schema = z.object({
@@ -23,13 +24,13 @@ const schema = z.object({
     //             path: ['passwordConfirmation']
     //         })
     //     }
-    //
+    // return data
     // })
 
 type FormType = z.infer<typeof schema>
 
 type SignUpProps = {
-    onSubmit: (data: FormType) => void
+    onSubmit: (data: Omit<FormType, 'passwordConfirmation'>) => void
 }
 
 
@@ -45,7 +46,9 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
         }
     })
 
-    const handleFormSubmitted = handleSubmit(onSubmit)
+    const handleFormSubmitted = handleSubmit(data =>
+        onSubmit(omit(data, ['passwordConfirmation']))
+    )
 
     return (
         <>
@@ -55,7 +58,6 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
                     Sign Up
                 </Typography>
                 <form onSubmit={handleFormSubmitted} className={s.form}>
-
                         <ControlledTextField
                         name={'email'}
                         control={control}
@@ -76,7 +78,8 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
                             label={"Confirm Password"}
                             type={"password"}
                         />
-                        <Button className={s.button} fullwidt type={'submit'}>
+                        <Button
+                            className={s.button} fullwidt type={'submit'}>
                             Sign Up
                         </Button>
                 </form>

@@ -13,6 +13,7 @@ export const SignUpPage = () => {
     return registration(data)
       .unwrap()
       .then(() => {
+          debugger
         toast.success("Signed up successfully");
         navigate("/login");
       })
