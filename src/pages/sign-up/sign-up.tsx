@@ -4,20 +4,20 @@ import { toast } from "react-toastify";
 import { useSignUpMutation } from "../../services/auth/auth";
 import { LoginArgs } from "../../services/auth/types";
 import {Page} from "../../components/ui/page";
-import {SignUp} from "../../components/auth/sign-up";
+import {SignUp} from "../../components/auth/sign-up/";
 
 export const SignUpPage = () => {
   const [registration] = useSignUpMutation();
   const navigate = useNavigate();
-  const handleRegistration = async (data: LoginArgs) => {
-    return registration(data)
+  const handleRegistration = async (args: LoginArgs) => {
+    return registration(args)
       .unwrap()
       .then(() => {
           debugger
         toast.success("Signed up successfully");
         navigate("/login");
       })
-      .catch((err) => toast.error(err.data.message));
+      .catch((err) =>  toast.error(err.data.message));
   };
 
   return (
