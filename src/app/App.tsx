@@ -6,7 +6,7 @@ import {Profile} from "../../src/pages/profile/profile";
 import {RecoverPassword} from "../components/auth/recover-password/recover-password.tsx";
 import {Layout} from "../components/layout/layout.tsx";
 import {Login} from "../pages/login";
-import {SignUpPage} from "../pages/sign-up/sign-up";
+import {SignUpPage} from "../pages/sign-up/signUpPage";
 
 const router = createBrowserRouter([
     {
