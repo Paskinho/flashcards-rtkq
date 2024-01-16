@@ -5,6 +5,8 @@ import { DevTool } from "@hookform/devtools";
 import {Card} from "../../ui/card";
 import s from './new-password.module.scss'
 import {Typography} from "../../ui/typography";
+import {ControlledTextField} from "../../controlled/controlled-text-field";
+import {Button} from "../../ui/button";
 
 const schema = z.object({
     password: z.string().nonempty("Enter a password")
@@ -26,7 +28,7 @@ export const NewPassword = ({onSubmit}: Props) => {
         }
     })
 
-    const handleFormSubmitted = handleSubmit
+    const handleFormSubmitted = handleSubmit(onSubmit)
 
  return (
      <>
@@ -35,6 +37,20 @@ export const NewPassword = ({onSubmit}: Props) => {
              <Typography variant={"large"} className={s.title}>
                  New Password
              </Typography>
+             <form onSubmit={handleFormSubmitted}>
+                 <div className={s.form}>
+                     <ControlledTextField
+                         name={"password"}
+                         control={control}
+                         placeholder={"Password"}
+                         label={"Password"}
+                         type={"password"}
+                     />
+<Button className={s.button} fullWidth type={"submit"}>
+    Confirm
+</Button>
+                 </div>
+             </form>
          </Card>
      </>
 
