@@ -5,7 +5,7 @@ import { LoginArgs, User } from "./types";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseURL: import.meta.env.VITE_BASE_API_URL,
+    baseURL: "https://api.flashcards.andrii.es/", //import.meta.env.VITE_BASE_API_URL,
     credentials: "include",
   }),
   tagTypes: ["Me"],
