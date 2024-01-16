@@ -7,6 +7,7 @@ import {RecoverPassword} from "../components/auth/recover-password/recover-passw
 import {Layout} from "../components/layout/layout.tsx";
 import {Login} from "../pages/login";
 import {SignUpPage} from "../pages/sign-up/signUpPage";
+import {NewPassword} from "../components/auth/new-password";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
             {
                 path: "recover-password",
                 element: <RecoverPassword onSubmit={() => {
+                }}/>,
+            },
+            {
+                path: "new-password",
+                element: <NewPassword onSubmit={() => {
                 }}/>,
             },
         ],
