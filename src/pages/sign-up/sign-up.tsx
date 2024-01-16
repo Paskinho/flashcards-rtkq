@@ -21,7 +21,7 @@ export const SignUpPage = () => {
 
   return (
       <Page flex>
-          <SignUp handleSubmit={handleRegistration}/>
+          <SignUp onSubmit={handleRegistration}/>
       </Page>
   )
 
