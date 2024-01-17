@@ -44,8 +44,9 @@ export const Decks = ({onSubmit}: DecksProps) => {
                    name={'Name Pack'}
                    label={"Name Pack"}
                    control={control}
-
-               ></ControlledTextField>
+               />
+                    <Button variant={'secondary'}>Cancel</Button>
+                    <Button>Create</Button>
                 </Modal>
                 <ControlledTextField
                     name={'search'}
@@ -54,6 +55,5 @@ export const Decks = ({onSubmit}: DecksProps) => {
                 />
             </div>
         </Page>
-
     )
 }
