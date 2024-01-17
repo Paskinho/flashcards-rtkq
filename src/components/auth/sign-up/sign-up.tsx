@@ -59,22 +59,24 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
                 </Typography>
                 <form onSubmit={handleFormSubmitted} className={s.form}>
                         <ControlledTextField
-                        name={'email'}
+                        name={'Email'}
                         control={control}
-                        placeholder={'Enter email'}
-                        label={"email"}
+                        label={"Email"}
                         />
+                    <ControlledTextField
+                        name={'Name'}
+                        control={control}
+                        label={"Name"}
+                    />
                         <ControlledTextField
                             name={"password"}
                             control={control}
-                            placeholder={"Password"}
                             label={"Password"}
                             type={"password"}
                         />
                         <ControlledTextField
                             name={"confirm password"}
                             control={control}
-                            placeholder={"Confirm Password"}
                             label={"Confirm Password"}
                             type={"password"}
                         />
