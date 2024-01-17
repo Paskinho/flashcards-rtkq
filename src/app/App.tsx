@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import {Button} from "../../src/components/ui/button";
 import {Cards} from "../../src/pages/cards";
