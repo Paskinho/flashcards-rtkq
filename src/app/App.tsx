@@ -8,6 +8,7 @@ import {Layout} from "../components/layout/layout.tsx";
 import {Login} from "../pages/login";
 import {SignUpPage} from "../pages/sign-up/signUpPage";
 import {NewPassword} from "../components/auth/new-password";
+import {Decks} from "../pages/decks";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <div> Hello!</div>,
+            },
+            {
+                path: "/decks",
+                element: <Decks/>,
             },
             {
                 path: "cards", //"cards/:deckId"
