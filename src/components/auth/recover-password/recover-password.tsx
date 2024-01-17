@@ -8,6 +8,7 @@ import { Button } from "../../ui/button";
 import { Card } from "../../ui/card";
 import { Typography } from "../../ui/typography";
 import s from "./recover-password.module.scss"
+import {Page} from "../../ui/page";
 
 const schema = z.object({
   email: z.string().email("Invalid email address").nonempty("Enter email"),
@@ -33,6 +34,7 @@ export const RecoverPassword = ({ onSubmit }: Props) => {
   return (
     <>
       <DevTool control={control} />
+      <Page flex>
       <Card className={s.card}>
         <Typography varian={"large"} className={s.title}>
           Forgot you password?
@@ -51,6 +53,7 @@ export const RecoverPassword = ({ onSubmit }: Props) => {
           </div>
         </form>
       </Card>
+      </Page>
     </>
   );
 };
