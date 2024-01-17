@@ -50,13 +50,11 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
             <ControlledTextField
               name={"email"}
               control={control}
-              placeholder={"Email"}
               label={"Email"}
             />
             <ControlledTextField
               name={"password"}
               control={control}
-              placeholder={"Password"}
               label={"Password"}
               type={"password"}
             />
