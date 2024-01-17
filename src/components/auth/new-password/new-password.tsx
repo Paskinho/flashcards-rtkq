@@ -7,6 +7,7 @@ import s from './new-password.module.scss'
 import {Typography} from "../../ui/typography";
 import {ControlledTextField} from "../../controlled/controlled-text-field";
 import {Button} from "../../ui/button";
+import {Page} from "../../ui/page";
 
 const schema = z.object({
     password: z.string().nonempty("Enter a password")
@@ -33,6 +34,7 @@ export const NewPassword = ({onSubmit}: Props) => {
     return (
         <>
             <DevTool control={control}/>
+            <Page flex>
             <Card className={s.card}>
                 <Typography variant={"large"} className={s.title}>
                     New Password
@@ -55,6 +57,7 @@ export const NewPassword = ({onSubmit}: Props) => {
                     </div>
                 </form>
             </Card>
+            </Page>
         </>
 
     )
