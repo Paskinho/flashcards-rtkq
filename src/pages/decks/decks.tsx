@@ -8,6 +8,7 @@ import {Button} from "../../components/ui/button";
 import s from './decks.module.scss'
 import {ControlledTextField} from "../../components/controlled/controlled-text-field";
 import {zodResolver} from "@hookform/resolvers/zod";
+import {useState} from "react";
 
 
 const schema = z.object({})
@@ -20,6 +21,10 @@ type DecksProps = {
 
 
 export const Decks = ({onSubmit}: DecksProps) => {
+
+    const [showModal, setShowModal] = useState(true)
+    const closeModal = () => setShowModal(false)
+    const openModal = () => setShowModal(true)
 
     const { control, handleSubmit } = useForm<FormType>({
         resolver: zodResolver(schema),
@@ -34,8 +39,13 @@ export const Decks = ({onSubmit}: DecksProps) => {
             <div className={s.page}>
                 <Typography variant={'large'}>Decks list</Typography>
                 <Button>Add New Pack</Button>
-                <Modal>
+                <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
+               <ControlledTextField
+                   name={'Name Pack'}
+                   label={"Name Pack"}
+                   control={control}
 
+               ></ControlledTextField>
                 </Modal>
                 <ControlledTextField
                     name={'search'}
