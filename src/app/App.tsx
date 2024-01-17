@@ -61,12 +61,12 @@ export function App() {
 
             <RouterProvider router={router}/>
             {/*<Profile />*/}
-            <Button
-                onClick={handleThemeChanged}
-                // style={{ position: "fixed", top: "50%" }}
-            >
-                Change Theme
-            </Button>
+            {/*<Button*/}
+            {/*    onClick={handleThemeChanged}*/}
+            {/*    // style={{ position: "fixed", top: "50%" }}*/}
+            {/*>*/}
+            {/*    Change Theme*/}
+            {/*</Button>*/}
             {/*<Provider store={store}></Provider>*/}
         </div>
     );
