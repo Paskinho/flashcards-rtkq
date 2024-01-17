@@ -9,6 +9,7 @@ import s from './decks.module.scss'
 import {ControlledTextField} from "../../components/controlled/controlled-text-field";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useState} from "react";
+import {ControlledCheckbox} from "../../components/controlled/controlled-checkbox";
 
 
 const schema = z.object({})
@@ -40,13 +41,21 @@ export const Decks = ({onSubmit}: DecksProps) => {
                 <Typography variant={'large'}>Decks list</Typography>
                 <Button>Add New Pack</Button>
                 <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
+              <form onSubmit={handleSubmit} >
                <ControlledTextField
                    name={'Name Pack'}
                    label={"Name Pack"}
                    control={control}
                />
+                    <ControlledCheckbox
+                    control={control}
+                    name={"Private pack"}
+                    label={'Private pack'}
+                    position={'left'}
+                    />
                     <Button variant={'secondary'}>Cancel</Button>
-                    <Button>Create</Button>
+                    <Button type={'submit'}>Create</Button>
+              </form>
                 </Modal>
                 <ControlledTextField
                     name={'search'}
