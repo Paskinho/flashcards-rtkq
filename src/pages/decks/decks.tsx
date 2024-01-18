@@ -11,6 +11,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useState} from "react";
 import {ControlledCheckbox} from "../../components/controlled/controlled-checkbox";
 import DeckLogo from '../../assets/photo/DeckLogo.png'
+import {Table} from "@hookform/devtools/dist/styled";
 
 const schema = z.object({})
 
@@ -40,6 +41,15 @@ export const Decks = ({onSubmit}: DecksProps) => {
             name: '',
         },
     })
+
+    const [sort,setSort] = useState({key: 'updated', direction:'asc'})
+    const columns = [
+        {key: 'Name', sortable: true, title: 'Name'},
+        {key: 'Cards', sortable: true, title: 'Cards'},
+        {key: 'Last Updated', sortable: true, title: 'Last Updated'},
+        {key: 'Created By', sortable: true, title: 'Created By'}
+    ]
+
 
     return (
         <Page>
@@ -74,6 +84,11 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     control={control}
                     type={'search'}
                 />
+                <div>
+                    <Table.Header columns={columns} sort={sort} onSort={setSort}/>
+
+                </div>
+
             </div>
         </Page>
     )
