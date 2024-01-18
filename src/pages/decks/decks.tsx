@@ -30,6 +30,9 @@ export const Decks = ({onSubmit}: DecksProps) => {
     const [showModal, setShowModal] = useState(true)
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
+    const [search, setSearch] = useState('')
+    const [showMyDecks, setShowMyDecks] = useState(false)
+    const [range, setRange] = useState([0,100])
 
 
 
@@ -50,6 +53,8 @@ export const Decks = ({onSubmit}: DecksProps) => {
     })
 
     const [sort,setSort] = useState({key: 'updated', direction:'asc'})
+    const sortString = sort ? `${sort.key} - ${sort.direction}` : null
+
     const columns = [
         {key: 'Name', sortable: true, title: 'Name'},
         {key: 'Cards', sortable: true, title: 'Cards'},
