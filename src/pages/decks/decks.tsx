@@ -10,7 +10,7 @@ import {ControlledTextField} from "../../components/controlled/controlled-text-f
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useState} from "react";
 import {ControlledCheckbox} from "../../components/controlled/controlled-checkbox";
-
+import DeckLogo from '../../assets/photo/DeckLogo.png'
 
 const schema = z.object({})
 
@@ -42,6 +42,11 @@ export const Decks = ({onSubmit}: DecksProps) => {
                 <Button>Add New Pack</Button>
                 <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
               <form onSubmit={handleSubmit} >
+                  <img
+                      className={s.deckLogo}
+                  alt={'deck logo'}
+                  src={DeckLogo}
+                  />
                <ControlledTextField
                    name={'Name Pack'}
                    label={"Name Pack"}
