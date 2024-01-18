@@ -11,17 +11,18 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useEffect, useState} from "react";
 import {ControlledCheckbox} from "../../components/controlled/controlled-checkbox";
 import DeckLogo from '../../assets/photo/DeckLogo.png'
-import {Table} from "../../components/ui/table";
+import {Column, Table} from "../../components/ui/table";
 import {useGetMeQuery} from "../../services/auth/auth";
 import {FaSearch, FaTrash} from "react-icons/fa";
-import {useGetDecksQuery} from "../../services/decks/decks";
+import {useCreateDeckMutation, useDeleteDeckMutation, useGetDecksQuery} from "../../services/decks/decks";
+import {toast} from "react-toastify";
 
 const schema = z.object({})
 
-type FormType = z.infer<typeof schema>
+type NewDeck = z.infer<typeof schema>
 
 type DecksProps = {
-    onSubmit: (data: FormType) => void
+    onSubmit: (data: NewDeck) => void
 }
 
 
@@ -34,8 +35,8 @@ export const Decks = ({onSubmit}: DecksProps) => {
     const openModal = () => setShowModal(true)
     const [search, setSearch] = useState('')
     const [showMyDecks, setShowMyDecks] = useState(false)
-    const [range, setRange] = useState([0,100])
-    const [sort,setSort] = useState({key: 'updated', direction:'asc'})
+    const [range, setRange] = useState([0, 100])
+    const [sort, setSort] = useState({key: 'updated', direction: 'asc'})
     const sortString = sort ? `${sort.key} - ${sort.direction}` : null
 
     const {data: decks, isLoading} = useGetDecksQuery({
@@ -47,14 +48,44 @@ export const Decks = ({onSubmit}: DecksProps) => {
         orderBy: sortString
     })
 
-    const [rangeValue, setRangeValue] = useState([0,1])
+    const [rangeValue, setRangeValue] = useState([0, 1])
 
-    useEffect(()=> {
-        if (rangeValue[1] !== decks?.maxCardsCount || 100){
-
+    useEffect(() => {
+        if (rangeValue[1] !== decks?.maxCardsCount) {
+            setRangeValue(prev => [prev[0], decks?.maxCardsCount || 100])
         }
+    }, [decks?.maxCardsCount])
+
+
+    const {control, handleSubmit} = useForm<FormType>({
+        resolver: zodResolver(schema),
+        defaultValues: {
+            isPrivate: false,
+            name: '',
+        },
     })
 
+    const resetFilters = () => {
+        setSearch('')
+        setShowMyDecks(false)
+        setRange([0,100])
+        setRangeValue([0,100])
+    }
+
+    const [createDeck] = useCreateDeckMutation()
+    const [deleteDeck] = useDeleteDeckMutation()
+    const handleDeckCreated = (args: NewDeck) => {
+        createDeck(args)
+            .unwrap().
+            then(()=> {
+                toast.success('Deck created succesfully')
+            closeModal()
+        })
+            .catch(err=> {
+                toast.error(err.data.message)
+            })
+
+    }
 
     const handleLogoChanged = () => {
         return (
@@ -63,17 +94,10 @@ export const Decks = ({onSubmit}: DecksProps) => {
     }
 
 
-    const { control, handleSubmit } = useForm<FormType>({
-        resolver: zodResolver(schema),
-        defaultValues: {
-            isPrivate: false,
-            name: '',
-        },
-    })
 
 
 
-    const columns = [
+    const columns: Column[] = [
         {key: 'Name', sortable: true, title: 'Name'},
         {key: 'Cards', sortable: true, title: 'Cards'},
         {key: 'Last Updated', sortable: true, title: 'Last Updated'},
@@ -85,31 +109,31 @@ export const Decks = ({onSubmit}: DecksProps) => {
         <Page>
             <div className={s.page}>
                 <div className={s.header}>
-                <Typography variant={'large'}>Decks list</Typography>
-                <Button>Add New Pack</Button>
+                    <Typography variant={'large'}>Decks list</Typography>
+                    <Button>Add New Pack</Button>
                 </div>
                 <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
-              <form onSubmit={handleSubmit} >
-                  <img
-                      className={s.deckLogo}
-                  alt={'deck logo'}
-                  src={DeckLogo}
-                  />
-                  <Button onClick={handleLogoChanged}> Change Logo</Button>
-               <ControlledTextField
-                   name={'Name Pack'}
-                   label={"Name Pack"}
-                   control={control}
-               />
-                    <ControlledCheckbox
-                    control={control}
-                    name={"Private pack"}
-                    label={'Private pack'}
-                    position={'left'}
-                    />
-                    <Button variant={'secondary'}>Cancel</Button>
-                    <Button type={'submit'}>Create</Button>
-              </form>
+                    <form onSubmit={handleSubmit}>
+                        <img
+                            className={s.deckLogo}
+                            alt={'deck logo'}
+                            src={DeckLogo}
+                        />
+                        <Button onClick={handleLogoChanged}> Change Logo</Button>
+                        <ControlledTextField
+                            name={'Name Pack'}
+                            label={"Name Pack"}
+                            control={control}
+                        />
+                        <ControlledCheckbox
+                            control={control}
+                            name={"Private pack"}
+                            label={'Private pack'}
+                            position={'left'}
+                        />
+                        <Button variant={'secondary'}>Cancel</Button>
+                        <Button type={'submit'}>Create</Button>
+                    </form>
                 </Modal>
                 <ControlledTextField
                     className={s.search}
@@ -120,18 +144,18 @@ export const Decks = ({onSubmit}: DecksProps) => {
                 />
 
                 <div>
-                    <Table.Root style={{ width: '100%' }}>
-                    <Table.Header
-                        columns={columns}
-                        sort={sort}
-                        onSort={setSort}
-                    />
-                    <Table.Body>
-                        <Table.Row key={1}>
+                    <Table.Root style={{width: '100%'}}>
+                        <Table.Header
+                            columns={columns}
+                            sort={sort}
+                            onSort={setSort}
+                        />
+                        <Table.Body>
+                            <Table.Row key={1}>
 
-                        </Table.Row>
+                            </Table.Row>
 
-                    </Table.Body>
+                        </Table.Body>
                     </Table.Root>
                 </div>
 
