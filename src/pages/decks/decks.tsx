@@ -8,12 +8,13 @@ import {Button} from "../../components/ui/button";
 import s from './decks.module.scss'
 import {ControlledTextField} from "../../components/controlled/controlled-text-field";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {ControlledCheckbox} from "../../components/controlled/controlled-checkbox";
 import DeckLogo from '../../assets/photo/DeckLogo.png'
 import {Table} from "../../components/ui/table";
 import {useGetMeQuery} from "../../services/auth/auth";
 import {FaSearch, FaTrash} from "react-icons/fa";
+import {useGetDecksQuery} from "../../services/decks/decks";
 
 const schema = z.object({})
 
@@ -26,7 +27,7 @@ type DecksProps = {
 
 export const Decks = ({onSubmit}: DecksProps) => {
 
-    // const {data: user} = useGetMeQuery()
+    const {data: user} = useGetMeQuery()
 
     const [showModal, setShowModal] = useState(true)
     const closeModal = () => setShowModal(false)
@@ -34,8 +35,25 @@ export const Decks = ({onSubmit}: DecksProps) => {
     const [search, setSearch] = useState('')
     const [showMyDecks, setShowMyDecks] = useState(false)
     const [range, setRange] = useState([0,100])
+    const [sort,setSort] = useState({key: 'updated', direction:'asc'})
+    const sortString = sort ? `${sort.key} - ${sort.direction}` : null
 
+    const {data: decks, isLoading} = useGetDecksQuery({
+        itemsPerPage: 100,
+        name: search,
+        authorId: showMyDecks ? user?.id : undefined,
+        minCardsCount: range[0],
+        maxCardsCount: range[1],
+        orderBy: sortString
+    })
 
+    const [rangeValue, setRangeValue] = useState([0,1])
+
+    useEffect(()=> {
+        if (rangeValue[1] !== decks?.maxCardsCount || 100){
+
+        }
+    })
 
 
     const handleLogoChanged = () => {
@@ -53,8 +71,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
         },
     })
 
-    const [sort,setSort] = useState({key: 'updated', direction:'asc'})
-    const sortString = sort ? `${sort.key} - ${sort.direction}` : null
+
 
     const columns = [
         {key: 'Name', sortable: true, title: 'Name'},
