@@ -26,6 +26,12 @@ export const Decks = ({onSubmit}: DecksProps) => {
     const [showModal, setShowModal] = useState(true)
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
+    const handleLogoChanged = () => {
+        return (
+            alert('Logo changed!')
+        )
+    }
+
 
     const { control, handleSubmit } = useForm<FormType>({
         resolver: zodResolver(schema),
@@ -47,6 +53,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                   alt={'deck logo'}
                   src={DeckLogo}
                   />
+                  <Button onClick={handleLogoChanged}> Change Logo</Button>
                <ControlledTextField
                    name={'Name Pack'}
                    label={"Name Pack"}
