@@ -94,9 +94,6 @@ export const Decks = ({onSubmit}: DecksProps) => {
     }
 
 
-
-
-
     const columns: Column[] = [
         {key: 'Name', sortable: true, title: 'Name'},
         {key: 'Cards', sortable: true, title: 'Cards'},
@@ -104,6 +101,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
         {key: 'Created By', sortable: true, title: 'Created By'}
     ]
 
+    if (isLoading) return <div>loading...</div>
 
     return (
         <Page>
@@ -151,14 +149,18 @@ export const Decks = ({onSubmit}: DecksProps) => {
                             onSort={setSort}
                         />
                         <Table.Body>
-                            <Table.Row key={1}>
+                            {decks?.items?.map(deck => (
+                                <Table.Row key={deck.id}>
 
-                            </Table.Row>
+                                </Table.Row>
 
-                        </Table.Body>
-                    </Table.Root>
+                            ))}
+
+
+                                </Table.Body>
+                                </Table.Root>
+
                 </div>
-
             </div>
         </Page>
     )
