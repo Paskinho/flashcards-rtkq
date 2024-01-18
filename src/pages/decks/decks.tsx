@@ -11,7 +11,8 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useState} from "react";
 import {ControlledCheckbox} from "../../components/controlled/controlled-checkbox";
 import DeckLogo from '../../assets/photo/DeckLogo.png'
-import {Table} from "@hookform/devtools/dist/styled";
+import {Table} from "../../components/ui/table";
+import {useGetMeQuery} from "../../services/auth/auth";
 
 const schema = z.object({})
 
@@ -24,9 +25,15 @@ type DecksProps = {
 
 export const Decks = ({onSubmit}: DecksProps) => {
 
+    // const {data: user} = useGetMeQuery()
+
     const [showModal, setShowModal] = useState(true)
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
+
+
+
+
     const handleLogoChanged = () => {
         return (
             alert('Logo changed!')
@@ -85,8 +92,19 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     type={'search'}
                 />
                 <div>
-                    <Table.Header columns={columns} sort={sort} onSort={setSort}/>
+                    <Table.Root style={{ width: '100%' }}>
+                    <Table.Header
+                        columns={columns}
+                        sort={sort}
+                        onSort={setSort}
+                    />
+                    <Table.Body>
+                        <Table.Row key={1}>
 
+                        </Table.Row>
+
+                    </Table.Body>
+                    </Table.Root>
                 </div>
 
             </div>
