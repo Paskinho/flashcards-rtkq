@@ -13,6 +13,7 @@ import {ControlledCheckbox} from "../../components/controlled/controlled-checkbo
 import DeckLogo from '../../assets/photo/DeckLogo.png'
 import {Table} from "../../components/ui/table";
 import {useGetMeQuery} from "../../services/auth/auth";
+import {FaSearch, FaTrash} from "react-icons/fa";
 
 const schema = z.object({})
 
@@ -94,10 +95,13 @@ export const Decks = ({onSubmit}: DecksProps) => {
               </form>
                 </Modal>
                 <ControlledTextField
+                    className={s.search}
                     name={'search'}
                     control={control}
                     type={'search'}
+                    placeholder={'search'}
                 />
+
                 <div>
                     <Table.Root style={{ width: '100%' }}>
                     <Table.Header
