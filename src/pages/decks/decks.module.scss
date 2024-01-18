@@ -1,5 +1,5 @@
 .page {
-  margin-top: 50px;
+  margin-top: 80px;
 }
 
 .deckLogo {
@@ -9,4 +9,10 @@
 
 .tableHeader {
   width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
 }

@@ -66,8 +66,10 @@ export const Decks = ({onSubmit}: DecksProps) => {
     return (
         <Page>
             <div className={s.page}>
+                <div className={s.header}>
                 <Typography variant={'large'}>Decks list</Typography>
                 <Button>Add New Pack</Button>
+                </div>
                 <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
               <form onSubmit={handleSubmit} >
                   <img
