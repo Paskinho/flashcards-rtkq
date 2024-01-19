@@ -157,7 +157,15 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                             {deck.name}
                                         </Link>
                                     </Table.Cell>
-
+                                    <Table.Cell>
+                                        {deck.cardsCount}
+                                    </Table.Cell>
+                                    <Table.Cell>
+                                        {dayjs(deck.updated).format('L, LT')}
+                                    </Table.Cell>
+                                    <Table.Cell>
+                                        {deck.author.name}
+                                    </Table.Cell>
                                 </Table.Row>
 
                             ))}
