@@ -112,9 +112,12 @@ export const Decks = ({onSubmit}: DecksProps) => {
                 <div className={s.header}>
                     <Typography variant={'large'}>Decks list</Typography>
                     <label>
-                        Show only my decks<Toggle checked={showMyDecks} onCheckedChange={setSearch}/>
+                        Show only my decks
+                        <Toggle checked={showMyDecks}
+                                onCheckedChange={setSearch}
+                                className={s.toggle}
+                        />
                     </label>
-
                     <Button onClick={openModal}>Add New Pack</Button>
                 </div>
                 <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
@@ -145,7 +148,8 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     name={'search'}
                     control={control}
                     type={'search'}
-                    placeholder={'search'}
+                    placeholder={'Search'}
+                    onValueChanged={setSearch}
                 />
 
                 <div>
