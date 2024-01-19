@@ -7,7 +7,7 @@ import { CreateDeckInput, Deck, DeleteDeckInput, GetDecksParams } from './types'
 // Define a service using a base URL and expected endpoints
 export const decksApi = createApi({
   reducerPath: 'decksApi',
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_API_URL, credentials: 'include' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://api.flashcards.andrii.es/', credentials: 'include' }),
   tagTypes: ['Decks'],
   endpoints: builder => ({
     getDecks: builder.query<
