@@ -19,6 +19,7 @@ import {toast} from "react-toastify";
 import {Link} from "react-router-dom";
 import * as dayjs from "dayjs";
 import {Toggle} from "../../components/ui/toggle";
+import {Slider} from "../../components/ui/slider";
 
 const schema = z.object({})
 
@@ -118,6 +119,18 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                 className={s.toggle}
                         />
                     </label>
+                    <div style={{ display: 'flex', flexGrow: '1' }}>
+                        <Slider
+                        onValueCommit={setRange}
+                        value={rangeValue}
+                        onValueChange={setRangeValue}
+                        max={decks?.maxCardsCount}
+                        />
+                    </div>
+                    <Button variant={'secondary'} onClick={resetFilters}>
+                       <FaTrash/>
+                       Reset Filters
+                    </Button>
                     <Button onClick={openModal}>Add New Pack</Button>
                 </div>
                 <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
