@@ -16,6 +16,7 @@ import {useGetMeQuery} from "../../services/auth/auth";
 import {FaSearch, FaTrash} from "react-icons/fa";
 import {useCreateDeckMutation, useDeleteDeckMutation, useGetDecksQuery} from "../../services/decks/decks";
 import {toast} from "react-toastify";
+import {Link} from "react-router-dom";
 
 const schema = z.object({})
 
@@ -28,7 +29,7 @@ type DecksProps = {
 
 export const Decks = ({onSubmit}: DecksProps) => {
 
-    const {data: user} = useGetMeQuery()
+    // const {data: user} = useGetMeQuery() УТОЧНИТЬ!
 
     const [showModal, setShowModal] = useState(true)
     const closeModal = () => setShowModal(false)
@@ -151,6 +152,11 @@ export const Decks = ({onSubmit}: DecksProps) => {
                         <Table.Body>
                             {decks?.items?.map(deck => (
                                 <Table.Row key={deck.id}>
+                                    <Table.Cell>
+                                        <Link to={`/cards/${deck.id}`}>
+                                            {deck.name}
+                                        </Link>
+                                    </Table.Cell>
 
                                 </Table.Row>
 
