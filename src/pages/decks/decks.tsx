@@ -17,6 +17,8 @@ import {FaSearch, FaTrash} from "react-icons/fa";
 import {useCreateDeckMutation, useDeleteDeckMutation, useGetDecksQuery} from "../../services/decks/decks";
 import {toast} from "react-toastify";
 import {Link} from "react-router-dom";
+import * as dayjs from "dayjs";
+import {Toggle} from "../../components/ui/toggle";
 
 const schema = z.object({})
 
@@ -109,10 +111,14 @@ export const Decks = ({onSubmit}: DecksProps) => {
             <div className={s.page}>
                 <div className={s.header}>
                     <Typography variant={'large'}>Decks list</Typography>
-                    <Button>Add New Pack</Button>
+                    <label>
+                        Show only my decks<Toggle checked={showMyDecks} onCheckedChange={setSearch}/>
+                    </label>
+
+                    <Button onClick={openModal}>Add New Pack</Button>
                 </div>
                 <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit(handleDeckCreated)}>
                         <img
                             className={s.deckLogo}
                             alt={'deck logo'}
@@ -166,14 +172,21 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                     <Table.Cell>
                                         {deck.author.name}
                                     </Table.Cell>
+                                    <Table.Cell>
+                                        <button className={'unset'}
+                                        onClick={()=> {
+                                            deleteDeck({deckId: deck.id})
+                                        }}
+                                        >
+                                            <FaTrash/>
+                                        </button>
+                                    </Table.Cell>
                                 </Table.Row>
 
                             ))}
 
-
                                 </Table.Body>
                                 </Table.Root>
-
                 </div>
             </div>
         </Page>
