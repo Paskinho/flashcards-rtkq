@@ -212,12 +212,12 @@ export const Decks = ({onSubmit}: DecksProps) => {
 }
 
 
-const schema = z.object({
-    cover: z.array(z.instanceOf(File)),
+const schemaCreateCard = z.object({
+    cover: z.array(z.instanceof(File)),
     name: z.string()
 })
 
-type Form = z.infer<typeof schema>
+type Form = z.infer<typeof schemaCreateCard>
 
 
 function CreateCard() {
