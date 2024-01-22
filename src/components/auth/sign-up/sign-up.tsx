@@ -33,7 +33,6 @@ type SignUpProps = {
     onSubmit: (data: Omit<FormType, 'passwordConfirmation'>) => void
 }
 
-
 export const SignUp = ({onSubmit}: SignUpProps) => {
 
     const {control, handleSubmit} = useForm({
@@ -80,6 +79,7 @@ export const SignUp = ({onSubmit}: SignUpProps) => {
                             label={"Confirm Password"}
                             type={"password"}
                         />
+
                         <Button className={s.button} fullwidth type={'submit'}>
                             Sign Up
                         </Button>

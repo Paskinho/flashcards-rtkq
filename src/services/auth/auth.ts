@@ -4,7 +4,11 @@ import { LoginArgs, User } from "./types";
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://api.flashcards.andrii.es/', credentials: 'include' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://api.flashcards.andrii.es/v1/', credentials: 'include' }),
+  //варианты URL
+  //import.meta.env.VITE_BASE_API_URL
+  //https://api.flashcards.andrii.es/
+
   tagTypes: ["Me"],
   endpoints: builder => ({
     getMe: builder.query<User | null, void>({
