@@ -133,7 +133,6 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     </Button>
                     <Button onClick={openModal}>Add New Pack</Button>
                 </div>
-                <CreateCard/>
                 <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
                     <form onSubmit={handleSubmit(handleDeckCreated)}>
                         <img
@@ -210,33 +209,33 @@ export const Decks = ({onSubmit}: DecksProps) => {
         </Page>
     )
 }
-
-
-const schemaCreateCard = z.object({
-    cover: z.array(z.instanceof(File)),
-    name: z.string()
-})
-
-type Form = z.infer<typeof schemaCreateCard>
-
-
-function CreateCard() {
-    const {register, handleSubmit} = useForm<Form>()
-    const [createDeck] = useCreateDeckMutation()
-    const onSubmit = handleSubmit(data => {
-        const form = new FormData()
-
-        form.append('cover', data.cover[0])
-        form.append('name', data.name)
-
-        createDeck(form)
-    })
-
-    return (
-        <form onSubmit={handleSubmit}>
-            <input type={'file'} {...register('cover')}/>
-            <input type={'text'} {...register('name')}/>
-            <button type={'submit'}>Submit</button>
-        </form>
-    )
-}
+//
+// create card without modal
+// const schemaCreateCard = z.object({
+//     cover: z.array(z.instanceof(File)),
+//     name: z.string()
+// })
+//
+// type Form = z.infer<typeof schemaCreateCard>
+//
+//
+// function CreateCard() {
+//     const {register, handleSubmit} = useForm<Form>()
+//     const [createDeck] = useCreateDeckMutation()
+//     const onSubmit = handleSubmit(data => {
+//         const form = new FormData()
+//
+//         form.append('cover', data.cover[0])
+//         form.append('name', data.name)
+//
+//         createDeck(form)
+//     })
+//
+//     return (
+//         <form onSubmit={handleSubmit}>
+//             <input type={'file'} {...register('cover')}/>
+//             <input type={'text'} {...register('name')}/>
+//             <button type={'submit'}>Submit</button>
+//         </form>
+//     )
+// }
