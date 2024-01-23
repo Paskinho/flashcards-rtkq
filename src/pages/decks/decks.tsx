@@ -109,9 +109,41 @@ export const Decks = ({onSubmit}: DecksProps) => {
 
     return (
         <Page>
+            <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
+                <form onSubmit={handleSubmit(handleDeckCreated)}>
+                    <img
+                        className={s.deckLogo}
+                        alt={'deck logo'}
+                        src={DeckLogo}
+                    />
+                    <Button onClick={handleLogoChanged}> Change Logo</Button>
+                    <ControlledTextField
+                        name={'Name Pack'}
+                        label={"Name Pack"}
+                        control={control}
+                    />
+                    <ControlledCheckbox
+                        control={control}
+                        name={"Private pack"}
+                        label={'Private pack'}
+                        position={'left'}
+                    />
+                    <Button variant={'secondary'}>Cancel</Button>
+                    <Button type={'submit'}>Create Deck</Button>
+                </form>
+            </Modal>
             <div className={s.page}>
-                <div className={s.header}>
+                <div
+                    style={{
+                        marginBottom: '24px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                    }}
+                >
                     <Typography variant={'large'}>Decks list</Typography>
+                    <Button onClick={openModal}>Add New Pack</Button>
+                </div>
                     <label>
                         Show only my decks
                         <Toggle checked={showMyDecks}
@@ -131,31 +163,9 @@ export const Decks = ({onSubmit}: DecksProps) => {
                        <FaTrash/>
                        Reset Filters
                     </Button>
-                    <Button onClick={openModal}>Add New Pack</Button>
+
                 </div>
-                <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>
-                    <form onSubmit={handleSubmit(handleDeckCreated)}>
-                        <img
-                            className={s.deckLogo}
-                            alt={'deck logo'}
-                            src={DeckLogo}
-                        />
-                        <Button onClick={handleLogoChanged}> Change Logo</Button>
-                        <ControlledTextField
-                            name={'Name Pack'}
-                            label={"Name Pack"}
-                            control={control}
-                        />
-                        <ControlledCheckbox
-                            control={control}
-                            name={"Private pack"}
-                            label={'Private pack'}
-                            position={'left'}
-                        />
-                        <Button variant={'secondary'}>Cancel</Button>
-                        <Button type={'submit'}>Create Deck</Button>
-                    </form>
-                </Modal>
+
                 <ControlledTextField
                     className={s.search}
                     name={'search'}
@@ -205,7 +215,6 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                 </Table.Body>
                                 </Table.Root>
                 </div>
-            </div>
         </Page>
     )
 }
