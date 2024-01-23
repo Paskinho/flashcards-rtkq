@@ -26,4 +26,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-direction: column;
+}
+
+.control {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 36px;
 }
