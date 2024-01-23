@@ -13,3 +13,12 @@ const TabsList = forwardRef<ElementRef<typeof TabsPrimitive.Trigger>,
 })
 
 TabsList.displayName = TabsPrimitive.List.displayName
+
+const TabsTrigger = forwardRef<ElementRef<typeof TabsPrimitive.Trigger>,
+    ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+    >(({className, ...props}, ref)=> {
+        <TabsPrimitive.Trigger className={clsx(s.trigger, className)}
+        ref={ref} {...props}/>
+})
+
+TabsList.displayName = TabsPrimitive.Trigger.displayName
