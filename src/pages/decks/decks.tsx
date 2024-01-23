@@ -144,24 +144,18 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     <Typography variant={'large'}>Decks list</Typography>
                     <Button onClick={openModal}>Add New Pack</Button>
                 </div>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between'
-
-                }}>
+                <div className={s.control}>
                     <ControlledTextField
-                        className={s.search}
                         name={'search'}
                         control={control}
                         type={'search'}
                         placeholder={'Search'}
                         onValueChanged={setSearch}
                     />
-                    <label>
+                    <label className={s.toggle}>
                         Show only my decks
                         <Toggle checked={showMyDecks}
                                 onCheckedChange={setSearch}
-                                className={s.toggle}
                         />
                     </label>
                     <div style={{ display: 'flex', flexGrow: '1' }}>
