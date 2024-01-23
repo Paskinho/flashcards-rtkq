@@ -20,6 +20,7 @@ import {Link} from "react-router-dom";
 import * as dayjs from "dayjs";
 import {Toggle} from "../../components/ui/toggle";
 import {Slider} from "../../components/ui/slider";
+import {Tabs, TabsList, TabsTrigger} from "@radix-ui/react-tabs";
 
 const schema = z.object({})
 
@@ -74,6 +75,8 @@ export const Decks = ({onSubmit}: DecksProps) => {
         setShowMyDecks(false)
         setRange([0,100])
         setRangeValue([0,100])
+        // setCurrentPage(null)
+        // setSearch(null)
     }
 
     const [createDeck] = useCreateDeckMutation()
@@ -106,6 +109,8 @@ export const Decks = ({onSubmit}: DecksProps) => {
     ]
 
     if (isLoading) return <div>loading...</div>
+
+
 
     return (
         <Page>
@@ -157,6 +162,13 @@ export const Decks = ({onSubmit}: DecksProps) => {
                         <Toggle checked={showMyDecks}
                                 onCheckedChange={setSearch}
                         />
+                        {/*<Tabs asChild onValueChange={setSearch()}*/}
+                        {/*      value={showMyDecks ?? undefined}>*/}
+                        {/*<TabsList>*/}
+                        {/*    <TabsTrigger value={'my'}>My decks</TabsTrigger>*/}
+                        {/*    <Tabs.Trigger value={'all'}>All decks</Tabs.Trigger>*/}
+                        {/*</TabsList>*/}
+                        {/*</Tabs>*/}
                     </label>
                     <div style={{ display: 'flex', flexGrow: '1' }}>
                         <Slider
