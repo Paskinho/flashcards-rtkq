@@ -141,7 +141,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                         justifyContent: 'space-between',
                     }}
                 >
-                    <Typography variant={'large'}>Decks list</Typography>
+                    <Typography variant={'large'}>Decks</Typography>
                     <Button onClick={openModal}>Add New Pack</Button>
                 </div>
                 <div className={s.control}>
