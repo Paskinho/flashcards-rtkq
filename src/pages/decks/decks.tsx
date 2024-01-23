@@ -144,6 +144,19 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     <Typography variant={'large'}>Decks list</Typography>
                     <Button onClick={openModal}>Add New Pack</Button>
                 </div>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between'
+
+                }}>
+                    <ControlledTextField
+                        className={s.search}
+                        name={'search'}
+                        control={control}
+                        type={'search'}
+                        placeholder={'Search'}
+                        onValueChanged={setSearch}
+                    />
                     <label>
                         Show only my decks
                         <Toggle checked={showMyDecks}
@@ -163,17 +176,9 @@ export const Decks = ({onSubmit}: DecksProps) => {
                        <FaTrash/>
                        Reset Filters
                     </Button>
-
+                </div>
                 </div>
 
-                <ControlledTextField
-                    className={s.search}
-                    name={'search'}
-                    control={control}
-                    type={'search'}
-                    placeholder={'Search'}
-                    onValueChanged={setSearch}
-                />
 
                 <div>
                     <Table.Root style={{width: '100%'}}>
