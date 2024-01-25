@@ -21,6 +21,7 @@ import * as dayjs from "dayjs";
 import {Toggle} from "../../components/ui/toggle";
 import {Slider} from "../../components/ui/slider";
 import {Tabs, TabsList, TabsTrigger} from "@radix-ui/react-tabs";
+import {Pagination} from "../../components/ui/pagination";
 
 const schema = z.object({})
 
@@ -225,6 +226,9 @@ export const Decks = ({onSubmit}: DecksProps) => {
 
                                 </Table.Body>
                                 </Table.Root>
+                    <Pagination
+                    className={s.pagination}
+                    />
                 </div>
         </Page>
     )
