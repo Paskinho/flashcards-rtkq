@@ -228,6 +228,9 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                 </Table.Root>
                     <Pagination
                     className={s.pagination}
+                    count={decks?.pagination?.totalPages || 1}
+                    page={1}
+                    onChange={()=> {1}}
                     />
                 </div>
         </Page>
