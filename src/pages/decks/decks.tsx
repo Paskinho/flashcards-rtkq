@@ -41,7 +41,8 @@ export const Decks = ({onSubmit}: DecksProps) => {
     const [showMyDecks, setShowMyDecks] = useState(false)
     const [range, setRange] = useState([0, 100])
     const [sort, setSort] = useState({key: 'updated', direction: 'asc'})
-    const sortString = sort ? `${sort.key} - ${sort.direction}` : null
+    // const sortString = sort ? `${sort.key} - ${sort.direction}` : null
+    const sortString = null
 
     const {data: decks, isLoading} = useGetDecksQuery({
         itemsPerPage: 100,
