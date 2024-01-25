@@ -4,6 +4,7 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 import s from "./pagination,module.scss";
 import { usePagination } from "./usePagination";
+import { clsx } from 'clsx'
 
 type PaginationConditionals =
   | {
