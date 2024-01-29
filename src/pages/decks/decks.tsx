@@ -22,6 +22,8 @@ import {Toggle} from "../../components/ui/toggle";
 import {Slider} from "../../components/ui/slider";
 import {Tabs, TabsList, TabsTrigger} from "@radix-ui/react-tabs";
 import {Pagination} from "../../components/ui/pagination";
+import { useDeckSearchParams } from '../decks/use-deck-search-params'
+
 
 const schema = z.object({})
 
@@ -44,6 +46,23 @@ export const Decks = ({onSubmit}: DecksProps) => {
     const [sort, setSort] = useState({key: 'updated', direction: 'asc'})
     // const sortString = sort ? `${sort.key} - ${sort.direction}` : null
     const sortString = null
+
+    const {
+        currentPage,
+        currentTab,
+        maxCardsCount,
+        minCardsCount,
+        rangeValue,
+        // search, УТОЧНИТЬ ДУБЛИРОВАНИЯ ОБЪЯВЛЕНИЯ
+        setCurrentPage,
+        setCurrentTab,
+        setMaxCards,
+        setMinCards,
+        setRangeValue,
+        setSearch,
+        setSort,
+        sort,
+    } = useDeckSearchParams()
 
     const {data: decks, isLoading} = useGetDecksQuery({
         itemsPerPage: 100,
@@ -230,7 +249,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     className={s.pagination}
                     count={decks?.pagination?.totalPages || 1}
                     page={1}
-                    onChange={()=> {1}}
+                    onChange={useDeckSearchParams}
                     />
                 </div>
         </Page>
