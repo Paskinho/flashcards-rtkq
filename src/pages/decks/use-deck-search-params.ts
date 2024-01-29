@@ -1,5 +1,7 @@
 import {useSearchParams} from "react-router-dom";
 import {useQueryParam} from "../../hooks";
+import {useState} from "react";
+import {Sort} from "../../components/ui/table";
 
 
 const useDeckSearchParams = () => {
@@ -36,5 +38,28 @@ const useDeckSearchParams = () => {
        'currentTab',
        'all'
    )
+
+   const [rangeValue, setRangeValue] = useState([minCardsCount, maxCardsCount])
+   const [sortKey, setSortKey] = useQueryParam<string>(
+       searchParams,
+       setSearchParams,
+       'sortKey'
+   )
+
+   const [sortDirection, setSortDirection] = useQueryParam<'asc' | 'desc'>(
+       searchParams,
+       setSearchParams,
+       'sortDirection'
+   )
+
+   const setSort = (sort: Sort) =>
+      sortDirection === null || sortKey === null
+      ? null
+          : {
+         direction: sortDirection,
+         key: sortKey
+          }
+
+
 
 }
