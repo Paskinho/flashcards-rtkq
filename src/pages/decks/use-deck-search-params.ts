@@ -4,7 +4,7 @@ import {useState} from "react";
 import {Sort} from "../../components/ui/table";
 
 
-const useDeckSearchParams = () => {
+export const useDeckSearchParams = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const [currentPage, setCurrentPage] = useQueryParam<number>(
         searchParams,
@@ -86,6 +86,7 @@ const useDeckSearchParams = () => {
         setRangeValue,
         setSearch,
         setSort,
+        sort
     }
 
 }
