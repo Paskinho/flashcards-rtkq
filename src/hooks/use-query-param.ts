@@ -1,5 +1,4 @@
 import { isNil } from 'remeda'
-import {useSearchParams} from "react-router-dom";
 
 export function useQueryParam<T extends boolean | number | string>(
     searchParams: URLSearchParams,
