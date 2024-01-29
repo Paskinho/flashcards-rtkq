@@ -52,13 +52,25 @@ const useDeckSearchParams = () => {
         'sortDirection'
     )
 
-    const setSort = (sort: Sort) =>
-        sortDirection === null || sortKey === null
-            ? null
-            : {
-                direction: sortDirection,
-                key: sortKey
-            }
+    const setSort = (sort: Sort) => {
+        if (!sort) {
+            setSortKey(null)
+            setSortDirection(null)
+
+            return
+        }
+        setSortKey(sort.key)
+        setSortDirection(sort.direction)
+    }
+
+    // const sort: Sort =
+    //     sortDirection === null || sortKey === null
+    //         ? null
+    //         : {
+    //             direction: sortDirection,
+    //             key: sortKey,
+    //         }
+
 
     return {
         currentPage,
@@ -74,7 +86,6 @@ const useDeckSearchParams = () => {
         setRangeValue,
         setSearch,
         setSort,
-        sort
     }
 
 }
