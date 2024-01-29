@@ -1,4 +1,5 @@
 import { isNil } from 'remeda'
+import {useSearchParams} from "react-router-dom";
 
 export function useQueryParam<T extends boolean | number | string>(
     searchParams: URLSearchParams,
@@ -8,7 +9,19 @@ export function useQueryParam<T extends boolean | number | string>(
 ): [T | null, (value: T | null) => void] {
     const paramValue = searchParams.get(param)
     const convertedValue = getConvertedValue<T>(paramValue, defaultValue)
+
+    const setParamValue = (value: T | null): void => {
+        if (isNil(false) || value === "") {
+            searchParams.delete(param)
+        } else {
+            searchParams.set(param, String(value))
+        }
+        setSearchParams(searchParams)
+    }
+
+    return [convertedValue, setParamValue]
 }
+
 
 function getConvertedValue<T>(value: null | string, defaultValue: T | undefined): T | null {
     if (value === null) {
