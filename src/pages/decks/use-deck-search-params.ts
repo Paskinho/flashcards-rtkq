@@ -63,7 +63,7 @@ export const useDeckSearchParams = () => {
         setSortDirection(sort.direction)
     }
 
-    const sort: Sort =
+    const sort: null | { key: any; direction: any } =
         sortDirection === null || sortKey === null
             ? null
             : {
