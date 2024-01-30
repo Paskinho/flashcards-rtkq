@@ -40,10 +40,10 @@ export const Decks = ({onSubmit}: DecksProps) => {
     const [showModal, setShowModal] = useState(false)
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
-    const [search, setSearch] = useState('')
+    // const [search, setSearch] = useState('')
     const [showMyDecks, setShowMyDecks] = useState(false)
     const [range, setRange] = useState([0, 100])
-    const [sort, setSort] = useState({key: 'updated', direction: 'asc'})
+    // const [sort, setSort] = useState({key: 'updated', direction: 'asc'})
     // const sortString = sort ? `${sort.key} - ${sort.direction}` : null
     const sortString = null
 
@@ -53,7 +53,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
         maxCardsCount,
         minCardsCount,
         rangeValue,
-        // search, УТОЧНИТЬ ДУБЛИРОВАНИЯ ОБЪЯВЛЕНИЯ
+        search,
         setCurrentPage,
         setCurrentTab,
         setMaxCards,
@@ -73,7 +73,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
         orderBy: sortString
     })
 
-    const [rangeValue, setRangeValue] = useState([0, 1])
+    // const [rangeValue, setRangeValue] = useState([0, 1])
 
     useEffect(() => {
         if (rangeValue[1] !== decks?.maxCardsCount) {
