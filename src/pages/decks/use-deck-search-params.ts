@@ -4,6 +4,7 @@ import {useState} from "react";
 import {Sort} from "../../components/ui/table";
 
 
+
 export const useDeckSearchParams = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const [currentPage, setCurrentPage] = useQueryParam<number>(
@@ -52,7 +53,8 @@ export const useDeckSearchParams = () => {
         'sortDirection'
     )
 
-    const setSort = (sort: Sort) => {
+    const setSort = (sort: { key: string;
+        direction: "asc" | "desc"; }) => {
         if (!sort) {
             setSortKey(null)
             setSortDirection(null)
@@ -63,7 +65,7 @@ export const useDeckSearchParams = () => {
         setSortDirection(sort.direction)
     }
 
-    const sort: null | { key: any; direction: any } =
+    const sort: null | { key: string; direction: "asc" | "desc" } =
         sortDirection === null || sortKey === null
             ? null
             : {
