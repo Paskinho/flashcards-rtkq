@@ -36,33 +36,33 @@ type DecksProps = {
 
 export const Decks = ({onSubmit}: DecksProps) => {
 
-    // const {data: user} = useGetMeQuery()
+    const {data: user} = useGetMeQuery()
     const [showModal, setShowModal] = useState(false)
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
-    // const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('')
     const [showMyDecks, setShowMyDecks] = useState(false)
     const [range, setRange] = useState([0, 100])
-    // const [sort, setSort] = useState({key: 'updated', direction: 'asc'})
+    const [sort, setSort] = useState({key: 'updated', direction: 'asc'})
     // const sortString = sort ? `${sort.key} - ${sort.direction}` : null
     const sortString = null
 
-    const {
-        currentPage,
-        currentTab,
-        maxCardsCount,
-        minCardsCount,
-        rangeValue,
-        search,
-        setCurrentPage,
-        setCurrentTab,
-        setMaxCards,
-        setMinCards,
-        setRangeValue,
-        setSearch,
-        setSort,
-        sort,
-    } = useDeckSearchParams()
+    // const {
+    //     currentPage,
+    //     currentTab,
+    //     maxCardsCount,
+    //     minCardsCount,
+    //     rangeValue,
+    //     search,
+    //     setCurrentPage,
+    //     setCurrentTab,
+    //     setMaxCards,
+    //     setMinCards,
+    //     setRangeValue,
+    //     setSearch,
+    //     setSort,
+    //     sort,
+    // } = useDeckSearchParams()
 
     const {data: decks, isLoading} = useGetDecksQuery({
         itemsPerPage: 100,
@@ -73,7 +73,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
         orderBy: sortString
     })
 
-    // const [rangeValue, setRangeValue] = useState([0, 1])
+    const [rangeValue, setRangeValue] = useState([0, 1])
 
     useEffect(() => {
         if (rangeValue[1] !== decks?.maxCardsCount) {
@@ -248,7 +248,8 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     <Pagination
                     className={s.pagination}
                     count={decks?.pagination?.totalPages || 1}
-                    page={currentPage ?? 1}
+                    // page={currentPage ?? 1}
+                    page={ 1}
                     onChange={useDeckSearchParams}
                     />
                 </div>
