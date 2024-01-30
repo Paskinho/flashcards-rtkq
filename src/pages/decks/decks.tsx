@@ -36,7 +36,7 @@ type DecksProps = {
 
 export const Decks = ({onSubmit}: DecksProps) => {
 
-    const {data: user} = useGetMeQuery()
+    // const {data: user} = useGetMeQuery()
     const [showModal, setShowModal] = useState(false)
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
