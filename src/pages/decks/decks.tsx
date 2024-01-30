@@ -248,7 +248,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     <Pagination
                     className={s.pagination}
                     count={decks?.pagination?.totalPages || 1}
-                    page={1}
+                    page={currentPage ?? 1}
                     onChange={useDeckSearchParams}
                     />
                 </div>
