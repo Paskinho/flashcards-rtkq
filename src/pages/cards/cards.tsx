@@ -17,6 +17,7 @@ import { TextField } from "../../../src/components/ui/text-field";
 import { Typography } from "../../../src/components/ui/typography";
 import { useGetDeckByIdQuery } from "../../services/decks/decks";
 import {
+  cardsApi,
   useCreateCardMutation,
   useDeleteCardMutation,
   useGetCardsQuery,
