@@ -207,7 +207,10 @@ export const Decks = ({onSubmit}: DecksProps) => {
 
 
                 <div>
-                    <Table.Root style={{width: '100%'}}>
+                    <Table.Root style={{width:'100%',
+                        // marginRight: '120px',
+                        // marginLeft: '120px'
+                    }}>
                         <Table.Header
                             columns={columns}
                             sort={sort}

@@ -1,5 +1,7 @@
 .page {
   margin-top: 80px;
+  margin-right: 120px;
+  margin-left: 120px;
 }
 
 .deckLogo {
@@ -47,6 +49,6 @@
 }
 
 .link:hover {
-  color: #8c61ff;
+  color: var(--color-accent-300);
   text-decoration: underline;
 }
