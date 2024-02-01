@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import dayjs from "dayjs";
+import {dayjs} from "dayjs";
 import { useForm } from "react-hook-form";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { useParams } from "react-router-dom";
@@ -36,7 +36,10 @@ export const Cards = () => {
   const { deckId } = useParams<{ deckId: string }>();
   const deleteCard = useDeleteCardMutation;
   //верно вот так  const [deleteCard] = useDeleteCardMutation()
-  const [sort, setSort] = useState<Sort>({
+  const [sort, setSort] = useState<{
+    key: string;
+    direction: "asc" | "desc";
+  } | null>({
     key: "updated",
     direction: "asc",
   });

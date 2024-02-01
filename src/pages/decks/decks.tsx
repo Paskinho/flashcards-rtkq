@@ -23,6 +23,7 @@ import {Slider} from "../../components/ui/slider";
 import {Tabs, TabsList, TabsTrigger} from "@radix-ui/react-tabs";
 import {Pagination} from "../../components/ui/pagination";
 import { useDeckSearchParams } from '../decks/use-deck-search-params'
+import {FaRegCirclePlay} from "react-icons/fa6";
 
 
 const schema = z.object({})
@@ -228,19 +229,22 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                         {deck.cardsCount}
                                     </Table.Cell>
                                     <Table.Cell>
-                                        {dayjs(deck.updated).format('L, LT')}
+                                        {dayjs(deck.updated).format('DD.MM.YYYY')}
                                     </Table.Cell>
                                     <Table.Cell>
                                         {deck.author.name}
                                     </Table.Cell>
                                     <Table.Cell>
-                                        <button className={'unset'}
-                                        onClick={()=> {
-                                            deleteDeck({deckId: deck.id})
-                                        }}
-                                        >
-                                            <FaTrash/>
-                                        </button>
+                                        {/*<button className={'unset'}*/}
+                                        {/*onClick={()=> {*/}
+                                        {/*    deleteDeck({deckId: deck.id})*/}
+                                        {/*}}*/}
+                                        {/*>*/}
+                                            <FaTrash className={s.icon}   onClick={()=> {
+                                                deleteDeck({deckId: deck.id})
+                                            }}/>
+                                            {/*<FaRegCirclePlay className={s.icon}/>*/}
+                                        {/*</button>*/}
                                     </Table.Cell>
                                 </Table.Row>
 
