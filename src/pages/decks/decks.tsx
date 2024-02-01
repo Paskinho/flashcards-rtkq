@@ -13,7 +13,7 @@ import {ControlledCheckbox} from "../../components/controlled/controlled-checkbo
 import DeckLogo from '../../assets/photo/DeckLogo.png'
 import {Column, Table} from "../../components/ui/table";
 import {useGetMeQuery} from "../../services/auth/auth";
-import {FaSearch, FaTrash} from "react-icons/fa";
+import {FaEdit, FaSearch, FaTrash} from "react-icons/fa";
 import {useCreateDeckMutation, useDeleteDeckMutation, useGetDecksQuery} from "../../services/decks/decks";
 import {toast} from "react-toastify";
 import {Link} from "react-router-dom";
@@ -240,7 +240,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                         {/*    deleteDeck({deckId: deck.id})*/}
                                         {/*}}*/}
                                         {/*>*/}
-                                            <FaTrash className={s.icon}   onClick={()=> {
+                                            <FaEdit className={s.icon}   onClick={()=> {
                                                 deleteDeck({deckId: deck.id})
                                             }}/>
                                             {/*<FaRegCirclePlay className={s.icon}/>*/}

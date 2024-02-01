@@ -16,11 +16,11 @@ import { Column, Sort, Table } from "../../../src/components/ui/table";
 import { TextField } from "../../../src/components/ui/text-field";
 import { Typography } from "../../../src/components/ui/typography";
 import { useGetDeckByIdQuery } from "../../services/decks/decks";
+import {useGetCardsQuery} from "../../services/cards/cards"
 import {
   cardsApi,
   useCreateCardMutation,
   useDeleteCardMutation,
-  useGetCardsQuery,
 } from "../../services/cards/cards";
 
 import s from "./cards.module.scss";
@@ -52,11 +52,11 @@ export const Cards = () => {
 
   const { data: deck } = useGetDeckByIdQuery(deckId || "");
   const { data: cards, isLoading } = useGetCardsQuery({
-    deckId: deckId || "",
+    deckId: deckId || '',
     orderBy: sortString,
     currentPage: page,
     itemsPerPage: perPage,
-  });
+  })
 
   if (!deckId) return <div>DECK NOT FOUND</div>;
 

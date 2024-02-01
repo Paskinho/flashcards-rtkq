@@ -15,7 +15,7 @@ export const cardsApi = createApi({
     baseURL: import.meta.env.VITE_BASE_API_URL,
     credentials: "include",
   }),
-  tagtypes: ["Cards"],
+  tagTypes: ["Cards"],
   endpoints: (builder) => ({
     getCards: builder.query<Paginated<Card>, GetCardsParams>({
       query: ({ deckId, ...params }) => {
