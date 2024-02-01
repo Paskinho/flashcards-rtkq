@@ -245,7 +245,6 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                 </Table.Row>
 
                             ))}
-
                                 </Table.Body>
                                 </Table.Root>
                     <Pagination
