@@ -8,8 +8,9 @@
 }
 
 .field {
-  width: 150px;
-  height: 10px;
+  width: 100%;
+  //width: 150px;
+  height: 100%;
   padding: 6px 12px;
 
   font-family: inherit;
@@ -19,7 +20,7 @@
   color: var(--color-light-100);
 
   background: transparent;
-  border: 1px solid black;
+  border: 1px solid rgb(124, 122, 122);
   outline: 0;
 
   transition: border-color 0.2s;
@@ -34,7 +35,6 @@
   }
 
   &:hover {
-    background: rgb(215 189 231 / 99%);
   }
 
   &.error {

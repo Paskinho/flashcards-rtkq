@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import dayjs from "dayjs";
+import {dayjs} from "dayjs";
 import { useForm } from "react-hook-form";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { useParams } from "react-router-dom";
@@ -15,11 +15,12 @@ import { Page } from "../../../src/components/ui/page";
 import { Column, Sort, Table } from "../../../src/components/ui/table";
 import { TextField } from "../../../src/components/ui/text-field";
 import { Typography } from "../../../src/components/ui/typography";
-import { useGetDeckByIdQuery } from "../../../src/services/decks/decks";
+import { useGetDeckByIdQuery } from "../../services/decks/decks";
+import {useGetCardsQuery} from "../../services/cards/cards"
 import {
+  cardsApi,
   useCreateCardMutation,
   useDeleteCardMutation,
-  useGetCardsQuery,
 } from "../../services/cards/cards";
 
 import s from "./cards.module.scss";
@@ -35,7 +36,10 @@ export const Cards = () => {
   const { deckId } = useParams<{ deckId: string }>();
   const deleteCard = useDeleteCardMutation;
   //верно вот так  const [deleteCard] = useDeleteCardMutation()
-  const [sort, setSort] = useState<Sort>({
+  const [sort, setSort] = useState<{
+    key: string;
+    direction: "asc" | "desc";
+  } | null>({
     key: "updated",
     direction: "asc",
   });
@@ -48,11 +52,11 @@ export const Cards = () => {
 
   const { data: deck } = useGetDeckByIdQuery(deckId || "");
   const { data: cards, isLoading } = useGetCardsQuery({
-    deckId: deckId || "",
+    deckId: deckId || '',
     orderBy: sortString,
     currentPage: page,
     itemsPerPage: perPage,
-  });
+  })
 
   if (!deckId) return <div>DECK NOT FOUND</div>;
 

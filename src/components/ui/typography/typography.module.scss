@@ -52,7 +52,7 @@
     @include typography(var(--font-size-s), var(--line-height-m), var(--font-weight-regular));
 
     cursor: pointer;
-    color: var(--color-text-link);
+    color: var(--color-accent-500);
     text-decoration: underline;
 }
 

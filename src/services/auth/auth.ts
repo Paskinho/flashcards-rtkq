@@ -4,12 +4,13 @@ import { LoginArgs, User } from "./types";
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({
-    baseURL: import.meta.env.VITE_BASE_API_URL,
-    credentials: "include",
-  }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://api.flashcards.andrii.es/v1/', credentials: 'include' }),
+  //варианты URL
+  //import.meta.env.VITE_BASE_API_URL
+  //https://api.flashcards.andrii.es/
+
   tagTypes: ["Me"],
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     getMe: builder.query<User | null, void>({
       query: () => "auth/me",
       extraOptions: { maxRetries: false },
@@ -24,16 +25,16 @@ export const authApi = createApi({
       }),
       invalidatesTags: ["Me"],
     }),
-    singUp: builder.mutation({
-      query: (body) => ({
-        url: "auth/sign-up",
-        method: "POST",
+    signUp: builder.mutation({
+      query: body => ({
+        url: `auth/sign-up`,
+        method: 'POST',
         body,
       }),
     }),
     resetPassword: builder.mutation<
       unknown,
-      { token: string; passowrd: string }
+      { token: string; password: string }
     >({
       query: (token, password) => ({
         url: `auth/reset-password/${token}`,

@@ -14,7 +14,7 @@ export const Layout = () => {
   const isAuthenticated = !isError && !isLoading;
 
   if (isLoading) {
-    return <div>Is Loading</div>;
+    // return <div>Is Loading</div>;
 
     return <Spinner fullScreen />;
   }

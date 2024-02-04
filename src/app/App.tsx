@@ -1,92 +1,95 @@
-import React, { useState } from "react";
-
-import { Provider } from "react-redux";
-import {
-  RouterProvider,
-  createBrowserRouter,
-  Outlet,
-  Navigate,
-} from "react-router-dom";
-
-import { store } from "../../src/app/store";
-import { LoginForm } from "../../src/components/auth/login-form/login-form";
-import { Button } from "../../src/components/ui/button";
-import { Cards } from "../../src/pages/cards";
-import { Profile } from "../../src/pages/profile/profile";
-import { RecoverPassword } from "../components/auth/recover-password/recover-password.tsx";
-import { Layout } from "../components/layout/layout.tsx";
-import { Login } from "../pages/login";
-import { useGetMeQuery } from "../services/auth/auth.ts";
+import {useState} from "react";
+import {createBrowserRouter, RouterProvider,} from "react-router-dom";
+import {Button} from "../../src/components/ui/button";
+import {Cards} from "../../src/pages/cards";
+import {Profile} from "../../src/pages/profile/profile";
+import {RecoverPassword} from "../components/auth/recover-password/recover-password.tsx";
+import {Layout} from "../components/layout/layout.tsx";
+import {Login} from "../pages/login";
+import {SignUpPage} from "../pages/sign-up/signUpPage";
+import {NewPassword} from "../components/auth/new-password";
+import {Decks} from "../pages/decks";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        element: <ProtectedRoutes />,
+    {
+        path: "/",
+        element: <Layout/>,
         children: [
-          {
-            path: "/",
-            element: <div> Hello!</div>,
-          },
-          {
-            path: "cards", //"cards/:deckId"
-            element: <Cards />,
-          },
-          {
-            path: "profile",
-            element: <Profile />,
-          },
-          {
-            path: "recover-password",
-            element: <RecoverPassword />,
-          },
+            // element: <ProtectedRoutes />,
+            // children: [
+            {
+                path: "/",
+                element: <div> Hello!</div>,
+            },
+            {
+                path: "/decks",
+                element: <Decks/>,
+            },
+            {
+                path: "cards/:deckId", //"cards/:deckId"
+                element: <Cards/>,
+            },
+            {
+                path: "profile",
+                element: <Profile/>,
+            },
+            {
+                path: "login",
+                element: <Login/>,
+            },
+            {
+                path: "sign-up",
+                element: <SignUpPage/>,
+            },
+            {
+                path: "recover-password",
+                element: <RecoverPassword onSubmit={() => {
+                }}/>,
+            },
+            {
+                path: "new-password",
+                element: <NewPassword onSubmit={() => {
+                }}/>,
+            },
         ],
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-    ],
-  },
+    },
 ]);
 
 export function App() {
-  const handleThemeChanged = useHandleThemeChanged();
+    const handleThemeChanged = useHandleThemeChanged();
 
-  return (
-    <div>
-      {/*<Cards />*/}
+    return (
+        <div>
+            {/*<Cards />*/}
 
-      {/*<Login />*/}
+            {/*<Login />*/}
 
-      <RouterProvider router={router} />
-      {/*<Profile />*/}
-      <Button
-        onClick={handleThemeChanged}
-        // style={{ position: "fixed", top: "50%" }}
-      >
-        Change Theme
-      </Button>
-      {/*<Provider store={store}></Provider>*/}
-    </div>
-  );
+            <RouterProvider router={router}/>
+            {/*<Profile />*/}
+            {/*<Button*/}
+            {/*    onClick={handleThemeChanged}*/}
+            {/*    // style={{ position: "fixed", top: "50%" }}*/}
+            {/*>*/}
+            {/*    Change Theme*/}
+            {/*</Button>*/}
+            {/*<Provider store={store}></Provider>*/}
+        </div>
+    );
 }
 
 function ProtectedRoutes() {
-  // const { data, isLoading } = useGetMeQuery();
-  //
-  // if (isLoading) return <div>Loading...</div>;
-  //
-  // return data ? <Outlet /> : <Navigate to="/login" />;
+    // const { data, isLoading } = useGetMeQuery();
+    //
+    // if (isLoading) return <div>Loading...</div>;
+    //
+    // return data ? <Outlet /> : <Navigate to="/login" />;
 }
 
 function useHandleThemeChanged() {
-  const [state, setState] = useState(false);
+    const [state, setState] = useState(false);
 
-  return () => {
-    document.body.classList.toggle("dark-mode", state);
-    setState(!state);
-  };
+    return () => {
+        document.body.classList.toggle("dark-mode", state);
+        setState(!state);
+    };
 }
