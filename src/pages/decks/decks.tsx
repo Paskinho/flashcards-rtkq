@@ -1,4 +1,3 @@
-import {DevTool} from "@hookform/devtools";
 import {z} from "zod";
 import {Page} from "../../components/ui/page";
 import {useForm} from "react-hook-form";
@@ -12,18 +11,15 @@ import {useEffect, useState} from "react";
 import {ControlledCheckbox} from "../../components/controlled/controlled-checkbox";
 import DeckLogo from '../../assets/photo/DeckLogo.png'
 import {Column, Table} from "../../components/ui/table";
-import {useGetMeQuery} from "../../services/auth/auth";
-import {FaEdit, FaSearch, FaTrash} from "react-icons/fa";
+import {FaEdit, FaTrash} from "react-icons/fa";
 import {useCreateDeckMutation, useDeleteDeckMutation, useGetDecksQuery} from "../../services/decks/decks";
 import {toast} from "react-toastify";
 import {Link} from "react-router-dom";
 import * as dayjs from "dayjs";
 import {Toggle} from "../../components/ui/toggle";
 import {Slider} from "../../components/ui/slider";
-import {Tabs, TabsList, TabsTrigger} from "@radix-ui/react-tabs";
 import {Pagination} from "../../components/ui/pagination";
-import { useDeckSearchParams } from '../decks/use-deck-search-params'
-import {FaRegCirclePlay} from "react-icons/fa6";
+import {useDeckSearchParams} from '../decks/use-deck-search-params'
 
 
 const schema = z.object({})
