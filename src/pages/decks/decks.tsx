@@ -79,7 +79,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
     }, [decks?.maxCardsCount])
 
 
-    const {control, handleSubmit} = useForm<FormType>({
+  const { control, handleSubmit } = useForm<FormType>({
         resolver: zodResolver(schema),
         defaultValues: {
             isPrivate: false,
