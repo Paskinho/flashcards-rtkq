@@ -195,7 +195,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                         max={decks?.maxCardsCount}
                         />
                     </div>
-                    <Button variant={'secondary'} onClick={resetFilters}>
+                    <Button className={s.button} variant={'secondary'} onClick={resetFilters}>
                        <FaTrash/>
                        Reset Filters
                     </Button>
