@@ -3,6 +3,8 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {Paginated, PaginatedArgs} from '../common/types'
 
 import {CreateDeckInput, Deck, DeleteDeckInput, GetDecksParams} from './types'
+import {Card, GetCardsParams} from "../cards/types";
+import {isEmpty} from "remeda";
 
 // Define a service using a base URL and expected endpoints
 export const decksApi = createApi({
@@ -31,6 +33,14 @@ export const decksApi = createApi({
             }),
             invalidatesTags: ['Decks'],
         }),
+        getDeckCards: builder.query<Paginated<Card>, GetCardsParams>({
+            query: ({deckId, ...params}) => {
+                return {
+                    url: `decks/${deckId}/cards`,
+                    params: isEmpty(params) ? undefined : params,
+                }
+            }
+        }),
         deleteDeck: builder.mutation<any, DeleteDeckInput>({
             query: ({deckId}) => ({
                 url: `decks/${deckId}`,
@@ -48,4 +58,5 @@ export const {
     useGetDeckByIdQuery,
     useDeleteDeckMutation,
     useCreateDeckMutation,
+    useGetDeckCardsQuery
 } = decksApi

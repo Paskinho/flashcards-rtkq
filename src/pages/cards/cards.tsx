@@ -15,7 +15,8 @@ import { Page } from "../../../src/components/ui/page";
 import { Column, Sort, Table } from "../../../src/components/ui/table";
 import { TextField } from "../../../src/components/ui/text-field";
 import { Typography } from "../../../src/components/ui/typography";
-import { useGetDeckByIdQuery } from "../../services/decks/decks";
+import {useGetDeckByIdQuery} from "../../services/decks/decks";
+import {useGetDeckCardsQuery} from '../../services/decks/decks'
 import {useGetCardsQuery} from "../../services/cards/cards"
 import {
   cardsApi,
@@ -51,7 +52,7 @@ export const Cards = () => {
   const [search, setSearch] = useState("");
 
   const { data: deck } = useGetDeckByIdQuery(deckId || "");
-  const { data: cards, isLoading } = useGetCardsQuery({
+  const { data: cards, isLoading } = useGetDeckCardsQuery({
     deckId: deckId || '',
     orderBy: sortString,
     currentPage: page,
