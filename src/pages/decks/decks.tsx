@@ -217,7 +217,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                             {decks?.items?.map(deck => (
                                 <Table.Row key={deck.id}>
                                     <Table.Cell>
-                                        <Link to={`/cards/${deck.id}`} className={s.link}>
+                                        <Link to={`cards/${deck.id}`} className={s.link}>
                                             {deck.name}
                                         </Link>
                                     </Table.Cell>

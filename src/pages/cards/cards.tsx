@@ -58,6 +58,8 @@ export const Cards = () => {
     itemsPerPage: perPage,
   })
 
+
+
   if (!deckId) return <div>DECK NOT FOUND</div>;
 
   if (isLoading) return <div>LOADING...</div>;
