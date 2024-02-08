@@ -26,7 +26,7 @@ const router = createBrowserRouter([
                 element: <Decks/>,
             },
             {
-                path: "cards/:deckId", //"cards/:deckId"
+                path: "decks/cards/:deckId", //"cards/:deckId"
                 element: <Cards/>,
             },
             {
