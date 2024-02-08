@@ -77,7 +77,7 @@ export const Cards = () => {
     <Page className={s.cards} flex>
       <img
         src={deck?.cover}
-        alt={deck.name}
+        alt={deck?.name} // было без вопроса (обязательный аргумент)
         className={"w-full h-64 object-cover"}
       />
       <div className={"flex items-center mb-6 justify-between"}>
@@ -128,7 +128,7 @@ const CreateCardModal = ({ deckId }: { deckId: string }) => {
   const closeModal = () => setShowModal(false);
   const openModal = () => setShowModal(true);
 
-  const [createCard] = useCreateCardMutation();
+  // const [createCard] = useCreateCardMutation();
 
   const [control, handleSubmit] = useForm<NewCard>({
     resolver: zodResolver(newDeckSchema),
@@ -139,15 +139,15 @@ const CreateCardModal = ({ deckId }: { deckId: string }) => {
   });
 
   const handleCardCreated = handleSubmit((args: NewCard) => {
-    createCard({ ...args, deckId })
-      .unwrap()
-      .then(() => {
-        toast.success("Card created succesfully");
-        closeModal();
-      })
-      .catch((err) => {
-        toast.error(err.data.message);
-      });
+    // createCard({ ...args, deckId })
+    //   .unwrap()
+    //   .then(() => {
+    //     toast.success("Card created succesfully");
+    //     closeModal();
+    //   })
+    //   .catch((err) => {
+    //     toast.error(err.data.message);
+    //   });
   });
 
   return (
