@@ -130,7 +130,7 @@ const CreateCardModal = ({ deckId }: { deckId: string }) => {
 
   // const [createCard] = useCreateCardMutation();
 
-  const [control, handleSubmit] = useForm<NewCard>({
+  const {control, handleSubmit} = useForm<NewCard>({
     resolver: zodResolver(newDeckSchema),
     defaultValues: {
       question: "",
