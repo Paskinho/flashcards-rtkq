@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {dayjs} from "dayjs";
 import { useForm } from "react-hook-form";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { toast } from "react-toastify";
 import { z } from "zod";
 
@@ -99,7 +99,7 @@ export const Cards = () => {
               <Table.Row key={card.id}>
                 <Table.Cell>{card.question}</Table.Cell>
                 <Table.Cell>{card.answer}</Table.Cell>
-                <Table.Cell>{dayjs(card.updated).format("L, LT")}</Table.Cell>
+                {/*<Table.Cell>{dayjs(card.updated).format("L, LT")}</Table.Cell>*/}
                 <Table.Cell>{card.grade}</Table.Cell>
                 <Table.Cell className={"flex gap-4 items-center"}>
                   <button className={"unset"}>
@@ -150,8 +150,11 @@ const CreateCardModal = ({ deckId }: { deckId: string }) => {
     //   });
   });
 
+  const learnLink = `/decks/${deckId}/learn`
+
   return (
     <>
+      <Button as={Link} to={learnLink}>Learn Card</Button>
       <Button onClick={openModal}>Add New Card</Button>
       <Modal open={showModal} onClose={closeModal} title={"Create Card"}>
         <form onSubmit={handleCardCreated} className={"gap-4 flex flex-column"}>
