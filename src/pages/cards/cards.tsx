@@ -74,7 +74,7 @@ export const Cards = () => {
   ];
 
   return (
-    <Page className={s.cards} flex>
+    <Page className={s.cards}>
       <img
         src={deck?.cover}
         alt={deck?.name} // было без вопроса (обязательный аргумент)
