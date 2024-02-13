@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import {dayjs} from "dayjs";
+import * as dayjs from "dayjs";
 import { useForm } from "react-hook-form";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import {Link, useParams} from "react-router-dom";
@@ -99,7 +99,7 @@ export const Cards = () => {
               <Table.Row key={card.id}>
                 <Table.Cell>{card.question}</Table.Cell>
                 <Table.Cell>{card.answer}</Table.Cell>
-                {/*<Table.Cell>{dayjs(card.updated).format("L, LT")}</Table.Cell>*/}
+                <Table.Cell>{dayjs(card.updated).format('DD.MM.YYYY')}</Table.Cell>
                 <Table.Cell>{card.grade}</Table.Cell>
                 <Table.Cell className={"flex gap-4 items-center"}>
                   <button className={"unset"}>
