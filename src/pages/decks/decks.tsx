@@ -127,8 +127,6 @@ export const Decks = ({onSubmit}: DecksProps) => {
 
     if (isLoading) return <div>loading...</div>
 
-
-
     return (
         <Page>
             <Modal open={showModal} onClose={closeModal} title={'Create Deck'}>

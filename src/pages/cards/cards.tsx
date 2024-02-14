@@ -143,7 +143,7 @@ const CreateCardModal = ({ deckId }: { deckId: string }) => {
     // createCard({ ...args, deckId })
     //   .unwrap()
     //   .then(() => {
-    //     toast.success("Card created succesfully");
+    //     toast.success("Card created successfully");
     //     closeModal();
     //   })
     //   .catch((err) => {
