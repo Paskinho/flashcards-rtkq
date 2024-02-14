@@ -25,6 +25,7 @@ import {
 } from "../../services/cards/cards";
 
 import s from "./cards.module.scss";
+import {LearnCard} from "../../components/card/learnCard";
 
 const newDeckSchema = z.object({
   question: z.string().min(3).max(500),

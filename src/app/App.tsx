@@ -9,6 +9,7 @@ import {Login} from "../pages/login";
 import {SignUpPage} from "../pages/sign-up/signUpPage";
 import {NewPassword} from "../components/auth/new-password";
 import {Decks} from "../pages/decks";
+import {LearnCard} from "../components/card/learnCard";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
                 element: <NewPassword onSubmit={() => {
                 }}/>,
             },
+            {
+                path:'learnCard',
+                element: <LearnCard/>
+            }
         ],
     },
 ]);
