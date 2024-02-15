@@ -5,9 +5,7 @@ import * as dayjs from "dayjs";
 import { useForm } from "react-hook-form";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import {Link, useParams} from "react-router-dom";
-import { toast } from "react-toastify";
 import { z } from "zod";
-
 import { ControlledTextField } from "../../../src/components/controlled/controlled-text-field";
 import { Button } from "../../../src/components/ui/button";
 import { Modal } from "../../../src/components/ui/modal";
@@ -87,7 +85,7 @@ export const Cards = () => {
       </div>
       <div>
         <TextField
-          placeholder={"Search"}
+          placeholder={"Search by question"}
           value={search}
           onValueChange={setSearch}
         />
@@ -103,17 +101,17 @@ export const Cards = () => {
                 <Table.Cell>{dayjs(card.updated).format('DD.MM.YYYY')}</Table.Cell>
                 <Table.Cell>{card.grade}</Table.Cell>
                 <Table.Cell className={"flex gap-4 items-center"}>
-                  <button className={"unset"}>
-                    <FaEdit />
-                  </button>
-                  <button
-                    className={"unset"}
-                    onClick={() => {
-                      deleteCard(card.id);
-                    }}
-                  >
-                    <FaTrash />
-                  </button>
+                  {/*<button className={"unset"}>*/}
+                  {/*  <FaEdit />*/}
+                  {/*</button>*/}
+                  {/*<button*/}
+                  {/*  className={"unset"}*/}
+                  {/*  onClick={() => {*/}
+                  {/*    deleteCard(card.id);*/}
+                  {/*  }}*/}
+                  {/*>*/}
+                  {/*  <FaTrash />*/}
+                  {/*</button>*/}
                 </Table.Cell>
               </Table.Row>
             ))}
