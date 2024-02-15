@@ -24,7 +24,8 @@ export const LearnCard = (
         answer,
         answerImage,
         numberAttempts,
-    } : LearnCardPropsType
+        defaultValue = '1'
+    }: LearnCardPropsType
 ) => {
 
     const [isOpen, setIsOpen] = useState(false)
@@ -32,7 +33,7 @@ export const LearnCard = (
     const [radioValue, setRadioValue] = useState('')
 
     const showAnswer = () => {
-        // setRadioValue(defaultValue)
+        setRadioValue(defaultValue)
         setIsOpen(true)
     }
     const closeAnswer = () => {
@@ -43,29 +44,32 @@ export const LearnCard = (
 
     return (
         <Page flex>
-        <Card className={s.card}>
-            <Typography variant={'large'}>
-                Learn {packName}
-            </Typography>
-            <Typography variant={'small'}>
-                {question}
-            </Typography>
-            <Typography variant={'small'}>
-               Count of attempts: {numberAttempts}
-            </Typography>
-            <img alt={questionImage} src={questionImage}/>
+            <Card className={s.card}>
+                <Typography variant={'large'}>
+                    Learn {packName}
+                </Typography>
+                <Typography variant={'small'}>
+                    {question}
+                </Typography>
+                <Typography variant={'small'}>
+                    Count of attempts: {numberAttempts}
+                </Typography>
+                <img alt={questionImage} src={questionImage}/>
 
-            <Button onClick={
-                isOpen ? () => {
-                    closeAnswer()
-                } : showAnswer
+                <Button onClick={
+                    isOpen ? () => {
+                        closeAnswer()
+                    } : showAnswer
 
-            }>Show Answer</Button>
-            <Typography variant={'small'}>
-                Answer:{answer}
-            </Typography>
-            <img alt={answerImage} src={answerImage}/>
-        </Card>
+                }
+                        variant={'primary'}
+                        fullWidth
+                >Show Answer</Button>
+                <Typography variant={'small'}>
+                    Answer:{answer}
+                </Typography>
+                <img alt={answerImage} src={answerImage}/>
+            </Card>
         </Page>
     )
 }
