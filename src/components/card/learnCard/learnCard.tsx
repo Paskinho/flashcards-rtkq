@@ -4,6 +4,7 @@ import s from './learnCard.module.scss'
 import {Button} from "../../ui/button";
 import {Page} from "../../ui/page";
 import {useState} from "react";
+import {RateLearnCard} from "../../../pages/learnPage/rateLearnCard";
 
 type LearnCardPropsType = {
     packName: string
@@ -56,7 +57,6 @@ export const LearnCard = (
                 </Typography>
                 <img alt={questionImage} src={questionImage}/>
 
-
                 {isOpen ? (
 
 
@@ -68,9 +68,10 @@ export const LearnCard = (
                             <Typography>
                                 Rate yourself:
                             </Typography>
-                            <Button variant={'primary'}
-                                    fullWidth
-                            >Next Question</Button>
+                            <RateLearnCard/>
+                            {/*<Button variant={'primary'}*/}
+                            {/*        fullWidth*/}
+                            {/*>Next Question</Button>*/}
                         </>
                     ) :
                     (
