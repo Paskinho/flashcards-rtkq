@@ -65,17 +65,28 @@ export const LearnCard = (
                         variant={'primary'}
                         fullWidth
                 >Show Answer</Button>
-                <Typography variant={'small'}>
-                    Answer:{answer}
-                </Typography>
-                <img alt={answerImage} src={answerImage}/>
-                <Typography>
-                    Rate yourself:
-                </Typography>
-                <Button variant={'primary'}
-                fullWidth
-                >Next Question</Button>
+                {isOpen ? (
+
+
+                        <>
+                            <Typography variant={'small'}>
+                                Answer:{answer}
+                            </Typography>
+                            <img alt={answerImage} src={answerImage}/>
+                            <Typography>
+                                Rate yourself:
+                            </Typography>
+                            <Button variant={'primary'}
+                                    fullWidth
+                            >Next Question</Button>
+                        </>
+                    ) :
+                    (
+                        <Button>Show answer</Button>
+                    )
+                }
             </Card>
+
         </Page>
     )
 }
