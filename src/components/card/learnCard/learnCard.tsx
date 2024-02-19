@@ -49,22 +49,14 @@ export const LearnCard = (
                     Learn {packName}
                 </Typography>
                 <Typography variant={'small'}>
-                    {question}
+                    Question: {question}
                 </Typography>
                 <Typography variant={'small'}>
                     Count of attempts: {numberAttempts}
                 </Typography>
                 <img alt={questionImage} src={questionImage}/>
 
-                <Button onClick={
-                    isOpen ? () => {
-                        closeAnswer()
-                    } : showAnswer
 
-                }
-                        variant={'primary'}
-                        fullWidth
-                >Show Answer</Button>
                 {isOpen ? (
 
 
@@ -82,7 +74,15 @@ export const LearnCard = (
                         </>
                     ) :
                     (
-                        <Button>Show answer</Button>
+                        <Button onClick={
+                            isOpen ? () => {
+                                closeAnswer()
+                            } : showAnswer
+
+                        }
+                                variant={'primary'}
+                                fullWidth
+                        >Show Answer</Button>
                     )
                 }
             </Card>
