@@ -69,6 +69,12 @@ export const LearnCard = (
                     Answer:{answer}
                 </Typography>
                 <img alt={answerImage} src={answerImage}/>
+                <Typography>
+                    Rate yourself:
+                </Typography>
+                <Button variant={'primary'}
+                fullWidth
+                >Next Question</Button>
             </Card>
         </Page>
     )
