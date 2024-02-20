@@ -1,9 +1,9 @@
 import {RadioGroup, RadioGroupProps} from "../../ui/radioGroup";
 import {FieldValues, useController, UseControllerProps} from "react-hook-form";
-
+import { JSX } from 'react'
 
 type ControlledRadioGroupProps<T extends FieldValues> = UseControllerProps<T> &
-    Omit<RadioGroupProps>, 'value | onValueChange'
+    Omit<RadioGroupProps, 'value | onValueChange'>
 
 export const ControlledRadioGroup = <T extends FieldValues>({
     name,

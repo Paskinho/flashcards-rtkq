@@ -1,0 +1,110 @@
+@mixin container {
+  width: 100%;
+  max-width: 117rem;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@mixin button {
+  all: unset;
+
+  cursor: pointer;
+  user-select: none;
+
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.6rem 2.8rem;
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+  text-align: center;
+  text-decoration: none;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+
+  transition: all 0.2s ease-in-out;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-info-700);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@mixin typography($fontSize, $lineHeight, $fontWeight) {
+  margin: 0;
+
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+  color: var(--color-light-100);
+}
+
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $gap: 0, $wrap: nowrap) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  flex-wrap: $wrap;
+  gap: $gap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin radio($color) {
+  content: '';
+
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 2.25rem;
+  height: 2.25rem;
+
+  background-color: $color;
+  border-radius: 50%;
+}
+
+@mixin pagination-item {
+  @include flex($justify: center, $align: center);
+
+  min-width: 2.4rem;
+  height: 2.4rem;
+
+  &:focus-visible {
+    border-radius: 2px;
+    outline: 2px solid var(--color-info-900);
+  }
+}
+
+@mixin input-icon($left, $right) {
+  @include flex($align: center);
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 2rem;
+  height: 2rem;
+
+  color: var(--color-dark-100);
+
+  @if $right != 0 {
+    right: $right;
+  }
+
+  @if $left != 0 {
+    left: $left;
+  }
+}
