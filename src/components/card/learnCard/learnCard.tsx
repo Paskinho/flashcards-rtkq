@@ -4,7 +4,7 @@ import s from './learnCard.module.scss'
 import {Button} from "../../ui/button";
 import {Page} from "../../ui/page";
 import {useState} from "react";
-import {RateLearnCard} from "../../../pages/learnPage/rateLearnCard";
+import {RateLearnCard, RateLearnCardValues} from "../../../pages/learnPage/rateLearnCard";
 
 type LearnCardPropsType = {
     packName: string
@@ -39,6 +39,9 @@ export const LearnCard = (
     }
     const closeAnswer = () => {
         setIsOpen(false)
+    }
+
+    const onSubmit = (data: RateLearnCardValues) => {
     }
 
     // const {data: card} = useGetRandomCardQuery({id})
