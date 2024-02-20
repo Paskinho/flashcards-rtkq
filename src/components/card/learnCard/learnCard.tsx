@@ -68,7 +68,7 @@ export const LearnCard = (
                             <Typography>
                                 Rate yourself:
                             </Typography>
-                            <RateLearnCard/>
+                            <RateLearnCard onSubmit={onSubmit}/>
                             {/*<Button variant={'primary'}*/}
                             {/*        fullWidth*/}
                             {/*>Next Question</Button>*/}
