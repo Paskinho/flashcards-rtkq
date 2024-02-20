@@ -1,5 +1,5 @@
 import {ComponentPropsWithoutRef, ElementRef, forwardRef, JSX} from "react";
-import {Radio} from "@radix-ui/react-radio-group";
+import * as Radio from '@radix-ui/react-radio-group'
 import cn from 'classnames'
 import s from './RadioItem.module.scss'
 import {Typography} from "../../typography";
