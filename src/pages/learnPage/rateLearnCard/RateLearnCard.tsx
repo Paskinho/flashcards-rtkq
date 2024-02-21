@@ -20,7 +20,7 @@ export const RateLearnCard = ({onSubmit}: Props): JSX.Element => {
     })
 
     return (
-        <form>
+        <form className={s.root} onSubmit={handleSubmit(onSubmit)}>
             <ControlledRadioGroup
                 className={s.radioGroup}
                 control={control}
