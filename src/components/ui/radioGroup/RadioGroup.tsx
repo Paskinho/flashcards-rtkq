@@ -20,6 +20,5 @@ export const RadioGroup = forwardRef<ElementRef<typeof Radio.Root>, RadioGroupPr
                 ))}
             </Radio.Root>
         )
-
 }
 )
