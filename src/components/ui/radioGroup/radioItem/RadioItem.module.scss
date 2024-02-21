@@ -1,4 +1,4 @@
-//@import "./../src/styles/mixins";
+@import "./../src/styles/mixins";
 
 .label {
   cursor: pointer;
@@ -26,17 +26,17 @@
     border: 2px solid var(--color-accent-500);
     border-radius: 50%;
 
-    //&:hover::before {
-    //  @include radio(var(--color-dark-500));
-    //}
-    //
-    //&:active::before {
-    //  @include radio(var(--color-accent-900));
-    //}
-    //
-    //&:focus-visible::before {
-    //  @include radio(var(--color-dark-700));
-    //}
+    &:hover::before {
+      @include radio(var(--color-dark-500));
+    }
+
+    &:active::before {
+      @include radio(var(--color-accent-900));
+    }
+
+    &:focus-visible::before {
+      @include radio(var(--color-dark-700));
+    }
 
     &:disabled {
       cursor: default;
