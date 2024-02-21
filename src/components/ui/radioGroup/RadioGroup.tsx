@@ -14,7 +14,7 @@ export const RadioGroup = forwardRef<ElementRef<typeof Radio.Root>, RadioGroupPr
 ): JSX.Element => {
    const rootClassName = cn(s.root, className)
         return (
-            <Radio.Root>
+            <Radio.Root ref={ref} className={rootClassName} {...restProps}>
                 {options.map(item => (
                     <RadioItem key={item.value} {...item}/>
                 ))}
