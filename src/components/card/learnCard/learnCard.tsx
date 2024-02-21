@@ -68,7 +68,7 @@ export const LearnCard = (
                                 Answer:{answer}
                             </Typography>
                             <img alt={answerImage} src={answerImage}/>
-                            <Typography>
+                            <Typography variant={'subtitle1'}>
                                 Rate yourself:
                             </Typography>
                             <RateLearnCard onSubmit={onSubmit}/>
