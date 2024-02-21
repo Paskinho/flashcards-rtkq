@@ -18,11 +18,11 @@ export const RadioItem = forwardRef<ElementRef<typeof Radio.Item>, RadioItemProp
      }
 
      return (
-         <Typography className={classNames.label} as={'label'}>
+         <Typography className={classNames.label} as={'label'} variant={'body2'}>
              <Radio.Item ref={ref} className={classNames.item} value={value} disabled={disabled}>
                  <Radio.Indicator classname={classNames.indicator}/>
              </Radio.Item>
-             <Typography className={classNames.title} as={'span'}>
+             <Typography className={classNames.title} as={'span'} variant={'body2'}>
                  {title}
              </Typography>
 
@@ -31,5 +31,3 @@ export const RadioItem = forwardRef<ElementRef<typeof Radio.Item>, RadioItemProp
 
     }
 )
-
-//уточнить по variant у Typography
