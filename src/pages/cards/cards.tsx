@@ -1,29 +1,21 @@
-import { useState } from "react";
+import {useState} from "react";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import {zodResolver} from "@hookform/resolvers/zod";
 import * as dayjs from "dayjs";
-import { useForm } from "react-hook-form";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import {useForm} from "react-hook-form";
 import {Link, useParams} from "react-router-dom";
-import { z } from "zod";
-import { ControlledTextField } from "../../../src/components/controlled/controlled-text-field";
-import { Button } from "../../../src/components/ui/button";
-import { Modal } from "../../../src/components/ui/modal";
-import { Page } from "../../../src/components/ui/page";
-import { Column, Sort, Table } from "../../../src/components/ui/table";
-import { TextField } from "../../../src/components/ui/text-field";
-import { Typography } from "../../../src/components/ui/typography";
-import {useGetDeckByIdQuery} from "../../services/decks/decks";
-import {useGetDeckCardsQuery} from '../../services/decks/decks'
-import {useGetCardsQuery} from "../../services/cards/cards"
-import {
-  cardsApi,
-  useCreateCardMutation,
-  useDeleteCardMutation,
-} from "../../services/cards/cards";
+import {z} from "zod";
+import {ControlledTextField} from "../../../src/components/controlled/controlled-text-field";
+import {Button} from "../../../src/components/ui/button";
+import {Modal} from "../../../src/components/ui/modal";
+import {Page} from "../../../src/components/ui/page";
+import {Column, Table} from "../../../src/components/ui/table";
+import {TextField} from "../../../src/components/ui/text-field";
+import {Typography} from "../../../src/components/ui/typography";
+import {useGetDeckByIdQuery, useGetDeckCardsQuery} from "../../services/decks/decks";
+import {useDeleteCardMutation} from "../../services/cards/cards"
 
 import s from "./cards.module.scss";
-import {LearnCard} from "../../components/card/learnCard";
 
 const newDeckSchema = z.object({
   question: z.string().min(3).max(500),
