@@ -1,6 +1,5 @@
 import {useState} from "react";
 import {createBrowserRouter, RouterProvider,} from "react-router-dom";
-import {Button} from "../../src/components/ui/button";
 import {Cards} from "../../src/pages/cards";
 import {Profile} from "../../src/pages/profile/profile";
 import {RecoverPassword} from "../components/auth/recover-password/recover-password.tsx";
