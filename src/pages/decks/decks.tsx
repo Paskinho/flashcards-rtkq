@@ -20,6 +20,9 @@ import {Toggle} from "../../components/ui/toggle";
 import {Slider} from "../../components/ui/slider";
 import {Pagination} from "../../components/ui/pagination";
 import {useDeckSearchParams} from '../decks/use-deck-search-params'
+import { FaPlay } from "react-icons/fa";
+import {navigate} from "@storybook/addon-links";
+
 
 
 const schema = z.object({})
@@ -235,9 +238,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                         {/*    deleteDeck({deckId: deck.id})*/}
                                         {/*}}*/}
                                         {/*>*/}
-                                            <FaEdit className={s.icon}   onClick={()=> {
-                                                deleteDeck({deckId: deck.id})
-                                            }}/>
+                                            <FaPlay className={s.icon}   onClick={navigate('/learnCard')}/>
                                             {/*<FaRegCirclePlay className={s.icon}/>*/}
                                         {/*</button>*/}
                                     </Table.Cell>
