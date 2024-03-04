@@ -141,7 +141,7 @@ const CreateCardModal = ({ deckId }: { deckId: string }) => {
     //   });
   });
 
-  const learnLink = `/decks/${deckId}/learn`
+  const learnLink = `/learnCard`
 
   return (
     <>

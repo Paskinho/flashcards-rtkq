@@ -238,7 +238,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                                         {/*    deleteDeck({deckId: deck.id})*/}
                                         {/*}}*/}
                                         {/*>*/}
-                                            <FaPlay className={s.icon}   onClick={navigate('/learnCard')}/>
+                                            <FaPlay className={s.icon} onClick={navigate('/learnCard')}/>
                                             {/*<FaRegCirclePlay className={s.icon}/>*/}
                                         {/*</button>*/}
                                     </Table.Cell>
