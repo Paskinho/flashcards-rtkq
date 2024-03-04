@@ -204,7 +204,6 @@ export const Decks = ({onSubmit}: DecksProps) => {
                 <div>
                     <Table.Root style={{width:'80%',
 
-
                         // marginRight: '120px',
                         // marginLeft: '120px'
                     }}>
