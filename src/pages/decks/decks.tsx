@@ -162,7 +162,7 @@ export const Decks = ({onSubmit}: DecksProps) => {
                     }}
                 >
                     <Typography variant={'large'}>Decks</Typography>
-                    <Button onClick={openModal}>Add New Pack</Button>
+                    <Button onClick={openModal}>Add New Deck</Button>
                 </div>
                 <div className={s.control}>
                     <ControlledTextField
@@ -202,7 +202,9 @@ export const Decks = ({onSubmit}: DecksProps) => {
 
 
                 <div>
-                    <Table.Root style={{width:'100%',
+                    <Table.Root style={{width:'80%',
+
+
                         // marginRight: '120px',
                         // marginLeft: '120px'
                     }}>
