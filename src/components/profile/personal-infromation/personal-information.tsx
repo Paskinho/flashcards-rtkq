@@ -63,7 +63,7 @@ export const PersonalInformation = ({
             <Typography variant={"body2"} className={s.email}>
                 {email}
             </Typography>
-            <div>
+            <div className={s.button}>
                 <Button variant={"secondary"} onClick={handleLogout}>
                     <Logout/>
                     SignOut
